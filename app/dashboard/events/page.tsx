@@ -12,7 +12,8 @@ export default function Page() {
   const renderModalBody = () => {
     if (!selected) return; 
 
-    const {virtual_location_url, in_person_location} = selected.event_setting_attributes;
+    const virtual_location_url = selected?.event_setting_attributes?.virtual_location_url;
+    const in_person_location = selected?.event_setting_attributes?.in_person_location;
     const formatted_address =  selected.event_setting_attributes.in_person_location ? JSON.parse(selected.event_setting_attributes.in_person_location)?.formatted_address : null
     
 
