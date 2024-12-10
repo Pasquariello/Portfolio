@@ -57,7 +57,7 @@ export default function Page() {
 
   return (
     <>
-    <h1 className="text-3xl md:text-3xl">Up Coming Events</h1>
+    <h1 className="text-3xl md:text-3xl">Upcoming Events</h1>
     
     <InfoModal isOpen={selected} onClose={closeModal} title={selected?.name}>
       {renderModalBody()}
