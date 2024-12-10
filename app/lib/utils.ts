@@ -1,3 +1,4 @@
+import { cookies } from 'next/headers';
 import { Revenue } from './definitions';
 
 export const formatCurrency = (amount: number) => {
@@ -66,4 +67,10 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
     '...',
     totalPages,
   ];
+};
+
+
+export const getAccessToken = async () => {
+  console.log('here getAccessToken')
+  return (await cookies()).get('access_token');
 };

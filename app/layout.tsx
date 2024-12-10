@@ -1,5 +1,3 @@
-'use client'
-
 import '@/app/ui/global.css';
 import '@circleco/headless-ui-kit/style.css'
 import { inter } from '@/app/ui/fonts';
@@ -11,6 +9,8 @@ import {
 import {
   BlockEditor
 } from "@circleco/headless-ui-kit/components/BlockEditor";
+// import Provider from './provider';
+
 
 export default function RootLayout({
   children,
@@ -18,20 +18,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
 
-  const getTokenFunction = () => {
-    return '';
-    // return "<MEMEBER_TOKEN>" // you must return the member api here.
-  };
-
   return (
     
       <html lang="en">
         <body className={`${inter.className} antialiased`}>
-          {/* <CircleProvider getTokenFunction={getTokenFunction}>
-            <BlockEditor readOnly={true} value={{}} sgidToObjectMap={{}} inlineAttachments={[]}/> */}
-            {children}
-          {/* </CircleProvider> */}
-
+          {/* <Provider> */}
+            {/* <CircleProvider getTokenFunction={getTokenFunction}> */}
+              {/* <BlockEditor readOnly={true} value={{}} sgidToObjectMap={{}} inlineAttachments={[]}/> */}
+              {children}
+            {/* </CircleProvider> */}
+          {/* </Provider> */}
           </body>
       </html>
   );

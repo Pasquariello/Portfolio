@@ -8,6 +8,41 @@ import {
   Revenue,
 } from './definitions';
 import { formatCurrency } from './utils';
+import { cookies } from 'next/headers'
+
+
+export async function fetchCircle() {
+  // try {
+  //   console.log('Fetching fetchCircle data...');
+  //   const cookieStore = await cookies()
+  //   const myToken = cookieStore.get('circleToken');
+  //   console.log('======= TAYLOR', myToken)
+  
+  //   return 'hello from fetchCircle'
+  // } catch (error) {
+  //   console.error('Database Error:', error);
+  //   throw new Error('Failed to fetch cookie data.');
+  // }
+
+  try {
+
+    const cookieStore = await cookies()
+    const token = cookieStore.get('circleToken')?.value;
+
+    const response = await fetch("https://app.circle.so/api/headless/v1/community_events", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+    });
+  
+    const result = await response.json()
+    return result;
+  //   setData(response.data);
+  } catch (error) {
+    console.error('Error fetching protected data:', error);
+  }
+} 
 
 export async function fetchRevenue() {
   try {
