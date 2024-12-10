@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState } from "react";
+import { Pagination } from "../pagination";
 
 
 export default function EventList({handleOnSelect}) {
@@ -17,7 +18,8 @@ export default function EventList({handleOnSelect}) {
   }, []);
 
     return (
-        <ul role="list" className="divide-y divide-gray-100 w-2/3">
+        <div className="w-2/3">
+        <ul role="list" className="divide-y divide-gray-100">
             {
                 events?.records?.map(eventDetails => {
                     console.log('eventDetails', eventDetails)
@@ -61,6 +63,8 @@ export default function EventList({handleOnSelect}) {
                 })
             }
         </ul>
+        <Pagination/>
+        </div>
         
     )
 }
