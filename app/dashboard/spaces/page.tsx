@@ -1,12 +1,12 @@
-import MemberList from "@/app/ui/customers/memberList";
-import MemberSearch from "@/app/ui/customers/memberSearch";
 import { RevenueChartSkeleton } from "@/app/ui/skeletons";
+import SpaceList from "@/app/ui/spaces/spaceList";
 import { Suspense } from "react";
 
 export default async function Page({searchParams}) {
 
   const searchMe = await searchParams;
   const search = searchMe.search;
+  console.log('search ===', search)
 
   return (
     <div>
@@ -15,13 +15,14 @@ export default async function Page({searchParams}) {
             className="mb-3 mt-5 block text-xs font-medium text-gray-900"
             htmlFor="email"
           >
-            Member Search
+            Space Search
           </label>
-          <MemberSearch />
+          
+          {/* <MemberSearch /> */}
         </div>
 
         <Suspense fallback={<RevenueChartSkeleton />}> 
-          <MemberList search={search} />
+          <SpaceList />
         </Suspense>
       
   </div>

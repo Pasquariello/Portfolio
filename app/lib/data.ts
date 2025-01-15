@@ -1,3 +1,5 @@
+'use server'
+
 import { sql } from '@vercel/postgres';
 import {
   CustomerField,
@@ -9,20 +11,10 @@ import {
 } from './definitions';
 import { formatCurrency } from './utils';
 import { cookies } from 'next/headers'
+import { revalidatePath } from 'next/cache';
 
 
 export async function fetchCircle() {
-  // try {
-  //   console.log('Fetching fetchCircle data...');
-  //   const cookieStore = await cookies()
-  //   const myToken = cookieStore.get('circleToken');
-  //   console.log('======= TAYLOR', myToken)
-  
-  //   return 'hello from fetchCircle'
-  // } catch (error) {
-  //   console.error('Database Error:', error);
-  //   throw new Error('Failed to fetch cookie data.');
-  // }
 
   try {
 
@@ -44,6 +36,117 @@ export async function fetchCircle() {
   }
 } 
 
+export async function searchMembers(name) {
+
+  // console.log('foo', foo)
+  const body = name ? {
+            filters: [
+              {
+              key: "name",
+              filter_type: "contains", // todo: investigate other options
+              value: name
+              }
+            ],
+          }
+        : null
+  try {
+    const cookieStore = await cookies()
+    const token = cookieStore.get('circleToken')?.value;
+
+    const response = await fetch("https://app.circle.so/api/headless/v1/search/community_members", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(body),
+    });
+  
+
+    const result = await response.json()
+    console.log("result ---- ", result)
+    return result;
+  } catch (error) {
+    console.error('Error fetching protected data:', error);
+  }
+} 
+
+export async function fetchSpaces() {
+  try {
+
+    const cookieStore = await cookies()
+    const token = cookieStore.get('circleToken')?.value;
+
+    const response = await fetch("https://app.circle.so/api/headless/v1/spaces", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+    });
+  
+    const result = await response.json()
+    return result;
+  } catch (error) {
+    console.error('Error fetching protected data:', error);
+  }
+}
+
+
+export async function leaveSpace(id) {
+  await new Promise((resolve) => setTimeout(resolve, 3000));
+
+  try {
+    const cookieStore = await cookies()
+    const token = cookieStore.get('circleToken')?.value;
+
+    const response = await fetch(`https://app.circle.so/api/headless/v1/spaces/${id}/leave`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+    });
+  
+
+    const result = await response.json();
+    revalidatePath('http://localhost:3000/dashboard/spaces');
+    revalidatePath('/api/spaces/[id]/leave');
+
+    return result;
+  } catch (error) {
+    console.error('Error fetching protected data:', error);
+  }
+}
+
+export async function joinSpace(id) {
+  await new Promise((resolve) => setTimeout(resolve, 3000));
+  try {
+    const cookieStore = await cookies()
+    const token = cookieStore.get('circleToken')?.value;
+
+    const response = await fetch(`https://app.circle.so/api/headless/v1/spaces/${id}/join`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+    });
+  
+
+    const result = await response.json();
+    revalidatePath('/dashboard/spaces/[id]');
+    return result;
+  } catch (error) {
+    console.error('Error fetching protected data:', error);
+  }
+}
+
+
+
+
+
+
+////// Old examples from next demo
 export async function fetchRevenue() {
   try {
     // Artificially delay a response for demo purposes.

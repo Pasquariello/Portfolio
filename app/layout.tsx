@@ -1,15 +1,7 @@
 import '@/app/ui/global.css';
 import '@circleco/headless-ui-kit/style.css'
 import { inter } from '@/app/ui/fonts';
-
-import {
-  CircleProvider
-} from "@circleco/headless-ui-kit/components/Provider";
-
-import {
-  BlockEditor
-} from "@circleco/headless-ui-kit/components/BlockEditor";
-// import Provider from './provider';
+import { UserProvider } from '@auth0/nextjs-auth0/client';
 
 
 export default function RootLayout({
@@ -21,14 +13,14 @@ export default function RootLayout({
   return (
     
       <html lang="en">
+            <UserProvider>
+
         <body className={`${inter.className} antialiased`}>
-          {/* <Provider> */}
-            {/* <CircleProvider getTokenFunction={getTokenFunction}> */}
-              {/* <BlockEditor readOnly={true} value={{}} sgidToObjectMap={{}} inlineAttachments={[]}/> */}
               {children}
-            {/* </CircleProvider> */}
-          {/* </Provider> */}
+
           </body>
+          </UserProvider>
+
       </html>
   );
 }

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 
 export function InfoModal({title, onClose, children, isOpen}) {
+  console.log('isOpen ====== ', isOpen);
   const [showModal, setShowModal] = useState(false);
 
   // When modal is opened, delay the rendering of the modal content for animation

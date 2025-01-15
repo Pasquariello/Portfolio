@@ -1,4 +1,4 @@
-import NextAuth from 'next-auth';
+import NextAuth, { AuthError } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import { authConfig } from './auth.config';
 import { z } from 'zod';
@@ -23,6 +23,8 @@ async function getUser(email: string): Promise<User | undefined> {
 }
 
 async function getCirleJWT() {
+  console.log('HELLO from getCirleJWT AUTH')
+
     try {
         const response = await fetch(TOKEN_URL, {
             method: 'POST',
@@ -32,6 +34,8 @@ async function getCirleJWT() {
             },
             body: JSON.stringify({
                 email: 'taylor@cascadiansoftware.com',
+                // email: 'taylorpasq@gmail.com',
+
             }),
         });
         const data = await response.json();
@@ -81,7 +85,9 @@ export const { auth, signIn, signOut } = NextAuth({
  
         if (parsedCredentials.success) {
           const { email, password } = parsedCredentials.data;
+          console.log('EMAIL LOGGED IN AS', email)
           const user = await getUser(email);
+          console.log('USER', user)
 
           const circleResponse = await getCirleJWT();
             console.log(circleResponse)
@@ -89,12 +95,13 @@ export const { auth, signIn, signOut } = NextAuth({
             throw new Error('Failed to authenticate with Circle.so');
           }
 
+          console.log('CIRCLE RESPONSE', circleResponse)
+
           const circleToken = circleResponse.access_token;
           // here 
           const cookieStore = await cookies();
           cookieStore.set('circleToken', circleToken);
 
-          console.log('HELLO FROM AUTH')
           if (!user) return null;
           const passwordsMatch = await bcrypt.compare(password, user.password);
  
