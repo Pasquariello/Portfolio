@@ -19,9 +19,9 @@ const MemberSearch = ({ search }: { search?: string }) => {
     }
 
     if (!query) {
-      router.push(`/dashboard/customers`)
+      router.push(`/dashboard/members`)
     } else {
-      router.push(`/dashboard/customers?search=${query}`)
+      router.push(`/dashboard/members?search=${query}`)
     }
   }, [query])
 

@@ -1,5 +1,5 @@
-import MemberList from "@/app/ui/customers/memberList";
-import MemberSearch from "@/app/ui/customers/memberSearch";
+import MemberList from "@/app/ui/members/memberList";
+import MemberSearch from "@/app/ui/members/memberSearch";
 import { RevenueChartSkeleton } from "@/app/ui/skeletons";
 import { Suspense } from "react";
 

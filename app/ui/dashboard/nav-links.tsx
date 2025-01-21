@@ -19,7 +19,7 @@ const links = [
     href: '/dashboard/events',
     icon: DocumentDuplicateIcon,
   },
-  { name: 'Customers', href: '/dashboard/customers', icon: UserGroupIcon },
+  { name: 'Members', href: '/dashboard/members', icon: UserGroupIcon },
   { name: 'Spaces', href: '/dashboard/spaces', icon: WrenchScrewdriverIcon },
 
 ];
