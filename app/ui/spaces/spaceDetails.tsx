@@ -45,7 +45,7 @@ export default function SpaceDetails({spaceDetails}) {
                         onClick={joinMe}
                         className="outline outline-2 hover:bg-transparent outline-blue-500 hover:!text-blue-500 m-0 margin"
                     >
-                         {isPending ? <LoadingSpinner className="!text-white"/> : 'join'}
+                         {isPending ? <LoadingSpinner className="!text-white"/> : 'Join'}
                     </Button>
                 }
             </div>
