@@ -5,10 +5,15 @@ import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { lusitana } from '@/app/ui/fonts';
 import Image from 'next/image';
+
+// import { getSession } from '@auth0/nextjs-auth0';
 // import { getAccessToken } from './lib/utils';
 // import getToken from './lib/circle';
 
-export default function Page() {
+export default async function Page() {
+  // const session = await getSession();
+  // console.log('session ======= ', session);
+  // console.log('session.user ======= ', session?.user);
 
   return (
     <main className="flex min-h-screen flex-col p-6">
@@ -33,6 +38,9 @@ export default function Page() {
           >
             <span>Log in</span> <ArrowRightIcon className="w-5 md:w-6" />
           </Link>
+          
+          {/* Logout AUTH0 test if get stuck*/}
+          <a href="/api/auth/logout">Logout</a>
         </div>
         <div className="flex items-center justify-center p-6 md:w-3/5 md:px-28 md:py-12">
           {/* Add Hero Images Here */}

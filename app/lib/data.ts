@@ -12,6 +12,13 @@ import {
 import { formatCurrency } from './utils';
 import { cookies } from 'next/headers'
 import { revalidatePath } from 'next/cache';
+import { getCirleJWT } from './actions';
+
+// import { getSession } from '@auth0/nextjs-auth0';
+
+// export async function login(params:type) {
+  
+// }
 
 
 export async function fetchCircle() {
@@ -72,11 +79,13 @@ export async function searchMembers(name) {
 } 
 
 export async function fetchSpaces() {
+
+  // await getCirleJWT();
   try {
 
     const cookieStore = await cookies()
     const token = cookieStore.get('circleToken')?.value;
-
+    console.log('TOKEN', token)
     const response = await fetch("https://app.circle.so/api/headless/v1/spaces", {
       headers: {
         Authorization: `Bearer ${token}`,

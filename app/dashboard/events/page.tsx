@@ -9,6 +9,22 @@ export default async function Page({searchParams}) {
   const params = await searchParams;
   const { selected }  = params;
 
+  // commented out code below went here
+  return (
+    <>
+    <h1 className="text-3xl md:text-3xl">Upcoming Events</h1>
+    
+    {/* <InfoModal isOpen={selected} onClose={closeModal} title={selected?.name}>
+      {renderModalBody()}
+    </InfoModal> */}
+    <Suspense fallback={<EventsRowsSkeleton/>}>
+      <EventList selectedEvent={selected} />
+    </Suspense>
+  </>
+  );
+}
+
+
   // const [selected, setSelected] = useState(null);
 
   // const closeModal = () => setSelected(null);
@@ -58,17 +74,3 @@ export default async function Page({searchParams}) {
   //     </div>
   //   )
   // }
-
-  return (
-    <>
-    <h1 className="text-3xl md:text-3xl">Upcoming Events</h1>
-    
-    {/* <InfoModal isOpen={selected} onClose={closeModal} title={selected?.name}>
-      {renderModalBody()}
-    </InfoModal> */}
-    <Suspense fallback={<EventsRowsSkeleton/>}>
-      <EventList selectedEvent={selected} />
-    </Suspense>
-  </>
-  );
-}
