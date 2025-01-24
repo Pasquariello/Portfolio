@@ -3,6 +3,9 @@
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useCallback } from "react";
 import { InfoModal } from '../modals';
+import { LoadingSpinner } from '../loadingSpinner';
+import { Button } from '../button';
+import { rsvpToEvent } from '@/app/lib/data';
 
 export default function EventDetails({eventDetails, selected}) {
   const router = useRouter();
@@ -91,6 +94,24 @@ export default function EventDetails({eventDetails, selected}) {
     )
   }
 
+  const handleRsvp = async ({space_id, event_id}) => {
+    console.log('handleRSVP')
+    const res = await fetch(`/api/events`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        space_id,
+        event_id
+        // Data to be sent in the request body
+      })
+    });
+    const data = await res.json();
+    console.log('data', data)
+
+  }
+
   return (
     <>
 
@@ -102,24 +123,50 @@ export default function EventDetails({eventDetails, selected}) {
         title={eventDetails.id}>
           {renderModalBody()}
       </InfoModal>
-    <li 
-        onClick={(e) => {
-            router.push(pathname + '?' + createQueryString('selected', eventDetails.id), { scroll: false })
-        }}
-        key={eventDetails.id}
-        className="flex justify-between gap-x-6 py-5"
-    >
-        <div className="flex min-w-0 gap-x-4">
-            <div className="min-w-0 flex-auto">
-            <p className="text-sm/6 font-semibold text-gray-900">{eventDetails?.display_title}</p>
-            <p className="mt-1 truncate text-xs/5 text-gray-500">{topicNames?.join(", ")}</p>
-            </div>
-        </div>
-        <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-            <p className="text-sm/6 text-gray-900">Host: {eventDetails?.author?.name}</p>
-            <p className="mt-1 text-xs/5 text-gray-500">{formattedDate}</p>
-        </div>
-    </li>
+
+      <li 
+          onClick={(e) => {
+              router.push(pathname + '?' + createQueryString('selected', eventDetails.id), { scroll: false })
+          }}
+          key={eventDetails.id}
+          className="flex justify-between gap-x-6 py-5"
+      >
+          <div className="flex min-w-0 gap-x-4">
+              <div className="min-w-0 flex-auto">
+              <p className="text-sm/6 font-semibold text-gray-900">{eventDetails?.display_title}</p>
+              <p className="mt-1 truncate text-xs/5 text-gray-500">{topicNames?.join(", ")}</p>
+              </div>
+          </div>
+          <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+              <p className="text-sm/6 text-gray-900">Host: {eventDetails?.author?.name}</p>
+              <p className="mt-1 text-xs/5 text-gray-500">{formattedDate}</p>
+          </div>
+          {!eventDetails.rsvp_status ? (
+              <Button 
+                  onClick={(e) => {
+                    e.stopPropagation()
+
+                    handleRsvp({space_id: eventDetails.space.id, event_id: eventDetails.id})
+                  }}
+                  className="outline outline-2 hover:bg-transparent outline-blue-500 hover:!text-blue-500 m-0 margin"
+              >
+                RSVP
+                    {/* {isPending ? <LoadingSpinner className="!text-white"/> : 'Join'} */}
+              </Button>
+            ) : (
+              <Button 
+              onClick={(e) => {
+                e.stopPropagation()
+                handleRsvp({space_id: eventDetails.space.id, event_id: eventDetails.id})
+              }}
+                  className="outline outline-2 hover:bg-transparent outline-blue-500 hover:!text-blue-500 m-0 margin"
+              >
+                Leave
+                    {/* {isPending ? <LoadingSpinner className="!text-white"/> : 'Join'} */}
+              </Button>
+            )
+          }
+      </li>
     </>
   )
 }

@@ -43,6 +43,76 @@ export async function fetchCircle() {
   }
 } 
 
+
+export async function rsvpToEvent({space_id, event_id}) {
+  console.log("HELLO RSVP DATA")
+
+  try {
+    const cookieStore = await cookies()
+    const token = cookieStore.get('circleToken')?.value;
+
+    const response = await fetch(`https://app.circle.so/api/headless/v1/spaces/${space_id}/events/${event_id}/recurring_events/rsvp`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+    });
+    const result = await response.json()
+    return result;
+  } catch (error) {
+    console.error('Error fetching protected data:', error);
+  }
+} 
+
+export async function fooRSVP({space_id, event_id}) {
+  console.log("HELLO RSVP DATA", space_id)
+
+  try {
+    const cookieStore = await cookies()
+    const token = cookieStore.get('circleToken')?.value;
+
+    const response = await fetch(`https://app.circle.so/api/headless/v1/events/${event_id}/event_attendees`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+    });
+    const result = await response.json()
+    // revalidatePath('http://localhost:3000/dashboard/events');
+    revalidatePath('api/events');
+
+    return result;
+  } catch (error) {
+    console.error('Error fetching protected data:', error);
+  }
+} 
+
+export async function fooRSVPLeave({space_id, event_id}) {
+  console.log("HELLO RSVP DATA", space_id)
+
+  try {
+    const cookieStore = await cookies()
+    const token = cookieStore.get('circleToken')?.value;
+
+    const response = await fetch(`https://app.circle.so/api/headless/v1/events/${event_id}/event_attendees`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+    });
+    const result = await response.json()
+    return result;
+  } catch (error) {
+    console.error('Error fetching protected data:', error);
+  }
+} 
+
+// /api/headless/v1/events/{event_id}/event_attendees
+
+
 export async function searchMembers(name) {
 
   // console.log('foo', foo)
@@ -68,10 +138,7 @@ export async function searchMembers(name) {
       },
       body: JSON.stringify(body),
     });
-  
-
     const result = await response.json()
-    console.log("result ---- ", result)
     return result;
   } catch (error) {
     console.error('Error fetching protected data:', error);
@@ -118,8 +185,8 @@ export async function leaveSpace(id) {
   
 
     const result = await response.json();
-    revalidatePath('http://localhost:3000/dashboard/spaces');
-    revalidatePath('/api/spaces/[id]/leave');
+    // revalidatePath('http://localhost:3000/dashboard/spaces');
+    // revalidatePath('/api/spaces/[id]/leave');
 
     return result;
   } catch (error) {
@@ -143,7 +210,7 @@ export async function joinSpace(id) {
   
 
     const result = await response.json();
-    revalidatePath('/dashboard/spaces/[id]');
+    // revalidatePath('/dashboard/spaces/[id]');
     return result;
   } catch (error) {
     console.error('Error fetching protected data:', error);

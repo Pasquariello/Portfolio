@@ -5,6 +5,7 @@ import { cookies } from 'next/headers';
 
 export async function GET(req, res) {
   try {
+    console.log("LOGOUT TAYLOR")
     // Clear custom cookies
     const cookieStore = await cookies();
     cookieStore.delete('circleToken'); 

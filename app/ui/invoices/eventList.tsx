@@ -6,26 +6,65 @@ import EventDetails from "./eventDetails";
 
 
 export default async function EventList({selectedEvent}) {
-    console.log('selectedEvent', selectedEvent)
+    
     // const [events, setEvents] = useState();
     const events = await fetchCircle();
+ 
+    const eventsByMonth = events?.records?.reduce((accumulator, currentValue) => {
+        const isoDate = currentValue?.event_setting_attributes?.starts_at;
+        // Create a Date object from the ISO string
+        const date = new Date(isoDate);
+        // Get the full month name
+        const fullMonthName = date.toLocaleString('default', { month: 'long' });
+    
+        return { 
+            ...accumulator,
+            [fullMonthName]: {
+                month: fullMonthName,
+                records: accumulator?.[fullMonthName]?.records?.concat(currentValue) || [currentValue]
+            }
+        }
+    }, {})
 
 
-    const renderEventList =  () => events?.records?.map(eventDetails => {
+    console.log('eventsByMonth', eventsByMonth);
+
+    // const renderEventList =  () => events?.records?.map(eventDetails => {
   
-        return (
-                <EventDetails key={eventDetails.id} eventDetails={eventDetails} selected={selectedEvent}/>
-        )
+    //     return (
+    //             <EventDetails key={eventDetails.id} eventDetails={eventDetails} selected={selectedEvent}/>
+    //     )
+    // });
+
+
+    const renderEventList =  () => eventsByMonth && Object.values(eventsByMonth)?.map(month => {
+       return (
+            <div className="mb-20" key={month.month}>
+                <h3 className="text-3xl md:text-3xl mb-4">{month.month}</h3>
+
+                <div className="flex flex-col divide-y-1 divide-y divide-gray-200 border-2 border-gray-200 rounded-xl p-8"> 
+                    {
+                        month?.records?.map(eventDetails => {
+                            return  <EventDetails key={eventDetails.id} eventDetails={eventDetails} selected={selectedEvent}/>
+                        })
+                    }
+                </div>
+            </div>
+       )
     });
 
     return (
-        <div className="w-2/3">
-
-            <ul role="list" className="divide-y divide-gray-100">
-                {events ? renderEventList() : <div>Loading</div> // to do: set up skeleton loading here
-                }
-            </ul>
-            <Pagination currentPage={1} per_page={events?.per_page || 10} has_next_page={events?.has_next_page || false} count={events?.count || 100} />
+        <div className="flex justify-center">
+            <div className="w-4/5">
+            
+                    {
+                    events ? renderEventList() 
+                    : <div>Loading</div> // to do: set up skeleton loading here
+                    }
+          
+                <Pagination currentPage={1} per_page={events?.per_page || 10} has_next_page={events?.has_next_page || false} count={events?.count || 100} />
+            
+            </div>
         </div>
         
     )

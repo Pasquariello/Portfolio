@@ -7,7 +7,8 @@ import { cookies } from 'next/headers';
 const CLIENT_TOKEN = process.env.CIRCLE_TOKEN!;
 const TOKEN_URL = 'https://app.circle.so/api/v1/headless/auth_token'; // Example OAuth endpoint
 
-export async  function clearCircleCookie () {
+export async function clearCircleCookie () {
+  console.log('hello clearCircleCookie');
     const cookieStore = await cookies();
     cookieStore.delete('circleToken');
 
