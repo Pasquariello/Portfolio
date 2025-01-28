@@ -4,10 +4,10 @@ import MemberDetails from "./memberDetails";
 export default async function MemberList({search}) {
   
     const members = await searchMembers(search);
-
+    
     return (
         <div className="w-2/3">
-            <ul role="list" className="divide-y divide-gray-100">
+            <div role="list" className="flex">
             {
                 members?.records?.map(memberDetails => {
                     return (
@@ -15,7 +15,7 @@ export default async function MemberList({search}) {
                     )
                 }
             )}
-            </ul>
+            </div>
         </div>
         
     )

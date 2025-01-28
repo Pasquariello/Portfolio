@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { useDebounce } from 'use-debounce'
 
 const MemberSearch = ({ search }: { search?: string }) => {
+  console.log('SEARCH', search)
   const router = useRouter()
   const initialRender = useRef(true)
 
@@ -36,6 +37,7 @@ const MemberSearch = ({ search }: { search?: string }) => {
                 name="memberSearch"
                 placeholder="Search Member"
                 required
+                value={memberInput}
                 onChange={(e) => setMemberInput(e.target.value)}
             />
     </div>

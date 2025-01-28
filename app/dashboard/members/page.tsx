@@ -17,7 +17,7 @@ export default async function Page({searchParams}) {
           >
             Member Search
           </label>
-          <MemberSearch />
+          <MemberSearch search={search} />
         </div>
 
         <Suspense fallback={<RevenueChartSkeleton />}> 
