@@ -4,9 +4,9 @@ import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useCallback } from "react";
 
-const colors = ['bg-pink-500', 'bg-cyan-500', 'bg-zinc-500', 'bg-lime-500', 'rose-400', 'bg-slate-500', 'bg-fuchsia-400', 'bg-purple-400', 'bg-violet-400', 'bg-indigo-500', 'bg-sky-500', 'bg-teal-500', 'bg-emerald-400', 'bg-yellow-500', ' bg-amber-500', ' bg-orange-500', ' bg-red-500', ]
+const colors = ['bg-pink-500', 'bg-cyan-500', 'bg-zinc-500', 'bg-lime-500', 'bg-rose-400', 'bg-slate-500', 'bg-fuchsia-400', 'bg-purple-400', 'bg-violet-400', 'bg-indigo-500', 'bg-sky-500', 'bg-teal-500', 'bg-emerald-400', 'bg-yellow-500', ' bg-amber-500', ' bg-orange-500', ' bg-red-500', ]
 
-var rand = colors[(Math.random() * colors.length) | 0]
+var rand = colors[4] //colors[(Math.random() * colors.length) | 0]
 
 export default function MemberDetails({memberDetails}) {
   const router = useRouter();

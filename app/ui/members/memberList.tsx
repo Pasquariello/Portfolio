@@ -4,10 +4,10 @@ import MemberDetails from "./memberDetails";
 export default async function MemberList({search}) {
   
     const members = await searchMembers(search);
-    
+
     return (
-        <div className="w-2/3">
-            <div role="list" className="flex">
+        <div className="flex">
+            <div role="list" className="flex flex-wrap">
             {
                 members?.records?.map(memberDetails => {
                     return (
