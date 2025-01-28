@@ -12,9 +12,6 @@ export default async function LatestInvoices() {
   const events = await fetchEvents(5)
   console.log('events main dashboard', events)
 
-  const { records } = events;
-
-
   return (
     <div className="flex w-full flex-col md:col-span-4">
       <h2 className={`mb-4 text-xl md:text-2xl`}>
@@ -24,7 +21,7 @@ export default async function LatestInvoices() {
         {/* NOTE: Uncomment this code in Chapter 7 */}
 
         <div className="bg-white px-6">
-          {records?.map((event, i) => {
+          {events?.records?.map((event, i) => {
 
             const formattedDate = formattedDateString(event?.event_setting_attributes?.starts_at);
 
