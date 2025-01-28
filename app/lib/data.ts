@@ -65,8 +65,7 @@ export async function rsvpToEvent({space_id, event_id}) {
   }
 } 
 
-export async function fooRSVP({space_id, event_id}) {
-  console.log("HELLO RSVP DATA", space_id)
+export async function fooRSVP(event_id) {
 
   try {
     const cookieStore = await cookies()
@@ -81,16 +80,22 @@ export async function fooRSVP({space_id, event_id}) {
     });
     const result = await response.json()
     // revalidatePath('http://localhost:3000/dashboard/events');
-    revalidatePath('api/events');
+    // revalidatePath('api/events');
 
-    return result;
+    return {
+      success: true,
+      data: result
+    }
   } catch (error) {
+    return {
+      success: false,
+      data: null
+    }
     console.error('Error fetching protected data:', error);
   }
 } 
 
-export async function fooRSVPLeave({space_id, event_id}) {
-  console.log("HELLO RSVP DATA", space_id)
+export async function fooRSVPLeave( event_id) {
 
   try {
     const cookieStore = await cookies()
@@ -104,8 +109,16 @@ export async function fooRSVPLeave({space_id, event_id}) {
       },
     });
     const result = await response.json()
-    return result;
+    console.log('result ------', result)
+    return {
+      success: true,
+      data: result
+    }
   } catch (error) {
+    return {
+      success: false,
+      data: null
+    }
     console.error('Error fetching protected data:', error);
   }
 } 
@@ -153,7 +166,7 @@ export async function fetchSpaces() {
     const cookieStore = await cookies()
     const token = cookieStore.get('circleToken')?.value;
     console.log('TOKEN', token)
-    const response = await fetch("https://app.circle.so/api/headless/v1/spaces", {
+    const response = await fetch("https://app.circle.so/api/headless/v1/spaces?include_sidebar=true", {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json"

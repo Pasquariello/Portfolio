@@ -1,16 +1,15 @@
-// 'use client'
-// import { useEffect, useState } from "react";
 import { fetchCircle } from "@/app/lib/data";
 import { Pagination } from "../pagination";
-import EventDetails from "./eventDetails";
-
+import EventDetails from "./eventDetails";;
 
 export default async function EventList({selectedEvent}) {
-    
+
+    // const [state, action, pending] = useActionState(rsvp, undefined);
+    // console.log('TAYLOR STATE', state);
     // const [events, setEvents] = useState();
     const events = await fetchCircle();
  
-    const eventsByMonth = events?.records?.reduce((accumulator, currentValue) => {
+    const eventsByMonth: { name: string, records: [any] } = events?.records?.reduce((accumulator, currentValue) => {
         const isoDate = currentValue?.event_setting_attributes?.starts_at;
         // Create a Date object from the ISO string
         const date = new Date(isoDate);
@@ -20,7 +19,7 @@ export default async function EventList({selectedEvent}) {
         return { 
             ...accumulator,
             [fullMonthName]: {
-                month: fullMonthName,
+                name: fullMonthName,
                 records: accumulator?.[fullMonthName]?.records?.concat(currentValue) || [currentValue]
             }
         }
@@ -29,20 +28,12 @@ export default async function EventList({selectedEvent}) {
 
     console.log('eventsByMonth', eventsByMonth);
 
-    // const renderEventList =  () => events?.records?.map(eventDetails => {
-  
-    //     return (
-    //             <EventDetails key={eventDetails.id} eventDetails={eventDetails} selected={selectedEvent}/>
-    //     )
-    // });
-
-
     const renderEventList =  () => eventsByMonth && Object.values(eventsByMonth)?.map(month => {
        return (
-            <div className="mb-20" key={month.month}>
-                <h3 className="text-3xl md:text-3xl mb-4">{month.month}</h3>
+            <div className="mb-20" key={month.name}>
+                <h3 className="text-3xl md:text-3xl mb-4">{month.name as string}</h3>
 
-                <div className="flex flex-col divide-y-1 divide-y divide-gray-200 border-2 border-gray-200 rounded-xl p-8"> 
+                <div className="flex flex-col divide-y-1 divide-y divide-gray-200 border-2 border-gray-200 rounded-xl px-8 bg-white"> 
                     {
                         month?.records?.map(eventDetails => {
                             return  <EventDetails key={eventDetails.id} eventDetails={eventDetails} selected={selectedEvent}/>

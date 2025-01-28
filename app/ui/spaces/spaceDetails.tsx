@@ -30,7 +30,7 @@ export default function SpaceDetails({spaceDetails}) {
     }
 
     return (
-        <div className="m-6 border-solid rounded-xl p-2 shadow-sm flex justify-center">
+        <div className="m-6 border-solid rounded-xl p-2 shadow-sm flex justify-center bg-white">
             <div className="p-4 flex flex-col items-center">
                 <h3 className="m-2 text-sm font-medium">{name}</h3>
                 {is_member ?                     

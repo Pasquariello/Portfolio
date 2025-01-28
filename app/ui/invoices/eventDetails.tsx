@@ -1,28 +1,36 @@
 'use client'
 // import { UserCircleIcon } from "@heroicons/react/24/outline";
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { useCallback } from "react";
-import { InfoModal } from '../modals';
+// import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+// import { useCallback } from "react";
+// import { InfoModal } from '../modals';
 import { LoadingSpinner } from '../loadingSpinner';
 import { Button } from '../button';
 import { rsvpToEvent } from '@/app/lib/data';
+import {rsvp, leave} from './actions';
+
+import {
+  MapIcon, 
+  VideoCameraIcon,
+  CalendarIcon, CheckCircleIcon
+} from '@heroicons/react/24/outline';
+import { useEffect, useState } from 'react';
 
 export default function EventDetails({eventDetails, selected}) {
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams()
+  // const router = useRouter();
+  // const pathname = usePathname();
+  // const searchParams = useSearchParams()
 
   // Get a new searchParams string by merging the current
   // searchParams with a provided key/value pair
-  const createQueryString = useCallback(
-    (name: string, value: string) => {
-      const params = new URLSearchParams(searchParams.toString())
-      params.set(name, value)
+  // const createQueryString = useCallback(
+  //   (name: string, value: string) => {
+  //     const params = new URLSearchParams(searchParams.toString())
+  //     params.set(name, value)
 
-      return params.toString()
-    },
-    [searchParams]
-  );
+  //     return params.toString()
+  //   },
+  //   [searchParams]
+  // );
 
   const topicNames = eventDetails?.topics?.map(topic => topic.name);
   // const isoDate = "2024-12-09T23:00:00.000Z";
@@ -44,6 +52,25 @@ export default function EventDetails({eventDetails, selected}) {
   });
 
 
+  // location_type: "live_stream", "in_person"
+  const { location_type } = eventDetails?.event_setting_attributes
+  
+  const locaitonMap = {
+    in_person: {
+      type: 'In Person',
+      icon: MapIcon
+    },
+    live_stream: {
+      type: 'Virtual',
+      icon: VideoCameraIcon
+    },
+  };
+
+ 
+
+  const Icon = locaitonMap[location_type].icon;
+  const locationDisplayName = locaitonMap[location_type].type
+
 
 
   const renderModalBody = () => {
@@ -52,10 +79,10 @@ export default function EventDetails({eventDetails, selected}) {
 
     const virtual_location_url = eventDetails?.event_setting_attributes?.virtual_location_url;
     const in_person_location = eventDetails?.event_setting_attributes?.in_person_location;
-    const formatted_address =  eventDetails.event_setting_attributes.in_person_location ? JSON.parse(selected.event_setting_attributes.in_person_location)?.formatted_address : null
+    const formatted_address =  eventDetails?.event_setting_attributes?.in_person_location ? JSON.parse(selected?.event_setting_attributes?.in_person_location)?.formatted_address : null
     
 
-    const isoDate = eventDetails.event_setting_attributes?.starts_at;  // Example ISO date string
+    const isoDate = eventDetails?.event_setting_attributes?.starts_at;  // Example ISO date string
     // Create a Date object from the ISO string
     const date = new Date(isoDate);
 
@@ -94,59 +121,106 @@ export default function EventDetails({eventDetails, selected}) {
     )
   }
 
-  const handleRsvp = async ({space_id, event_id}) => {
-    console.log('handleRSVP')
-    const res = await fetch(`/api/events`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        space_id,
-        event_id
-        // Data to be sent in the request body
-      })
-    });
-    const data = await res.json();
-    console.log('data', data)
+  // const handleRsvp = async ({space_id, event_id}) => {
+  //   console.log('handleRSVP')
+  //   const res = await fetch(`/api/events`, {
+  //     method: 'PUT',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //       space_id,
+  //       event_id
+  //       // Data to be sent in the request body
+  //     })
+  //   });
+  //   const data = await res.json();
+  //   console.log('data', data)
 
-  }
+  // }
+
+  // enum EventType { INPERSON, VIRTAL }
+
+  // const iconMap = {
+  //   INPERSON: BanknotesIcon,
+  //   VIRTAL: UserGroupIcon,
+  // };
+
+  const renderIcon = () => (
+    Icon ? <Icon className="h-5 w-5 text-black mr-4 flex-none" /> : null
+  )
+
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVisible(false);
+    }, 10000); // Default duration is 3 seconds
+
+    return () => clearTimeout(timer);
+  }, [isVisible]);
+
 
   return (
+
     <>
 
-      <InfoModal 
-        isOpen={selected} 
-        onClose={
-          () =>  router.push(pathname, { scroll: false })
-        }
-        title={eventDetails.id}>
-          {renderModalBody()}
-      </InfoModal>
+{isVisible ? (
+  <div style={{ position: 'absolute', bottom: 8, right: 8, zIndex: 1}} className="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
+  <div className="flex">
+    <div className="py-1"><svg className="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
+    <div>
+      <p className="font-bold">Successfully RSVP'd</p>
+      <p className="text-sm">Mark your Calendar! You have Successfully RSVP'd to this event!</p>
+    </div>
+  </div>
+</div>
+) : null }
 
-      <li 
-          onClick={(e) => {
-              router.push(pathname + '?' + createQueryString('selected', eventDetails.id), { scroll: false })
-          }}
+    <div
+      className="py-8"
+    >
+      <div className='flex justify-between items-center'>
+        <p className="text-md/6 font-semibold text-gray-900 mr-4">{eventDetails?.name}</p>
+        
+        {eventDetails.rsvped_event && (
+          <div className='flex items-center'>
+              <CheckCircleIcon className='h-5 w-5 text-green-400 mr-1'/>
+              <p className="text-sm/6 font-semibold text-gray-900">Going</p>
+            </div> 
+        )}
+      </div>
+      <div
           key={eventDetails.id}
-          className="flex justify-between gap-x-6 py-5"
+          className="flex justify-between gap-x-6 items-center"
       >
-          <div className="flex min-w-0 gap-x-4">
-              <div className="min-w-0 flex-auto">
-              <p className="text-sm/6 font-semibold text-gray-900">{eventDetails?.display_title}</p>
-              <p className="mt-1 truncate text-xs/5 text-gray-500">{topicNames?.join(", ")}</p>
+
+          <div className="w-1/3">
+              <p className="mt-2 text-xs/5 text-gray-500"><span className="text-black font-medium">Host:</span>{' '}{eventDetails?.author?.name}</p>
+              <p className="mt-2 wrap text-xs/5 text-gray-500"><span className="text-black font-medium">Tags:</span>{' '}{topicNames?.join(", ")}</p>
+          </div>
+          <div className="w-1/3">
+              <div className='flex mt-2'>
+                <CalendarIcon className='h-5 w-5 text-black mr-4 flex-none'/>
+                <p className="text-xs/5 text-gray-500">{formattedDate}</p>
+              </div>
+              <div className='flex mt-2'>
+                {renderIcon()} 
+                <p className="text-xs/5 text-gray-500 flex">{locationDisplayName}</p>
               </div>
           </div>
-          <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-              <p className="text-sm/6 text-gray-900">Host: {eventDetails?.author?.name}</p>
-              <p className="mt-1 text-xs/5 text-gray-500">{formattedDate}</p>
-          </div>
-          {!eventDetails.rsvp_status ? (
+          {!eventDetails.rsvped_event  ? (
               <Button 
-                  onClick={(e) => {
+                  onClick={async (e) => {
                     e.stopPropagation()
+                    const res = await rsvp(eventDetails.id);
+                    console.log('res --- ', res)
 
-                    handleRsvp({space_id: eventDetails.space.id, event_id: eventDetails.id})
+                    if (res.success) {
+                      setIsVisible(true);
+                      console.log('made it')
+                    }
+
                   }}
                   className="outline outline-2 hover:bg-transparent outline-blue-500 hover:!text-blue-500 m-0 margin"
               >
@@ -157,7 +231,7 @@ export default function EventDetails({eventDetails, selected}) {
               <Button 
               onClick={(e) => {
                 e.stopPropagation()
-                handleRsvp({space_id: eventDetails.space.id, event_id: eventDetails.id})
+                leave(eventDetails.id)
               }}
                   className="outline outline-2 hover:bg-transparent outline-blue-500 hover:!text-blue-500 m-0 margin"
               >
@@ -166,7 +240,8 @@ export default function EventDetails({eventDetails, selected}) {
               </Button>
             )
           }
-      </li>
+      </div>
+    </div>
     </>
   )
 }
