@@ -21,14 +21,14 @@ import { getCirleJWT } from './actions';
 // }
 
 
-export async function fetchCircle() {
+export async function fetchEvents(per_page = 10) {
 
   try {
 
     const cookieStore = await cookies()
     const token = cookieStore.get('circleToken')?.value;
 
-    const response = await fetch("https://app.circle.so/api/headless/v1/community_events", {
+    const response = await fetch(`https://app.circle.so/api/headless/v1/community_events?per_page=${per_page}`, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json"

@@ -6,7 +6,7 @@ import { revalidatePath } from 'next/cache';
 
 export async function GET() {
   // Handle GET request
-  const events = await fetchCircle();
+  const events = await fetchEvents();
   return NextResponse.json(events);
 }
 

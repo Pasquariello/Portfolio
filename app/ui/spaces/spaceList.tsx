@@ -9,6 +9,9 @@ import SpaceDetails from "./spaceDetails";
 export default async function SpaceList() {
     
     const spaces = await fetchSpaces();
+
+    console.log('spaces', spaces)
+
     if (!spaces.length) {
         return <p>No Groups</p>
     }

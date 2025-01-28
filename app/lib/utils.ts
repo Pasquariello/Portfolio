@@ -1,4 +1,4 @@
-import { cookies } from 'next/headers';
+// import { cookies } from 'next/headers';
 import { Revenue } from './definitions';
 
 export const formatCurrency = (amount: number) => {
@@ -70,7 +70,29 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
 };
 
 
-export const getAccessToken = async () => {
-  console.log('here getAccessToken')
-  return (await cookies()).get('access_token');
-};
+// export const getAccessToken = async () => {
+//   console.log('here getAccessToken')
+//   return (await cookies()).get('access_token');
+// };
+
+export const formattedDateString = (isoDate) => {
+
+  // const isoDate = eventDetails?.event_setting_attributes?.starts_at;
+
+  // Create a Date object from the ISO string
+  const date = new Date(isoDate);
+  
+  // Format the date for your local timezone
+  return date.toLocaleString("en-US", {
+      weekday: "long",  // e.g. "Monday"
+      year: "numeric",  // e.g. "2024"
+      month: "long",    // e.g. "December"
+      day: "numeric",   // e.g. "9"
+      hour: "2-digit",  // e.g. "11"
+      minute: "2-digit",// e.g. "00"
+      second: "2-digit",// e.g. "00"
+      hour12: true      // Use 12-hour format (set to false for 24-hour format)
+  });
+
+
+}

@@ -14,6 +14,7 @@ import {
   CalendarIcon, CheckCircleIcon
 } from '@heroicons/react/24/outline';
 import { useEffect, useState } from 'react';
+import { formattedDateString } from '@/app/lib/utils';
 
 export default function EventDetails({eventDetails, selected}) {
   // const router = useRouter();
@@ -34,22 +35,24 @@ export default function EventDetails({eventDetails, selected}) {
 
   const topicNames = eventDetails?.topics?.map(topic => topic.name);
   // const isoDate = "2024-12-09T23:00:00.000Z";
-  const isoDate = eventDetails?.event_setting_attributes?.starts_at;
+  // const isoDate = eventDetails?.event_setting_attributes?.starts_at;
 
-  // Create a Date object from the ISO string
-  const date = new Date(isoDate);
+  // // Create a Date object from the ISO string
+  // const date = new Date(isoDate);
   
-  // Format the date for your local timezone
-  const formattedDate = date.toLocaleString("en-US", {
-      weekday: "long",  // e.g. "Monday"
-      year: "numeric",  // e.g. "2024"
-      month: "long",    // e.g. "December"
-      day: "numeric",   // e.g. "9"
-      hour: "2-digit",  // e.g. "11"
-      minute: "2-digit",// e.g. "00"
-      second: "2-digit",// e.g. "00"
-      hour12: true      // Use 12-hour format (set to false for 24-hour format)
-  });
+  // // Format the date for your local timezone
+  // const formattedDate = date.toLocaleString("en-US", {
+  //     weekday: "long",  // e.g. "Monday"
+  //     year: "numeric",  // e.g. "2024"
+  //     month: "long",    // e.g. "December"
+  //     day: "numeric",   // e.g. "9"
+  //     hour: "2-digit",  // e.g. "11"
+  //     minute: "2-digit",// e.g. "00"
+  //     second: "2-digit",// e.g. "00"
+  //     hour12: true      // Use 12-hour format (set to false for 24-hour format)
+  // });
+
+  const formattedDate = formattedDateString(eventDetails?.event_setting_attributes?.starts_at);
 
 
   // location_type: "live_stream", "in_person"
@@ -206,7 +209,7 @@ export default function EventDetails({eventDetails, selected}) {
               </div>
               <div className='flex mt-2'>
                 {renderIcon()} 
-                <p className="text-xs/5 text-gray-500 flex">{locationDisplayName}</p>
+              <p className="text-xs/5 text-gray-500 flex">{locationDisplayName}</p>
               </div>
           </div>
           {!eventDetails.rsvped_event  ? (

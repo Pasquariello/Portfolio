@@ -1,4 +1,4 @@
-import { fetchCircle } from "@/app/lib/data";
+import { fetchEvents } from "@/app/lib/data";
 import { Pagination } from "../pagination";
 import EventDetails from "./eventDetails";;
 
@@ -7,7 +7,7 @@ export default async function EventList({selectedEvent}) {
     // const [state, action, pending] = useActionState(rsvp, undefined);
     // console.log('TAYLOR STATE', state);
     // const [events, setEvents] = useState();
-    const events = await fetchCircle();
+    const events = await fetchEvents();
  
     const eventsByMonth: { name: string, records: [any] } = events?.records?.reduce((accumulator, currentValue) => {
         const isoDate = currentValue?.event_setting_attributes?.starts_at;

@@ -1,13 +1,13 @@
 // This file defines the route handler for GET and POST requests to /api/hello
 
 import { NextResponse } from 'next/server';
-import { fetchCircle, rsvpToEvent, fooRSVP} from "@/app/lib/data";
+import { fetchEvents, rsvpToEvent, fooRSVP} from "@/app/lib/data";
 import { searchMembers } from "@/app/lib/data";
 
 
 export async function GET() {
   // Handle GET request
-  const events = await fetchCircle();
+  const events = await fetchEvents();
   return NextResponse.json(events);
 }
 
