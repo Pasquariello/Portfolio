@@ -5,11 +5,10 @@ import { useRouter } from 'next/navigation'
 import { useDebounce } from 'use-debounce'
 
 const MemberSearch = ({ search }: { search?: string }) => {
-  console.log('SEARCH', search)
   const router = useRouter()
   const initialRender = useRef(true)
 
-  const [memberInput, setMemberInput] = useState(search)
+  const [memberInput, setMemberInput] = useState(search || '')
 
   const [query] = useDebounce(memberInput, 750)
 
