@@ -20,7 +20,7 @@ const links = [
     icon: DocumentDuplicateIcon,
   },
   { name: 'Members', href: '/dashboard/members', icon: UserGroupIcon },
-  { name: 'Spaces', href: '/dashboard/spaces', icon: WrenchScrewdriverIcon },
+  { name: 'Groups', href: '/dashboard/spaces ', icon: WrenchScrewdriverIcon },
 
 ];
 
