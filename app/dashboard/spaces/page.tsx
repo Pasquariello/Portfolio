@@ -7,7 +7,6 @@ export default async function Page({searchParams}) {
 
   const searchMe = await searchParams;
   const search = searchMe.search;
-  console.log('search ===', search)
 
   return (
     <div>

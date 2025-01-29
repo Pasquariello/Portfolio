@@ -36,7 +36,7 @@ export const config = {
     const cirlceJWT = await req.cookies.get('circleToken')?.value; 
     
     if (!cirlceJWT) {
-        console.log('user?.email', session.user.email)
+        // console.log('user?.email', session.user.email)
         await getCirleJWT(session.user.email);
     }
 

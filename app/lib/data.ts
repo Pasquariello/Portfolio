@@ -26,7 +26,7 @@ export async function fetchEvents(per_page = 10) {
   try {
 
     const cookieStore = await cookies()
-    const token = cookieStore.get('circleToken')?.value;
+    const token = await cookieStore.get('circleToken')?.value;
 
     const response = await fetch(`https://app.circle.so/api/headless/v1/community_events?per_page=${per_page}`, {
       headers: {
@@ -45,7 +45,6 @@ export async function fetchEvents(per_page = 10) {
 
 
 export async function rsvpToEvent({space_id, event_id}) {
-  console.log("HELLO RSVP DATA")
 
   try {
     const cookieStore = await cookies()
@@ -79,9 +78,6 @@ export async function fooRSVP(event_id) {
       },
     });
     const result = await response.json()
-    // revalidatePath('http://localhost:3000/dashboard/events');
-    // revalidatePath('api/events');
-
     return {
       success: true,
       data: result
@@ -109,7 +105,6 @@ export async function fooRSVPLeave( event_id) {
       },
     });
     const result = await response.json()
-    console.log('result ------', result)
     return {
       success: true,
       data: result
@@ -128,7 +123,6 @@ export async function fooRSVPLeave( event_id) {
 
 export async function searchMembers(name) {
 
-  // console.log('foo', foo)
   const body = name ? {
             filters: [
               {
@@ -159,14 +153,11 @@ export async function searchMembers(name) {
 } 
 
 export async function fetchSpaces() {
-
-  // await getCirleJWT();
   try {
 
     const cookieStore = await cookies()
     const token = cookieStore.get('circleToken')?.value;
-    console.log('TOKEN', token)
-    const response = await fetch("https://app.circle.so/api/headless/v1/spaces?include_sidebar=true", {
+    const response = await fetch("https://app.circle.so/api/headless/v1/spaces", {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json"
@@ -179,6 +170,7 @@ export async function fetchSpaces() {
     console.error('Error fetching protected data:', error);
   }
 }
+
 
 
 export async function leaveSpace(id) {
@@ -241,7 +233,6 @@ export async function fetchRevenue() {
     // Artificially delay a response for demo purposes.
     // Don't do this in production :)
 
-    console.log('Fetching revenue data...');
     await new Promise((resolve) => setTimeout(resolve, 3000));
 
     const data = await sql<Revenue>`SELECT * FROM revenue`;

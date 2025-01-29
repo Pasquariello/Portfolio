@@ -11,10 +11,8 @@ export async function GET() {
 }
 
 export async function POST(req, { params }) {
-    // console.log('request ----- ', request)
-    // console.log('req.query DUDE -----', req.query);
+
     const id = (await params).id;
-    console.log('SLUG---', id); // 'a', 'b', or 'c'
   // Handle POST request
   const events = await leaveSpace(id);
 

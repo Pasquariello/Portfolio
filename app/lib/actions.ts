@@ -8,7 +8,6 @@ const CLIENT_TOKEN = process.env.CIRCLE_TOKEN!;
 const TOKEN_URL = 'https://app.circle.so/api/v1/headless/auth_token'; // Example OAuth endpoint
 
 export async function clearCircleCookie () {
-  console.log('hello clearCircleCookie');
     const cookieStore = await cookies();
     cookieStore.delete('circleToken');
 
@@ -16,7 +15,6 @@ export async function clearCircleCookie () {
 
 
 export async function getCirleJWT(email) {
-  console.log('EMAIL --- ', email)
     try {
         const response = await fetch(TOKEN_URL, {
             method: 'POST',
@@ -46,7 +44,7 @@ export async function getCirleJWT(email) {
             cookieStore.set('circleToken', access_token)
             return data;
         } else {
-            throw new Error(data?.message || 'Failed to fetch token');
+            // throw new Error(data?.message || 'Failed to fetch token');
         }
     } catch (error) {
         if (error instanceof AuthError) {

@@ -10,9 +10,7 @@ export async function GET() {
 }
 
 export async function POST(request) {
-    console.log('request ----- ', request)
     const { id } = request.query; // Access query parameters
-    console.log('ID -----', id)
   // Handle POST request
   const events = await leaveSpace(id);
   return NextResponse.json(events);

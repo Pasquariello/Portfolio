@@ -1,5 +1,5 @@
 
-import EventList from "@/app/ui/invoices/eventList";
+import EventList from "@/app/ui/events/eventList";
 import { EventsDetailsSkeleton, EventsMobileSkeleton, EventsRowsSkeleton, EventsTableSkeleton, TableRowSkeleton } from "@/app/ui/skeletons";
 // import { InfoModal } from "@/app/ui/modals";
 import { Suspense } from "react";
@@ -9,7 +9,6 @@ export default async function Page({searchParams}) {
   const params = await searchParams;
   const { selected }  = params;
 
-  // commented out code below went here
   return (
     <>
     

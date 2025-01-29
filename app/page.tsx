@@ -6,14 +6,7 @@ import Link from 'next/link';
 import { lusitana } from '@/app/ui/fonts';
 import Image from 'next/image';
 
-// import { getSession } from '@auth0/nextjs-auth0';
-// import { getAccessToken } from './lib/utils';
-// import getToken from './lib/circle';
-
 export default async function Page() {
-  // const session = await getSession();
-  // console.log('session ======= ', session);
-  // console.log('session.user ======= ', session?.user);
 
   return (
     <main className="flex min-h-screen flex-col p-6">

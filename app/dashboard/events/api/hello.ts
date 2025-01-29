@@ -8,6 +8,5 @@ type ResponseData = {
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
   ) {
-    console.log('TAYLOR WAS HERE')
     res.status(200).json({ message: 'Taylor, Hello from Next.js!' })
   }

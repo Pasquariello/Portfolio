@@ -60,18 +60,5 @@ export default function MemberDetails({memberDetails}) {
           <p className="mt-2 text-xs/5 text-gray-500">{memberDetails.headline}</p>
       </div>
     </div>
-
-
-
-      // <li 
-      //     onClick={(e) => {
-      //         router.push(pathname + '?' + createQueryString('selected', memberDetails.id))
-      //     }}
-      //     key={memberDetails.id}
-      //     className="flex gap-x-6 py-5"
-      // >
-      //     {memberDetails.admin && <UserCircleIcon className="w-6"  /> }
-      //     {memberDetails.name} 
-      // </li>
   )
 }

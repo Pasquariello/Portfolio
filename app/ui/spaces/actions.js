@@ -4,7 +4,6 @@ import { joinSpace, leaveSpace } from "@/app/lib/data";
 
  
 export async function leave(id) {
-    console.log('leave')
     await leaveSpace(id);
 }
 

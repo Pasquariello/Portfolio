@@ -217,11 +217,9 @@ export default function EventDetails({eventDetails, selected}) {
                   onClick={async (e) => {
                     e.stopPropagation()
                     const res = await rsvp(eventDetails.id);
-                    console.log('res --- ', res)
 
                     if (res.success) {
                       setIsVisible(true);
-                      console.log('made it')
                     }
 
                   }}
