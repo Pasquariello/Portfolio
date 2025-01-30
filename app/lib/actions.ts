@@ -15,6 +15,7 @@ export async function clearCircleCookie () {
 
 
 export async function getCirleJWT(email) {
+  console.log('hello from getCirleJWT')
     try {
         const response = await fetch(TOKEN_URL, {
             method: 'POST',

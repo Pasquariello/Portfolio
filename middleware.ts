@@ -37,10 +37,10 @@ export const config = {
     
     if (!cirlceJWT) {
         // console.log('user?.email', session.user.email)
-        await getCirleJWT(session.user.email);
+        // await getCirleJWT(session.user.email);
     }
 
-  return NextResponse.next();
+    return NextResponse.next();
 })
 
 // export const config = {

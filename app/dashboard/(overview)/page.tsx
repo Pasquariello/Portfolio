@@ -6,8 +6,6 @@ import { Suspense } from 'react';
 import { RevenueChartSkeleton, LatestEventsSkeleton, CardsSkeleton } from '@/app/ui/skeletons';
 import LatestInvoices from '@/app/ui/dashboard/latest-invoices';
 
-// import { withPageAuthRequired, getSession } from '@auth0/nextjs-auth0';
-
 export default async function Page() {
 
   return (

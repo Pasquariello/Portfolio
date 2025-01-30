@@ -1,3 +1,4 @@
+import { getCirleJWT } from '@/app/lib/actions';
 import {
   handleAuth,
   handleCallback,
@@ -19,6 +20,7 @@ export const GET = handleAuth({
     const res = (await handleCallback(req, ctx, { afterCallback })) as NextResponse;
     const session = await getSession(req, res);
     if (session) {
+      await getCirleJWT(session.user.email);
 
       return NextResponse.redirect(`${process.env.AUTH0_BASE_URL}/dashboard`, res);
     } else {
