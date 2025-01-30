@@ -40,9 +40,12 @@ export async function getCirleJWT(email) {
             } = data
 
             const cookieStore = await cookies()
-
+            console.log('access_token_expires_at', access_token_expires_at)
             // TODO update cookie to include refresh and expiration values
+            // could be handle more gracefully but at the moment trying to be abundantly verbose
             cookieStore.set('circleToken', access_token)
+            cookieStore.set('circleTokenExpiration', access_token_expires_at)
+
             return data;
         } else {
             // throw new Error(data?.message || 'Failed to fetch token');

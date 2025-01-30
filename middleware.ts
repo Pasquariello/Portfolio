@@ -34,11 +34,24 @@ export const config = {
     }
 
     const cirlceJWT = await req.cookies.get('circleToken')?.value; 
+    const circleJWTExp = await req.cookies.get('circleTokenExpiration')?.value;
     
     if (!cirlceJWT) {
-        // console.log('user?.email', session.user.email)
-        // await getCirleJWT(session.user.email);
+        await getCirleJWT(session.user.email);
     }
+
+    const expTime = new Date(circleJWTExp); // Parse expiration time from ISO 8601 string
+    const currentTime = new Date(); // Get current time
+
+    // Check if the token has expired
+    if (expTime < currentTime) {
+      await clearCircleCookie();
+      const auth0LogoutUrl = `http://localhost:3000/api/auth/logout?returnTo=http://localhost:3000`
+      // Redirect the user to the Auth0 logout URL
+      return NextResponse.redirect(auth0LogoutUrl)
+    }
+
+    
 
     return NextResponse.next();
 })
