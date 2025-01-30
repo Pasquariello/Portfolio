@@ -46,6 +46,7 @@ export const config = {
     // Check if the token has expired
     if (expTime < currentTime) {
       await clearCircleCookie();
+      // TODO: update to env val base URL
       const auth0LogoutUrl = `http://localhost:3000/api/auth/logout?returnTo=http://localhost:3000`
       // Redirect the user to the Auth0 logout URL
       return NextResponse.redirect(auth0LogoutUrl)
