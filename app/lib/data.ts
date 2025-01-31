@@ -177,11 +177,16 @@ export async function fetchCoursesWithDetails() {
 
   const courses = spaces?.filter(space => space.space_type === 'course');
 
-  const data = await Promise.all(
-    courses?.map(course => buildCourseDetails(course)) // fetchCourseSections
-  ).then(results => results);
-
-  return data;
+  if (courses?.length) {
+    const data = await Promise.all(
+      courses?.map(course => buildCourseDetails(course)) // fetchCourseSections
+    ).then(results => results);
+  
+    return data;
+  } else {
+    return [];
+  }
+  
 }
 
 export async function leaveSpace(id) {
