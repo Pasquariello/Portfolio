@@ -175,7 +175,7 @@ export async function fetchSpaces() {
 export async function fetchCoursesWithDetails() {
   const spaces = await fetchSpaces()
 
-  const courses = spaces.filter(space => space.space_type === 'course');
+  const courses = spaces?.filter(space => space.space_type === 'course');
 
   const data = await Promise.all(
     courses.map(course => buildCourseDetails(course)) // fetchCourseSections
@@ -321,7 +321,10 @@ export async function fetchLessonData () {
 
 
 export async function fetchCardDataNEW() {
-  const courses = fetchCourses()
+  const spaces = await fetchSpaces()
+  const courses = spaces?.filter(space => space.space_type === 'course');
+
+  const course_count = courses.length
 }
 
 
