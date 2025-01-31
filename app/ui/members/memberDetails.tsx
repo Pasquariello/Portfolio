@@ -27,7 +27,7 @@ export default function MemberDetails({memberDetails}) {
   )
 
   const renderAvatar = () => {
-    
+    const initials = memberDetails.first_name[0] + memberDetails.last_name[0] 
 
     return memberDetails.avatar_url ? (
       <Image
@@ -39,7 +39,7 @@ export default function MemberDetails({memberDetails}) {
       />
     ) : (
       <div className={`${rand} size-[256px] rounded-t-xl flex justify-center items-center`}>
-         <h2 className="text-white">BP</h2>
+         <h2 className="text-white">{initials}</h2>
       
       </div>
     )

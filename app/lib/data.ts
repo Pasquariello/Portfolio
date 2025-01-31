@@ -172,6 +172,17 @@ export async function fetchSpaces() {
 }
 
 
+export async function fetchCoursesWithDetails() {
+  const spaces = await fetchSpaces()
+
+  const courses = spaces.filter(space => space.space_type === 'course');
+
+  const data = await Promise.all(
+    courses.map(course => buildCourseDetails(course)) // fetchCourseSections
+  ).then(results => results);
+
+  return data;
+}
 
 export async function leaveSpace(id) {
   await new Promise((resolve) => setTimeout(resolve, 3000));
@@ -221,6 +232,98 @@ export async function joinSpace(id) {
     console.error('Error fetching protected data:', error);
   }
 }
+
+// Generally inefficiant and could use a refactor
+// MOVE TO UTILS?
+async function buildCourseDetails(course) {
+
+  const sections = await fetchCourseSections(course.id);
+
+  const section_data = sections.map(section => {
+    const completed_lessons_count = section.lessons.reduce((acc, current) => current.progress.status === 'completed' ? ++acc : acc, 0);
+    
+    const {id, name, lessons} = section;
+    
+    return {
+      section_id: id, 
+      section_name: name, 
+      section_lesson_count: lessons.length,
+      completed_lessons_count,
+      section_percent_completed: completed_lessons_count / section.lessons.length
+    }
+  });
+
+
+  const total_lessons = section_data.reduce((acc, current) => acc + current.section_lesson_count, 0 )
+  const total_lessons_completed = section_data.reduce((acc, current) => acc + current.completed_lessons_count, 0 )
+  
+  const updatedCourseDetails = {
+    id: course.id,
+    name: course.name,
+    course_sections: section_data,
+    course_percent_completed: total_lessons_completed / total_lessons
+  };
+
+  return updatedCourseDetails;
+
+}
+
+ 
+
+
+export async function fetchCourseSections(course_id) {
+  // const course_id = 1766130;
+
+  try {
+
+    const cookieStore = await cookies()
+    const token = await cookieStore.get('circleToken')?.value;
+
+    const response = await fetch(`https://app.circle.so/api/headless/v1/courses/${course_id}/sections`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+    });
+  
+    const result = await response.json();
+    return result;
+  //   setData(response.data);
+  } catch (error) {
+    console.error('Error fetching protected data:', error);
+  }
+} 
+
+
+export async function fetchLessonData () {
+  const course_id = 1766130;
+  const lesson_id = 1735200
+
+  try {
+
+    const cookieStore = await cookies()
+    const token = await cookieStore.get('circleToken')?.value;
+
+    const response = await fetch(`https://app.circle.so/api/headless/v1/courses/${course_id}/lessons/${lesson_id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+    });
+  
+    const result = await response.json();
+    return result;
+  //   setData(response.data);
+  } catch (error) {
+    console.error('Error fetching protected data:', error);
+  }
+} 
+
+
+export async function fetchCardDataNEW() {
+  const courses = fetchCourses()
+}
+
 
 
 
