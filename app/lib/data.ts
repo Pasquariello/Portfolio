@@ -178,7 +178,7 @@ export async function fetchCoursesWithDetails() {
   const courses = spaces?.filter(space => space.space_type === 'course');
 
   const data = await Promise.all(
-    courses.map(course => buildCourseDetails(course)) // fetchCourseSections
+    courses?.map(course => buildCourseDetails(course)) // fetchCourseSections
   ).then(results => results);
 
   return data;
@@ -239,7 +239,7 @@ async function buildCourseDetails(course) {
 
   const sections = await fetchCourseSections(course.id);
 
-  const section_data = sections.map(section => {
+  const section_data = sections?.map(section => {
     const completed_lessons_count = section.lessons.reduce((acc, current) => current.progress.status === 'completed' ? ++acc : acc, 0);
     
     const {id, name, lessons} = section;
@@ -361,7 +361,7 @@ export async function fetchLatestInvoices() {
       ORDER BY invoices.date DESC
       LIMIT 5`;
 
-    const latestInvoices = data.rows.map((invoice) => ({
+    const latestInvoices = data?.rows?.map((invoice) => ({
       ...invoice,
       amount: formatCurrency(invoice.amount),
     }));
