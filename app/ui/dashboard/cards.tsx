@@ -21,15 +21,17 @@ export default async function CardWrapper() {
     totalPaidInvoices,
     totalPendingInvoices,
   } = await fetchCardData();
+
+  
   return (
     <>
       {/* NOTE: Uncomment this code in Chapter 9 */}
 
-      <Card title="Collected" value={totalPaidInvoices} type="collected" />
+      <Card title="Total Courses" value={totalPaidInvoices} type="collected" />
       <Card title="Pending" value={totalPaidInvoices} type="pending" />
       <Card title="Total Events" value={numberOfInvoices} type="events" />
       <Card
-        title="Total Customers"
+        title="Total Member Connections"
         value={numberOfCustomers}
         type="customers"
       />
