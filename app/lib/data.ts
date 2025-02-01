@@ -13,7 +13,7 @@ import { formatCurrency } from './utils';
 import { cookies } from 'next/headers'
 import { revalidatePath } from 'next/cache';
 import { getCirleJWT } from './actions';
-import { Member, MemberSearchResult } from './types';
+import { SearchMember, MemberSearchResult, CommunityMemberSearchResult } from './types';
 
 // import { getSession } from '@auth0/nextjs-auth0';
 
@@ -680,3 +680,35 @@ export async function getMatchingInterests(currentUserEmail: string) {
     throw new Error('Failed to fetch matching interests.');
   }
 }
+
+export async function fetchCommunityMembers(per_page = 10): Promise<CommunityMemberSearchResult> {
+  try {
+    const cookieStore = await cookies()
+    const token = cookieStore.get('circleToken')?.value;
+
+    const response = await fetch(`https://app.circle.so/api/headless/v1/community_members?per_page=${per_page}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+    });
+  
+    const result = await response.json()
+    return result;
+  } catch (error) {
+    console.error('Error fetching community members:', error);
+    throw new Error('Failed to fetch community members');
+  }
+}
+
+export async function getLoggedInUserEmail(): Promise<string | undefined> {
+  try {
+    const cookieStore = await cookies();
+    const userEmail = cookieStore.get('LOGGED_IN_USER_EMAIL')?.value;
+    return userEmail;
+  } catch (error) {
+    console.error('Error getting logged in user email:', error);
+    return undefined;
+  }
+}
+
