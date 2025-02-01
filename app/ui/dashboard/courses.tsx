@@ -7,7 +7,8 @@ import {
   import { lusitana } from '@/app/ui/fonts';
   import { fetchCoursesWithDetails } from '@/app/lib/data';
 import { ProgressBar } from '@/app/components/progressBar';
-import { ProgressCircle, ProgressCircleChildren } from '@/app/components/progressCircle';
+import { ProgressCircle, ProgressCircleChildren, progressCircleVariants } from '@/app/components/progressCircle';
+import { VariantProps } from 'tailwind-variants';
   
   const iconMap = {
     collected: BanknotesIcon,
@@ -20,49 +21,168 @@ import { ProgressCircle, ProgressCircleChildren } from '@/app/components/progres
 
     // refactor to separate calls per card?
     const courses = await fetchCoursesWithDetails();
- 
+    // const courses =  [
+    //     {
+    //         id: 1,
+    //         name: 'Test 1',
+    //         course_percent_completed: 0.34
+    //     },
+    //     {
+    //         id: 2,
+    //         name: 'Test 1',
+    //         course_percent_completed: 0.34
+    //     },
+    //     {
+    //         id: 3,
+    //         name: 'Test 1',
+    //         course_percent_completed: 0.34
+    //     },
+    //     {
+    //         id: 4,
+    //         name: 'Test 1',
+    //         course_percent_completed: 0.34
+    //     },
+    //     {
+    //         id: 5,
+    //         name: 'Test 1',
+    //         course_percent_completed: 0.34
+    //     },
+    //     {
+    //         id: 6,
+    //         name: 'Test 1',
+    //         course_percent_completed: 0.34
+    //     },
+    //     {
+    //         id: 7,
+    //         name: 'Test 1',
+    //         course_percent_completed: 0.34
+    //     },
+    //     {
+    //         id: 8,
+    //         name: 'Test 1',
+    //         course_percent_completed: 0.34
+    //     },
+    //     {
+    //         id: 9,
+    //         name: 'Test 1',
+    //         course_percent_completed: 0.34
+    //     },
+    //     {
+    //         id: 10,
+    //         name: 'Test 1',
+    //         course_percent_completed: 0.34
+    //     },
+    //     {
+    //         id: 11,
+    //         name: 'Test 1',
+    //         course_percent_completed: 0.34
+    //     },
+    //     {
+    //         id: 12,
+    //         name: 'Test 1',
+    //         course_percent_completed: 0.34
+    //     },
+
+    //     {
+    //         id: 13,
+    //         name: 'Test 1',
+    //         course_percent_completed: 0.34
+    //     },
+    //     {
+    //         id: 14,
+    //         name: 'Test 1',
+    //         course_percent_completed: 0.34
+    //     },
+    //     {
+    //         id: 15,
+    //         name: 'Test 1',
+    //         course_percent_completed: 0.34
+    //     },
+    //     {
+    //         id: 16,
+    //         name: 'Test 1',
+    //         course_percent_completed: 0.34
+    //     },
+    //     {
+    //         id: 17,
+    //         name: 'Test 1',
+    //         course_percent_completed: 0.34
+    //     },
+    //     {
+    //         id: 18,
+    //         name: 'Test 1',
+    //         course_percent_completed: 0.34
+    //     },
+    //     {
+    //         id: 19,
+    //         name: 'Test 1',
+    //         course_percent_completed: 0.34
+    //     },
+    //     {
+    //         id: 20,
+    //         name: 'Test 1',
+    //         course_percent_completed: 0.34
+    //     },
+    //     {
+    //         id: 21,
+    //         name: 'Test 1',
+    //         course_percent_completed: 0.34
+    //     },
+    //     {
+    //         id: 22,
+    //         name: 'Test 1',
+    //         course_percent_completed: 0.34
+    //     },
+    //     {
+    //         id: 23,
+    //         name: 'Test 1',
+    //         course_percent_completed: 0.34
+    //     },
+    // ]
     
     return (
-      <>
+      <div
+        className='grid grid-cols-4 gap-6 '
+      >
   
         {
-            courses.map(course => {
+            courses.map((course, i) => {
+                const {id, name, course_percent_completed} = course;
+                const variant_list: any = ['default', 'neutral', 'warning', 'success', 'error'];
+                const incrementor = i >= variant_list.length ? i - (variant_list.length * (Math.floor(i /variant_list.length))) : i;
+                const variant =  variant_list[incrementor] || variant_list[0]
                 return (
-                    <div key={course.id}>
-                        <div>{course.name}</div>
-                        <ProgressCircleChildren value={course.course_percent_completed * 100}/>
-                    </div>
+                   <CourseProgress
+                        key={id}
+                        name={name}
+                        course_percent_completed={Number((course_percent_completed * 100).toFixed(0))}
+                        variant={variant}
+                    />
                 )
             })
         }
-      </>
+      </div>
     );
   }
   
-  export function Card({
-    title,
-    value,
-    type,
+  export function CourseProgress({
+    name,
+    course_percent_completed,
+    variant
   }: {
-    title: string;
-    value: number | string;
-    type: 'events' | 'customers' | 'pending' | 'collected';
-  }) {
-    const Icon = iconMap[type];
-  
+    name: string;
+    course_percent_completed: number;
+    variant?: 'default' | 'neutral' | 'warning' | 'success' | 'error';
+  }) {  
     return (
-      <div className="rounded-xl bg-gray-50 p-2 shadow-sm">
-        <div className="flex p-4">
-          {Icon ? <Icon className="h-5 w-5 text-gray-700" /> : null}
-          <h3 className="ml-2 text-sm font-medium">{title}</h3>
+        <div>
+            <div>{name}</div>
+            <ProgressCircleChildren 
+                value={course_percent_completed} 
+                radius={75} 
+                variant={variant}
+            />
         </div>
-        <p
-          className={`${lusitana.className}
-            truncate rounded-xl bg-white px-4 py-8 text-center text-2xl`}
-        >
-          {value}
-        </p>
-      </div>
     );
   }
   

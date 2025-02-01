@@ -5,7 +5,7 @@ import { tv, VariantProps } from "tailwind-variants"
 
 import { cx } from "../lib/utils";
 
-const progressCircleVariants = tv({
+export const progressCircleVariants = tv({
   slots: {
     background: "",
     circle: "",
@@ -135,9 +135,18 @@ ProgressCircle.displayName = "ProgressCircle"
 
 export { ProgressCircle, type ProgressCircleProps }
 
-export const ProgressCircleChildren = ({value}) => (
+export const ProgressCircleChildren = (   {
+    value = 0,
+    max = 100,
+    radius = 32,
+    strokeWidth = 6,
+    showAnimation = true,
+    variant,
+    className,
+    ...props
+  }: ProgressCircleProps) => (
 <div className="flex">
-    <ProgressCircle value={value}>
+    <ProgressCircle value={value} radius={radius} variant={variant}>
         <span className="text-sm font-medium text-black">
             {value}%
         </span>

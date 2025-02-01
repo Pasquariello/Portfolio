@@ -173,10 +173,14 @@ export async function fetchSpaces() {
 
 
 export async function fetchCoursesWithDetails() {
-  const spaces = await fetchSpaces()
+  // Taylor - TODO: clean up / move constant
+  const COURSE = "course"
+  const spaces = await fetchSpaces();
+  // specifically just get spaces that are considered to be courses
+  const courses = spaces?.filter(space => space.space_type === COURSE && space.is_member);
 
-  const courses = spaces?.filter(space => space.space_type === 'course');
-
+  // Taylor - TODO: clean up
+  // Add revalidate path for dashboard when join space?
   if (courses?.length) {
     const data = await Promise.all(
       courses?.map(course => buildCourseDetails(course)) // fetchCourseSections
