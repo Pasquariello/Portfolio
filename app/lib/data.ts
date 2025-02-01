@@ -13,6 +13,7 @@ import { formatCurrency } from './utils';
 import { cookies } from 'next/headers'
 import { revalidatePath } from 'next/cache';
 import { getCirleJWT } from './actions';
+import { Member, MemberSearchResult } from './types';
 
 // import { getSession } from '@auth0/nextjs-auth0';
 
@@ -119,7 +120,7 @@ export async function fooRSVPLeave( event_id) {
 } 
 
 // /api/headless/v1/events/{event_id}/event_attendees
-export async function searchMembers(name) {
+export async function searchMembers(name: string): Promise<MemberSearchResult> {
 
   const body = name ? {
             filters: [
@@ -544,5 +545,107 @@ export async function fetchFilteredCustomers(query: string) {
   } catch (err) {
     console.error('Database Error:', err);
     throw new Error('Failed to fetch customer table.');
+  }
+}
+
+// 1. Fetch all possible interests
+export async function fetchAllInterests() {
+  try {
+    const data = await sql`
+      SELECT interest_id, name 
+      FROM interests 
+      ORDER BY name ASC
+    `;
+    return data.rows;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch interests.');
+  }
+}
+
+// 2. Insert multiple interests for a member
+export async function addMemberInterests(email: string, interestIds: number[]) {
+  try {
+    // First validate that the email exists in members table
+    const memberExists = await sql`
+      SELECT email FROM members WHERE email = ${email}
+    `;
+    
+    if (memberExists.rows.length === 0) {
+      throw new Error('Member not found');
+    }
+
+    // Convert interestIds array to Postgres array literal string
+    const interestIdsStr = `{${interestIds.join(',')}}`;
+
+    // Validate that all interest IDs exist
+    const validInterests = await sql`
+      SELECT interest_id FROM interests 
+      WHERE interest_id = ANY(${interestIdsStr}::int[])
+    `;
+
+    if (validInterests.rows.length !== interestIds.length) {
+      throw new Error('One or more invalid interest IDs');
+    }
+
+    // Insert all interests in a single query for better performance
+    const result = await sql`
+      INSERT INTO member_interests (email, interest_id)
+      SELECT ${email}, unnest(${interestIdsStr}::int[])
+      ON CONFLICT (email, interest_id) DO NOTHING
+      RETURNING *
+    `;
+    
+    return result.rows;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to add member interests.');
+  }
+}
+
+// 3. Get matching interests with other users
+export async function getMatchingInterests(currentUserEmail: string) {
+  try {
+    // First verify the user exists and has interests
+    const userInterests = await sql`
+      SELECT COUNT(*) as count 
+      FROM member_interests 
+      WHERE email = ${currentUserEmail}
+    `;
+
+    if (userInterests.rows[0].count === 0) {
+      return []; // Return empty array if user has no interests
+    }
+
+    const query = sql`
+      WITH current_user_interests AS (
+        SELECT interest_id 
+        FROM member_interests 
+        WHERE email = ${currentUserEmail}
+      )
+      SELECT 
+        m.email,
+        COUNT(DISTINCT mi.interest_id) as matching_interests_count,
+        ARRAY_AGG(DISTINCT i.name) as matching_interests
+      FROM members m
+      JOIN member_interests mi ON m.email = mi.email
+      JOIN interests i ON mi.interest_id = i.interest_id
+      WHERE 
+        mi.interest_id IN (SELECT interest_id FROM current_user_interests)
+        AND m.email != ${currentUserEmail}
+      GROUP BY m.email
+      HAVING COUNT(DISTINCT mi.interest_id) > 0
+      ORDER BY matching_interests_count DESC
+    `;
+
+    const result = await query;
+    return result.rows.map(row => ({
+      email: row.email,
+      matchingCount: parseInt(row.matching_interests_count),
+      matchingInterests: row.matching_interests
+    }));
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch matching interests.');
   }
 }
