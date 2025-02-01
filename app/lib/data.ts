@@ -243,7 +243,7 @@ export async function joinSpace(id) {
 
 // Generally inefficiant and could use a refactor
 // MOVE TO UTILS?
-async function buildCourseDetails(course) {
+export async function buildCourseDetails(course) {
 
   const sections = await fetchCourseSections(course.id);
 
@@ -257,7 +257,8 @@ async function buildCourseDetails(course) {
       section_name: name, 
       section_lesson_count: lessons.length,
       completed_lessons_count,
-      section_percent_completed: completed_lessons_count / section.lessons.length
+      section_percent_completed: completed_lessons_count / section.lessons.length,
+      lessons,
     }
   });
 
@@ -269,12 +270,17 @@ async function buildCourseDetails(course) {
     id: course.id,
     name: course.name,
     course_sections: section_data,
-    course_percent_completed: total_lessons_completed / total_lessons
+    course_percent_completed: total_lessons_completed / total_lessons,
+    total_lesson_count: total_lessons,
+    total_lessons_completed,
+      
   };
 
   return updatedCourseDetails;
 
 }
+
+
 
  
 
@@ -326,6 +332,31 @@ export async function fetchLessonData () {
     console.error('Error fetching protected data:', error);
   }
 } 
+
+export async function fetchSingleSpace(space_id) {
+
+  try {
+
+    const cookieStore = await cookies()
+    const token = await cookieStore.get('circleToken')?.value;
+
+    const response = await fetch(`https://app.circle.so/api/headless/v1/spaces/${space_id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+    });
+    
+  
+    const course = await response.json();
+
+    const result = await buildCourseDetails(course);
+    return result;
+  } catch (error) {
+    console.error('Error fetching protected data:', error);
+  }
+} 
+
 
 
 export async function fetchCardDataNEW() {

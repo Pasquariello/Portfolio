@@ -9,7 +9,6 @@ import { formattedDateString } from '@/app/lib/utils';
 export default async function LatestEvents() {
 
   const events = await fetchEvents(5)
-//   console.log('events main dashboard', events)
 
   return (
     <div className="flex w-full flex-col md:col-span-4">

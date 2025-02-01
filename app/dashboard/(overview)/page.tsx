@@ -10,7 +10,7 @@ export default async function Page() {
    
   return (
     <main>
-      <h1 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
+      <h1 className={`mb-4 text-xl md:text-2xl`}>
         Dashboard Number 2
       </h1>
 
@@ -19,7 +19,7 @@ export default async function Page() {
             <CourseWrapper />
         </Suspense>
       {/* End */}
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-12">
         <Suspense fallback={<CardsSkeleton />}>
           <CardWrapper />
         </Suspense>

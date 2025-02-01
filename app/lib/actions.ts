@@ -16,6 +16,7 @@ export async function clearCircleCookie () {
 
 export async function getCirleJWT(email) {
     console.log('Starting getCirleJWT for email:', email);
+
     try {
         // First check if user exists in members table
         const existingUser = await sql`
@@ -58,7 +59,6 @@ export async function getCirleJWT(email) {
             } = data
 
             const cookieStore = await cookies()
-            console.log('access_token_expires_at', access_token_expires_at)
             // TODO update cookie to include refresh and expiration values
             // could be handle more gracefully but at the moment trying to be abundantly verbose
             cookieStore.set('circleToken', access_token)
