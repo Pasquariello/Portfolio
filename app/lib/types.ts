@@ -5,21 +5,28 @@ export interface MemberSearchResult {
     count: number
     page_count: number
     records: Member[]
-    next_search_after: number[]
-  }
+    meta: {
+        next_search_after: string[]
+    }
+    next_search_after: string[]
+}
   
-  export interface Member {
+export interface Member {
+    first_name: string
+    last_name: string
+    user_id: number
+    id: number
+    admin: boolean
     headline: string
-    member_tags: MemberTag[]
+    public_uid: string
+    user_attachable_sgid: string
     name: string
+    avatar_url: string
+    is_deleted: boolean
     community_member_id: number
-    avatar_url: any
-    messaging_enabled?: boolean
-    email: string
-    can_receive_dm_from_current_member: boolean
-  }
+}
   
-  export interface MemberTag {
+export interface MemberTag {
     id: number
     name: string
     color: string
@@ -30,5 +37,5 @@ export interface MemberSearchResult {
     display_format: string
     display_locations: string[]
     text_color: string
-  }
+}
   

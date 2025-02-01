@@ -1,4 +1,5 @@
 'use client'
+import { Member } from "@/app/lib/types";
 import { UserCircleIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
@@ -8,7 +9,7 @@ const colors = ['bg-pink-500', 'bg-cyan-500', 'bg-zinc-500', 'bg-lime-500', 'bg-
 
 var rand = colors[4] //colors[(Math.random() * colors.length) | 0]
 
-export default function MemberDetails({memberDetails}) {
+export default function MemberDetails({memberDetails}: {memberDetails: Member}) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams()
@@ -51,7 +52,7 @@ export default function MemberDetails({memberDetails}) {
       key={memberDetails.id}
       className="w-3xs flex-none m-6 border-solid rounded-xl shadow-sm bg-white"
       onClick={(e) => {
-        router.push(pathname + '?' + createQueryString('selected', memberDetails.id))
+        router.push(pathname + '?' + createQueryString('selected', memberDetails.id.toString()))
       }}
     >
       {renderAvatar()}

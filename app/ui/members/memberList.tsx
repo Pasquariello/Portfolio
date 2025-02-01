@@ -11,7 +11,7 @@ export default async function MemberList({search}) {
             {
                 members?.records?.map(memberDetails => {
                     return (
-                        <MemberDetails key={memberDetails.email} memberDetails={memberDetails} />
+                        <MemberDetails key={memberDetails.id} memberDetails={memberDetails} />
                     )
                 }
             )}
