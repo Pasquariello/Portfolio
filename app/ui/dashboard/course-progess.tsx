@@ -17,7 +17,7 @@ export function CourseProgress({
     
         <Link
             href={`/dashboard/spaces/${id}`}
-            className="rounded-md border p-2 hover:bg-gray-100"
+            className="hover:cursor-pointer"
         >
             <div>{name}</div>
             <ProgressCircleChildren 
