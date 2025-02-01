@@ -29,7 +29,7 @@ export async function CourseProgressBar({
                 <p>Completed {complete} of {total} Lessons</p>
                 <p>{value}%</p>
             </div>
-            <ProgressBar value={value} />
+            <ProgressBar variant="violet" value={value} />
         </div>
     );
   }

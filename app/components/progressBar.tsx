@@ -32,6 +32,10 @@ const progressBarVariants = tv({
         background: "bg-emerald-200 dark:bg-emerald-500/30",
         bar: "bg-emerald-500 dark:bg-emerald-500",
       },
+      violet: {
+        background: "bg-violet-200 dark:bg-violet-500/30",
+        bar: "bg-violet-500 dark:bg-violet-500",
+      },
     },
   },
   defaultVariants: {
