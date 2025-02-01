@@ -20,7 +20,6 @@ import {
       const res = (await handleCallback(req, ctx, { afterCallback })) as NextResponse;
       const session = await getSession(req, res);
       if (session) {
-        console.log('session', session);
         await getCirleJWT(session.user.email);
 
         return NextResponse.redirect(`${process.env.AUTH0_BASE_URL}/dashboard`, res);

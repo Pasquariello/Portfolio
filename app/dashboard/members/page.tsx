@@ -1,3 +1,4 @@
+import { getLoggedInUserCommunityMemberId } from "@/app/lib/data";
 import MemberList from "@/app/ui/members/memberList";
 import MemberSearch from "@/app/ui/members/memberSearch";
 import { RevenueChartSkeleton } from "@/app/ui/skeletons";
@@ -7,6 +8,7 @@ export default async function Page({searchParams}) {
 
   const searchMe = await searchParams;
   const search = searchMe.search;
+  const loggedInUserCommunityMemberId = await getLoggedInUserCommunityMemberId();
 
   return (
     <div>
@@ -21,7 +23,7 @@ export default async function Page({searchParams}) {
         </div>
 
         <Suspense fallback={<RevenueChartSkeleton />}> 
-          <MemberList search={search} />
+          <MemberList search={search} loggedInUserCommunityMemberId={loggedInUserCommunityMemberId} />
         </Suspense>
       
   </div>

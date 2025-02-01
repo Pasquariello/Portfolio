@@ -1,5 +1,5 @@
 'use client'
-import { getLoggedInUserEmail } from "@/app/lib/data";
+import { getLoggedInUserCommunityMemberId } from "@/app/lib/data";
 import { CommunityMember, SearchMember } from "@/app/lib/types";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
@@ -9,26 +9,10 @@ const colors = ['bg-pink-500', 'bg-cyan-500', 'bg-zinc-500', 'bg-lime-500', 'bg-
 
 var rand = colors[4] //colors[(Math.random() * colors.length) | 0]
 
-export default function MemberDetails({ memberDetails }: { memberDetails: CommunityMember }) {
+export default function MemberDetails({ memberDetails, loggedInUserCommunityMemberId }: { memberDetails: CommunityMember, loggedInUserCommunityMemberId: number }) {
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
-    const [loggedInUserEmail, setLoggedInUserEmail] = useState<string | null>(null);
-    const memberName = memberDetails.name;
-    console.log(memberDetails.email);
-
-    if (loggedInUserEmail === memberName) {
-        return null;
-    }
-
-    useEffect(() => {
-        const fetchUserEmail = async () => {
-            const email = await getLoggedInUserEmail();
-            setLoggedInUserEmail(email);
-        };
-        
-        fetchUserEmail();
-    }, []);
 
     // Get a new searchParams string by merging the current
     // searchParams with a provided key/value pair
@@ -71,7 +55,7 @@ export default function MemberDetails({ memberDetails }: { memberDetails: Commun
             {renderAvatar()}
             <div className="p-4 flex flex-col items-center">
                 <h3 className="m-2 text-sm font-medium">
-                    {memberDetails.email === loggedInUserEmail ? `${memberDetails.name} (You)` : memberDetails.name}
+                    {memberDetails.community_member_id === loggedInUserCommunityMemberId ? `${memberDetails.name} (You)` : memberDetails.name}
                 </h3>
                 <p className="mt-2 text-xs/5 text-gray-500">{memberDetails.headline}</p>
             </div>

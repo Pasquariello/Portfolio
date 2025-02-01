@@ -701,13 +701,13 @@ export async function fetchCommunityMembers(per_page = 10): Promise<CommunityMem
   }
 }
 
-export async function getLoggedInUserEmail(): Promise<string | undefined> {
+export async function getLoggedInUserCommunityMemberId(): Promise<number | undefined> {
   try {
     const cookieStore = await cookies();
-    const userEmail = cookieStore.get('LOGGED_IN_USER_EMAIL')?.value;
-    return userEmail;
+    const userCommunityMemberId = cookieStore.get('LOGGED_USER_COMMUNITY_MEMBER_ID')?.value;
+    return parseInt(userCommunityMemberId);
   } catch (error) {
-    console.error('Error getting logged in user email:', error);
+    console.error('Error getting logged in user community member id:', error);
     return undefined;
   }
 }
