@@ -5,7 +5,6 @@ import EventDetails from "./eventDetails";;
 export default async function EventList({selectedEvent}) {
 
     const events = await fetchEvents();
-    console.log('events', events);
  
     const eventsByMonth: { name: string, records: [any] } = events?.records?.reduce((accumulator, currentValue) => {
         const isoDate = currentValue?.event_setting_attributes?.starts_at;
@@ -24,7 +23,6 @@ export default async function EventList({selectedEvent}) {
     }, {})
 
 
-    console.log('eventsByMonth', eventsByMonth);
 
     const renderEventList =  () => eventsByMonth && Object.values(eventsByMonth)?.map((month: any) => {
        return (
