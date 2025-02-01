@@ -2,6 +2,7 @@
  
 import { AuthError } from 'next-auth';
 import { cookies } from 'next/headers';
+import { sql } from '@vercel/postgres';
  
  
 const CLIENT_TOKEN = process.env.CIRCLE_TOKEN!;
@@ -14,12 +15,30 @@ export async function clearCircleCookie () {
 }
 
 export async function getCirleJWT(email) {
-  console.log('hello from getCirleJWT')
+    console.log('Starting getCirleJWT for email:', email);
     try {
+        // First check if user exists in members table
+        const existingUser = await sql`
+            SELECT * FROM members WHERE email = ${email}
+        `;
+        console.log('Existing user query result:', existingUser.rows);
+
+        // If member doesn't exist, add them to members table
+        if (existingUser.rows.length === 0) {
+            console.log('No existing member found, creating new member record');
+            const newUser = await sql`
+                INSERT INTO members (email)
+                VALUES (${email})
+                RETURNING *
+            `;
+            console.log('New member inserted:', newUser.rows[0]);
+        }
+
+        // Continue with existing Circle token logic
         const response = await fetch(TOKEN_URL, {
             method: 'POST',
             headers: {
-                'Authorization': `Bearer ${CLIENT_TOKEN}`, // Pass the token in the Authorization header
+                'Authorization': `Bearer ${CLIENT_TOKEN}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
