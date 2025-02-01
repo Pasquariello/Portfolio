@@ -4,10 +4,8 @@ import {
     UserGroupIcon,
     InboxIcon,
   } from '@heroicons/react/24/outline';
-  import { lusitana } from '@/app/ui/fonts';
   import { fetchCoursesWithDetails } from '@/app/lib/data';
-import { ProgressBar } from '@/app/components/progressBar';
-import { ProgressCircle, ProgressCircleChildren, progressCircleVariants } from '@/app/components/progressCircle';
+import { ProgressCircleChildren, progressCircleVariants } from '@/app/components/progressCircle';
 import { VariantProps } from 'tailwind-variants';
   
   const iconMap = {
@@ -142,13 +140,13 @@ import { VariantProps } from 'tailwind-variants';
     
     return (
       <div
-        className='grid grid-cols-4 gap-6 '
+        className='grid md:grid-cols-2 lg:grid-cols-4 grid-cols-1 gap-6 place-items-center'
       >
   
         {
             courses.map((course, i) => {
                 const {id, name, course_percent_completed} = course;
-                const variant_list: any = ['default', 'neutral', 'warning', 'success', 'error'];
+                const variant_list: any = ['default', 'warning', 'success', 'error', 'neutral'];
                 const incrementor = i >= variant_list.length ? i - (variant_list.length * (Math.floor(i /variant_list.length))) : i;
                 const variant =  variant_list[incrementor] || variant_list[0]
                 return (

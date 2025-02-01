@@ -6,7 +6,7 @@ import { LatestInvoice } from '@/app/lib/definitions';
 import { fetchEvents, fetchLatestInvoices } from '@/app/lib/data';
 import { formattedDateString } from '@/app/lib/utils';
 
-export default async function LatestInvoices() {
+export default async function LatestEvents() {
 
   const events = await fetchEvents(5)
 //   console.log('events main dashboard', events)
