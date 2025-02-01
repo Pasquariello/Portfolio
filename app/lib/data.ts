@@ -119,15 +119,13 @@ export async function fooRSVPLeave( event_id) {
 } 
 
 // /api/headless/v1/events/{event_id}/event_attendees
-
-
 export async function searchMembers(name) {
 
   const body = name ? {
             filters: [
               {
               key: "name",
-              filter_type: "contains", // todo: investigate other options
+              filter_type: "contains", // TODO: investigate other options
               value: name
               }
             ],
