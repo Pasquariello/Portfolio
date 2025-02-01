@@ -271,6 +271,7 @@ export async function buildCourseDetails(course) {
     course_sections: section_data,
     course_percent_completed: total_lessons_completed / total_lessons,
     total_lesson_count: total_lessons,
+    total_lessons_completed,
       
   };
 

@@ -14,26 +14,22 @@ import {
   
 
 export async function CourseProgressBar({
-    value
-    // title,
-    // value,
-    // type,
+    value,
+    complete,
+    total,
   }: {
-    value: number // TODO - type this
-    // title: string;
-    // value: number | string;
-    // type?: 'events' | 'customers' | 'pending' | 'collected';
+    value: number; // TODO - type this
+    complete: number;
+    total: number;
   }) {
-
-
   
     return (
         <div>
-        <div className="flex justify-between">
-            <p>0 Completed of 6 Lessons</p>
-            <p>0%</p>
-        </div>
-        <ProgressBar value={value} />
+            <div className="flex justify-between mb-4">
+                <p>Completed {complete} of {total} Lessons</p>
+                <p>{value}%</p>
+            </div>
+            <ProgressBar value={value} />
         </div>
     );
   }
