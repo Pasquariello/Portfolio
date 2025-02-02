@@ -1,9 +1,15 @@
 import { fetchCommunityMembers, getMatchingInterests, searchMembers } from "@/app/lib/data";
 import MemberDetails from "./memberDetails";
+import { CommunityMemberSearchResult, MemberSearchResult } from "@/app/lib/types";
 
 export default async function MemberList({ search, loggedInUserCommunityMemberId, matchingInterests }) {
-
-    const members = await fetchCommunityMembers();
+    console.log('search', search);
+    let members: MemberSearchResult | CommunityMemberSearchResult;
+    if (search) {   
+        members = await searchMembers(search) as MemberSearchResult;
+    } else {
+        members = await fetchCommunityMembers() as CommunityMemberSearchResult;
+    }
     return (
         <div className="flex">
             <div role="list" className="flex flex-wrap">

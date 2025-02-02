@@ -10,7 +10,6 @@ export default async function Page({searchParams}) {
   const search = searchMe.search;
   const loggedInUserCommunityMemberId = await getLoggedInUserCommunityMemberId();
   const matchingInterests = await getMatchingInterests(loggedInUserCommunityMemberId);
-  console.log(matchingInterests);
   return (
     <div>
         <div>
