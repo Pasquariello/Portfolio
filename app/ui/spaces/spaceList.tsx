@@ -6,11 +6,14 @@ import { Suspense } from "react";
 import SpaceDetails from "./spaceDetails";
 
 
-export default async function SpaceList() {
-    
-    const spaces = await fetchSpaces();
+export default async function SpaceList({type}) {
+    console.log('type === ', type)
+    const res = await fetchSpaces();
+    // const spaces = await fetchSpaces();
 
-    // console.log('spaces', spaces)
+    const spaces = !type || type === 'all' ? res : res?.filter(space => space.space_type === type);
+
+    console.log('spaces', spaces)
 
     if (!spaces.length) {
         return <p>No Groups</p>

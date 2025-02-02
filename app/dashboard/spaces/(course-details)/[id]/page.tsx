@@ -29,21 +29,10 @@ console.log(course);
             </div>
 
             <div>
-            <h4 className="text-xl md:text-xl mb-4"> Course Content </h4>
+                <h4 className="text-xl md:text-xl mb-4"> Course Content </h4>
 
-
-
-
-            <CourseSections course_sections={course.course_sections} />
-
-
-
-
-
-
-
-
-                {/* End Accordian */}
+                <CourseSections course_sections={course.course_sections} />
+                    {/* End Accordian */}
             </div>
         </div>
     );
