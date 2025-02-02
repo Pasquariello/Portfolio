@@ -3,7 +3,6 @@ import MemberDetails from "./memberDetails";
 import { CommunityMemberSearchResult, MemberSearchResult } from "@/app/lib/types";
 
 export default async function MemberList({ search, loggedInUserCommunityMemberId, matchingInterests }) {
-    console.log('search', search);
     let members: MemberSearchResult | CommunityMemberSearchResult;
     if (search) {   
         members = await searchMembers(search) as MemberSearchResult;
