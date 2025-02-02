@@ -635,51 +635,52 @@ export async function addMemberInterests(email: string, interestIds: number[]) {
 }
 
 // 3. Get matching interests with other users
-export async function getMatchingInterests(currentUserEmail: string) {
-  try {
-    // First verify the user exists and has interests
-    const userInterests = await sql`
-      SELECT COUNT(*) as count 
-      FROM member_interests 
-      WHERE email = ${currentUserEmail}
-    `;
-
-    if (userInterests.rows[0].count === 0) {
-      return []; // Return empty array if user has no interests
-    }
-
-    const query = sql`
-      WITH current_user_interests AS (
-        SELECT interest_id 
+export async function getMatchingInterests(communityMemberId: number, limit: number = 10) {
+    try {
+      // First verify the user exists and has interests
+      const userInterests = await sql`
+        SELECT COUNT(*) as count 
         FROM member_interests 
-        WHERE email = ${currentUserEmail}
-      )
-      SELECT 
-        m.email,
-        COUNT(DISTINCT mi.interest_id) as matching_interests_count,
-        ARRAY_AGG(DISTINCT i.name) as matching_interests
-      FROM members m
-      JOIN member_interests mi ON m.email = mi.email
-      JOIN interests i ON mi.interest_id = i.interest_id
-      WHERE 
-        mi.interest_id IN (SELECT interest_id FROM current_user_interests)
-        AND m.email != ${currentUserEmail}
-      GROUP BY m.email
-      HAVING COUNT(DISTINCT mi.interest_id) > 0
-      ORDER BY matching_interests_count DESC
-    `;
-
-    const result = await query;
-    return result.rows.map(row => ({
-      email: row.email,
-      matchingCount: parseInt(row.matching_interests_count),
-      matchingInterests: row.matching_interests
-    }));
-  } catch (error) {
-    console.error('Database Error:', error);
-    throw new Error('Failed to fetch matching interests.');
+        WHERE community_member_id = ${communityMemberId}
+      `;
+      if (userInterests.rows[0].count === 0) {
+        return []; // Return empty array if user has no interests
+      }
+  
+      const query = sql`
+        WITH current_user_interests AS (
+          SELECT interest_id 
+          FROM member_interests 
+          WHERE community_member_id = ${communityMemberId}
+        )
+        SELECT 
+          m.community_member_id,
+          COUNT(DISTINCT mi.interest_id) as matching_interests_count,
+          ARRAY_AGG(DISTINCT i.name) as matching_interests
+        FROM members m
+        JOIN member_interests mi ON m.community_member_id = mi.community_member_id
+        JOIN interests i ON mi.interest_id = i.interest_id
+        WHERE 
+          mi.interest_id IN (SELECT interest_id FROM current_user_interests)
+          AND m.community_member_id != ${communityMemberId}
+        GROUP BY m.community_member_id
+        HAVING COUNT(DISTINCT mi.interest_id) > 0
+        ORDER BY matching_interests_count DESC
+        LIMIT ${limit}
+      `;
+  
+      const result = await query;
+      return result.rows.map(row => ({
+        community_member_id: row.community_member_id,
+        matchingCount: parseInt(row.matching_interests_count),
+        matchingInterests: row.matching_interests
+      }));
+    } catch (error) {
+      console.error('Database Error:', error);
+      throw new Error('Failed to fetch matching interests.');
+    }
   }
-}
+  
 
 export async function fetchCommunityMembers(per_page = 10): Promise<CommunityMemberSearchResult> {
   try {
