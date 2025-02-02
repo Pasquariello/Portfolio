@@ -24,7 +24,7 @@ export default async function Page({searchParams}) {
         </div>
 
         <Suspense fallback={<RevenueChartSkeleton />}> 
-          <MemberList search={search} loggedInUserCommunityMemberId={loggedInUserCommunityMemberId} />
+          <MemberList search={search} loggedInUserCommunityMemberId={loggedInUserCommunityMemberId} matchingInterests={matchingInterests} />
         </Suspense>
       
   </div>

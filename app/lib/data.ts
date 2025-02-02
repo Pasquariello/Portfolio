@@ -583,14 +583,13 @@ export async function fetchFilteredCustomers(query: string) {
 export async function fetchAllInterests() {
   try {
     const data = await sql`
-      SELECT interest_id, name 
-      FROM interests 
+      SELECT * FROM interests
       ORDER BY name ASC
     `;
     return data.rows;
   } catch (error) {
     console.error('Database Error:', error);
-    throw new Error('Failed to fetch interests.');
+    throw new Error('Failed to fetch interests');
   }
 }
 
@@ -713,3 +712,16 @@ export async function getLoggedInUserCommunityMemberId(): Promise<number | undef
   }
 }
 
+export async function fetchMemberInterests(communityMemberId: string): Promise<number[]> {
+  try {
+    const data = await sql`
+      SELECT interest_id
+      FROM member_interests
+      WHERE community_member_id = ${communityMemberId}
+    `;
+    return data.rows.map(row => row.interest_id);
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch member interests');
+  }
+}

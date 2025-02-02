@@ -81,3 +81,30 @@ async function syncMemberWithDatabase(community_member_id: string, email: string
         console.log('New member inserted:', member.rows[0]);
     }
 }
+
+export async function updateUserInterests(communityMemberId: string, interestIds: number[]) {
+    try {
+        // First delete existing interests for this user
+        await sql`
+        DELETE FROM member_interests 
+        WHERE community_member_id = ${communityMemberId}
+      `;
+
+        // Then insert new interests
+        if (interestIds.length > 0) {
+            const values = interestIds.map(id => [communityMemberId, id]);
+
+            for (const [memberId, interestId] of values) {
+                await sql`
+                    INSERT INTO member_interests (community_member_id, interest_id)
+                    VALUES (${memberId}, ${interestId})
+                `;
+            }
+        }
+
+        return { success: true };
+    } catch (error) {
+        console.error('Failed to update interests:', error);
+        throw error;
+    }
+}

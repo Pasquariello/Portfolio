@@ -60,3 +60,16 @@ export interface CommunityMember {
     can_receive_dm_from_current_member: boolean
 }
   
+export type Interest = {
+    interest_id: number;
+    name: string;
+};
+
+export type UserProfile = {
+    email: string;
+    community_member_id?: string;
+    name?: string;
+    interests: string[];
+    created_at: Date;
+};
+  

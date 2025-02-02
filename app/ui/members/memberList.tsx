@@ -1,10 +1,9 @@
 import { fetchCommunityMembers, getMatchingInterests, searchMembers } from "@/app/lib/data";
 import MemberDetails from "./memberDetails";
 
-export default async function MemberList({ search, loggedInUserCommunityMemberId }) {
+export default async function MemberList({ search, loggedInUserCommunityMemberId, matchingInterests }) {
 
     const members = await fetchCommunityMembers();
-    const matchingInterests = await getMatchingInterests(loggedInUserCommunityMemberId);
     return (
         <div className="flex">
             <div role="list" className="flex flex-wrap">
