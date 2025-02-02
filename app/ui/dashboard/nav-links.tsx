@@ -4,7 +4,8 @@ import {
   UserGroupIcon,
   HomeIcon,
   DocumentDuplicateIcon,
-  WrenchScrewdriverIcon
+  WrenchScrewdriverIcon,
+  UserCircleIcon
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -21,6 +22,7 @@ const links = [
   },
   { name: 'Members', href: '/dashboard/members', icon: UserGroupIcon },
   { name: 'Groups', href: '/dashboard/spaces ', icon: WrenchScrewdriverIcon },
+  { name: 'Profile', href: '/dashboard/profile', icon: UserCircleIcon },
 
 ];
 

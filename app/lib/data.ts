@@ -13,7 +13,7 @@ import { formatCurrency } from './utils';
 import { cookies } from 'next/headers'
 import { revalidatePath } from 'next/cache';
 import { getCirleJWT } from './actions';
-import { Member, MemberSearchResult } from './types';
+import { SearchMember, MemberSearchResult, CommunityMemberSearchResult } from './types';
 
 // import { getSession } from '@auth0/nextjs-auth0';
 
@@ -583,14 +583,13 @@ export async function fetchFilteredCustomers(query: string) {
 export async function fetchAllInterests() {
   try {
     const data = await sql`
-      SELECT interest_id, name 
-      FROM interests 
+      SELECT * FROM interests
       ORDER BY name ASC
     `;
     return data.rows;
   } catch (error) {
     console.error('Database Error:', error);
-    throw new Error('Failed to fetch interests.');
+    throw new Error('Failed to fetch interests');
   }
 }
 
@@ -635,48 +634,94 @@ export async function addMemberInterests(email: string, interestIds: number[]) {
 }
 
 // 3. Get matching interests with other users
-export async function getMatchingInterests(currentUserEmail: string) {
-  try {
-    // First verify the user exists and has interests
-    const userInterests = await sql`
-      SELECT COUNT(*) as count 
-      FROM member_interests 
-      WHERE email = ${currentUserEmail}
-    `;
-
-    if (userInterests.rows[0].count === 0) {
-      return []; // Return empty array if user has no interests
-    }
-
-    const query = sql`
-      WITH current_user_interests AS (
-        SELECT interest_id 
+export async function getMatchingInterests(communityMemberId: number, limit: number = 10) {
+    try {
+      // First verify the user exists and has interests
+      const userInterests = await sql`
+        SELECT COUNT(*) as count 
         FROM member_interests 
-        WHERE email = ${currentUserEmail}
-      )
-      SELECT 
-        m.email,
-        COUNT(DISTINCT mi.interest_id) as matching_interests_count,
-        ARRAY_AGG(DISTINCT i.name) as matching_interests
-      FROM members m
-      JOIN member_interests mi ON m.email = mi.email
-      JOIN interests i ON mi.interest_id = i.interest_id
-      WHERE 
-        mi.interest_id IN (SELECT interest_id FROM current_user_interests)
-        AND m.email != ${currentUserEmail}
-      GROUP BY m.email
-      HAVING COUNT(DISTINCT mi.interest_id) > 0
-      ORDER BY matching_interests_count DESC
-    `;
+        WHERE community_member_id = ${communityMemberId}
+      `;
+      if (userInterests.rows[0].count === 0) {
+        return []; // Return empty array if user has no interests
+      }
+  
+      const query = sql`
+        WITH current_user_interests AS (
+          SELECT interest_id 
+          FROM member_interests 
+          WHERE community_member_id = ${communityMemberId}
+        )
+        SELECT 
+          m.community_member_id,
+          COUNT(DISTINCT mi.interest_id) as matching_interests_count,
+          ARRAY_AGG(DISTINCT i.name) as matching_interests
+        FROM members m
+        JOIN member_interests mi ON m.community_member_id = mi.community_member_id
+        JOIN interests i ON mi.interest_id = i.interest_id
+        WHERE 
+          mi.interest_id IN (SELECT interest_id FROM current_user_interests)
+          AND m.community_member_id != ${communityMemberId}
+        GROUP BY m.community_member_id
+        HAVING COUNT(DISTINCT mi.interest_id) > 0
+        ORDER BY matching_interests_count DESC
+        LIMIT ${limit}
+      `;
+  
+      const result = await query;
+      return result.rows.map(row => ({
+        community_member_id: row.community_member_id,
+        matchingCount: parseInt(row.matching_interests_count),
+        matchingInterests: row.matching_interests
+      }));
+    } catch (error) {
+      console.error('Database Error:', error);
+      throw new Error('Failed to fetch matching interests.');
+    }
+  }
+  
 
-    const result = await query;
-    return result.rows.map(row => ({
-      email: row.email,
-      matchingCount: parseInt(row.matching_interests_count),
-      matchingInterests: row.matching_interests
-    }));
+export async function fetchCommunityMembers(per_page = 10): Promise<CommunityMemberSearchResult> {
+  try {
+    const cookieStore = await cookies()
+    const token = cookieStore.get('circleToken')?.value;
+
+    const response = await fetch(`https://app.circle.so/api/headless/v1/community_members?per_page=${per_page}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+    });
+  
+    const result = await response.json()
+    return result;
+  } catch (error) {
+    console.error('Error fetching community members:', error);
+    throw new Error('Failed to fetch community members');
+  }
+}
+
+export async function getLoggedInUserCommunityMemberId(): Promise<number | undefined> {
+  try {
+    const cookieStore = await cookies();
+    const userCommunityMemberId = cookieStore.get('LOGGED_USER_COMMUNITY_MEMBER_ID')?.value;
+    return parseInt(userCommunityMemberId);
+  } catch (error) {
+    console.error('Error getting logged in user community member id:', error);
+    return undefined;
+  }
+}
+
+export async function fetchMemberInterests(communityMemberId: string): Promise<number[]> {
+  try {
+    const data = await sql`
+      SELECT interest_id
+      FROM member_interests
+      WHERE community_member_id = ${communityMemberId}
+    `;
+    return data.rows.map(row => row.interest_id);
   } catch (error) {
     console.error('Database Error:', error);
-    throw new Error('Failed to fetch matching interests.');
+    throw new Error('Failed to fetch member interests');
   }
 }
