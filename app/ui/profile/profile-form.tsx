@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import clsx from 'clsx';
-import { toast } from 'react-hot-toast';
 import { CheckCircleIcon } from '@heroicons/react/24/solid';
 import { Interest } from '@/app/lib/types';
 import { updateUserInterests } from '@/app/lib/actions';
@@ -15,8 +14,10 @@ interface ProfileFormProps {
 
 export default function ProfileForm({ communityMemberId, selectedInterests, allInterests }: ProfileFormProps) {
   const [selected, setSelected] = useState<number[]>(selectedInterests);
+  const [isSaved, setIsSaved] = useState(true);
 
   const handleInterestToggle = (interestId: number) => {
+    setIsSaved(false);
     setSelected((prev) =>
       prev.includes(interestId)
         ? prev.filter((id) => id !== interestId)
@@ -24,16 +25,19 @@ export default function ProfileForm({ communityMemberId, selectedInterests, allI
     );
   };
 
+  
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       if (!communityMemberId) {
         throw new Error('No community member ID found');
       }
-      await updateUserInterests(communityMemberId, selected);
-      toast.success('Interests updated successfully!');
+      const result = await updateUserInterests(communityMemberId, selected);
+      if (result.success) {
+        setIsSaved(true);
+      }
     } catch (error) {
-      toast.error('Failed to update interests');
       console.error(error);
     }
   };
@@ -46,15 +50,9 @@ export default function ProfileForm({ communityMemberId, selectedInterests, allI
           <h2 className="text-xl font-semibold mb-4">Profile Information</h2>
           <div className="grid grid-cols-1 gap-4">
             <div>
-              <label className="block text-sm font-medium">Email</label>
+              <label className="block text-sm font-medium">Community Member ID</label>
               <div className="mt-1 p-2 bg-white rounded border">
-                {/* Email content would be fetched from the database */}
-              </div>
-            </div>
-            <div>
-              <label className="block text-sm font-medium">Member Since</label>
-              <div className="mt-1 p-2 bg-white rounded border">
-                {/* Member since content would be fetched from the database */}
+                {communityMemberId}
               </div>
             </div>
           </div>
@@ -95,10 +93,17 @@ export default function ProfileForm({ communityMemberId, selectedInterests, allI
 
       <button
         type="submit"
-        className="rounded-lg bg-blue-500 px-6 py-2 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        disabled={isSaved}
+        className={clsx(
+          "rounded-lg px-6 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500",
+          {
+            "bg-blue-500 hover:bg-blue-600": !isSaved,
+            "bg-gray-400": isSaved
+          }
+        )}
       >
-        Save Changes
+        {isSaved ? 'Saved' : 'Save Changes'}
       </button>
     </form>
   );
-} 
+}

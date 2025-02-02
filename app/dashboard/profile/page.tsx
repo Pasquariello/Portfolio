@@ -13,8 +13,6 @@ export default async function ProfilePage() {
     fetchMemberInterests(loggedInUserCommunityMemberId.toString()),
     fetchAllInterests()
   ]);
-  console.log('selectedInterests', selectedInterests);
-  console.log('allInterests', allInterests);
 
   return (
     <main className="flex min-h-screen flex-col p-6">
