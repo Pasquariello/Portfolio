@@ -1,12 +1,23 @@
   import { fetchCoursesWithDetails } from '@/app/lib/data';
 import { VariantProps } from 'tailwind-variants';
 import { CourseProgress } from './course-progess';
+import Link from 'next/link';
   
 
   export default async function CourseWrapper() {
 
     // refactor to separate calls per card?
     const courses = await fetchCoursesWithDetails();
+
+    if (courses) {
+        return (
+            <div>
+                <p className="mt-2 wrap text-md/5 text-gray-500">
+                    <Link href="/dashboard/spaces?type=course">Register</Link> for Courses to see course porgress
+                </p>
+            </div>
+        )
+    }
 
     return (
       <div

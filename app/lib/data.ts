@@ -359,19 +359,6 @@ export async function fetchSingleSpace(space_id) {
 
 
 
-export async function fetchCardDataNEW() {
-  const spaces = await fetchSpaces()
-  const courses = spaces?.filter(space => space.space_type === 'course');
-
-  const course_count = courses.length
-}
-
-
-
-
-
-
-
 ////// Old examples from next demo
 export async function fetchRevenue() {
   try {

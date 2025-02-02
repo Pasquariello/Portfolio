@@ -146,7 +146,7 @@ export const ProgressCircleChildren = (   {
     ...props
   }: ProgressCircleProps) => (
 <div className="flex">
-    <ProgressCircle value={value} radius={radius} variant={variant}>
+    <ProgressCircle value={value} radius={radius} variant={variant} showAnimation={showAnimation}>
         <span className="text-sm font-medium text-black">
             {value}%
         </span>

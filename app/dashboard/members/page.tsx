@@ -6,10 +6,11 @@ import { Suspense } from "react";
 
 export default async function Page({searchParams}) {
 
-  const searchMe = await searchParams;
-  const search = searchMe.search;
+  const params = await searchParams;
+  const search = params.search;
   const loggedInUserCommunityMemberId = await getLoggedInUserCommunityMemberId();
   const matchingInterests = await getMatchingInterests(loggedInUserCommunityMemberId);
+  
   return (
     <div>
         <div>
