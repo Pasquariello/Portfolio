@@ -18,7 +18,7 @@ export function SearchBar() {
         } else {
           params.delete('type');
         }
-        replace(`${pathname}?${params.toString()}`);
+        replace(`${pathname}?${params?.toString()}`);
       }
   
     return (

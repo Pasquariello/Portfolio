@@ -16,9 +16,9 @@ export default function MemberDetails({ memberDetails, loggedInUserCommunityMemb
 
     const createQueryString = useCallback(
         (name: string, value: string) => {
-            const params = new URLSearchParams(searchParams.toString())
+            const params = new URLSearchParams(searchParams?.toString())
             params.set(name, value)
-            return params.toString()
+            return params?.toString()
         },
         [searchParams]
     )
@@ -47,7 +47,7 @@ export default function MemberDetails({ memberDetails, loggedInUserCommunityMemb
                 key={memberDetails.community_member_id}
                 className="w-3xs flex-none m-6 border-solid rounded-xl shadow-sm bg-white"
                 onClick={(e) => {
-                    router.push(pathname + '?' + createQueryString('selected', memberDetails.community_member_id.toString()))
+                    router.push(pathname + '?' + createQueryString('selected', memberDetails?.community_member_id?.toString()))
                 }}
             >
                 {renderAvatar()}
