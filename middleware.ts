@@ -47,7 +47,7 @@ export const config = {
     if (expTime < currentTime) {
       await clearCircleCookie();
       // TODO: update to env val base URL
-      const auth0LogoutUrl = `http://localhost:3000/api/auth/logout?returnTo=http://localhost:3000`
+      const auth0LogoutUrl = `${process.env.BASE_URL}/api/auth/logout?returnTo=${process.env.BASE_URL}`
       // Redirect the user to the Auth0 logout URL
       return NextResponse.redirect(auth0LogoutUrl)
     }
