@@ -47,7 +47,7 @@ export async function getCirleJWT(email) {
             cookieStore.set('LOGGED_USER_COMMUNITY_MEMBER_ID', community_member_id)
             cookieStore.set('circleToken', access_token)
             cookieStore.set('circleTokenExpiration', access_token_expires_at)
-            await syncMemberWithDatabase(community_member_id, email);
+            // await syncMemberWithDatabase(community_member_id, email);
 
             return data;
         } else {
