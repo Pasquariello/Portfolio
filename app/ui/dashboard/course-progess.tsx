@@ -14,10 +14,9 @@ export function CourseProgress({
     variant?: 'default' | 'neutral' | 'warning' | 'success' | 'error';
   }) {  
     return (
-    
+    <div className="rounded-xl bg-white p-4 shadow-sm flex justify-center hover:bg-gray-200 hover:cursor-pointer">
         <Link
             href={`/dashboard/spaces/${id}`}
-            className="hover:cursor-pointer"
         >
             <div>{name}</div>
             <ProgressCircleChildren 
@@ -26,5 +25,6 @@ export function CourseProgress({
                 variant={variant}
             />
         </Link>
+    </div>
     );
   }
