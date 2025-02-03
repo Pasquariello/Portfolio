@@ -17,7 +17,7 @@ export const config = {
        * - about (about page)
        * - any (anypage)
        */   
-    '/((?!api|about|any|login|_next/static|_next/image|favicon.ico|$).*)',
+    '/((?!api|about|any|login|_next/static|_next/image|images|public|favicon.ico|$).*)',
     ],
   };
 
