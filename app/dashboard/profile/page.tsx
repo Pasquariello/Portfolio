@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default async function ProfilePage() {
   const loggedInUserCommunityMemberId = await getLoggedInUserCommunityMemberId();
   const [selectedInterests, allInterests] = await Promise.all([
-    fetchMemberInterests(loggedInUserCommunityMemberId.toString()),
+    fetchMemberInterests(loggedInUserCommunityMemberId?.toString()),
     fetchAllInterests()
   ]);
 
@@ -19,7 +19,7 @@ export default async function ProfilePage() {
       <div className="flex flex-col gap-4 md:flex-col md:gap-8">
         <h1 className="text-2xl font-bold">Your Profile</h1>
         <ProfileForm 
-          communityMemberId={loggedInUserCommunityMemberId.toString()} 
+          communityMemberId={loggedInUserCommunityMemberId?.toString()} 
           selectedInterests={selectedInterests as number[]}
           allInterests={allInterests as Interest[]}
         />
