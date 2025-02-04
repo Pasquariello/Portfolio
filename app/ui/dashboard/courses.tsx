@@ -1,5 +1,5 @@
   import { fetchCoursesWithDetails } from '@/app/lib/data';
-import { VariantProps } from 'tailwind-variants';
+// import { VariantProps } from 'tailwind-variants';
 import { CourseProgress } from './course-progess';
 import Link from 'next/link';
 import { PencilIcon, PencilSquareIcon } from '@heroicons/react/24/outline';
@@ -9,7 +9,7 @@ import { PencilIcon, PencilSquareIcon } from '@heroicons/react/24/outline';
 
     // refactor to separate calls per card?
     const courses = await fetchCoursesWithDetails();
-
+    console.log('courses', courses)
     if (!courses) {
         return (
             <div>

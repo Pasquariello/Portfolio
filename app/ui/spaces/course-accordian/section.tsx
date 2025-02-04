@@ -1,13 +1,14 @@
 'use client'
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
 import { useState } from "react";
 
-export default function Section({section}) {
+export default function Section({section, course_id}) {
  
     const [isOpen, setIsOpen] = useState(true);
       
     return (
-        <div key={section.section_id}>
+        <div>
             {/* border-gray-200 */}
             <h2 id="accordion-collapse-heading-1" className="border-b border-gray-200 bg-gray-200">
                 <button 
@@ -36,23 +37,32 @@ export default function Section({section}) {
                     section.lessons.map((lesson, i) => {
                         console.log('LESSON INFO', lesson)
                         return (
-                        <div 
-                            key={i}
-                            id="accordion-collapse-body-1" 
-                            // className="hidden" 
-                            className={`divider ${isOpen ? 'block' : 'hidden'}`}
-                            aria-labelledby="accordion-collapse-heading-1"
-                        >
-                            <div className="p-5 flex justify-between">
-                                <p>{lesson.name}</p>
-                                {lesson.progress.status === 'completed' && <CheckCircleIcon className='h-5 w-5 text-green-400'/>}
-                            </div>
-                        </div>
+                            <Link 
+                                href={`/dashboard/spaces/${course_id}/lesson/${lesson.id}`}
+                                key={lesson.lesson_id}
+                            >
+                                <div 
+                                    key={i}
+                                    id="accordion-collapse-body-1" 
+                                    // className="hidden" 
+                                    className={`divider ${isOpen ? 'block' : 'hidden'}`}
+                                    aria-labelledby="accordion-collapse-heading-1"
+                                >
+                                    <div className="p-5 flex justify-between">
+                                        <p>{lesson.name}</p>
+                                        {lesson.progress.status === 'completed' && <CheckCircleIcon className='h-5 w-5 text-green-400'/>}
+                                    </div>
+                                </div>
+                            </Link>
                     )})
                 }
             </div>
         </div>
     )
+
+    // <Link 
+    // href={`dashboard/spaces/1776810/lesson/1735200`}
+    //  key={section.section_id}>
 
 
 }

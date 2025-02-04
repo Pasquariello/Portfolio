@@ -13,7 +13,10 @@ const nextConfig: NextConfig = {
   api: {
     bodyParser: true,
   },  
-  remotePatterns: ['images.unsplash.com', "app.circle.so"],
+// remotePatterns: ['images.unsplash.com', "app.circle.so"],
+  images: {
+    domains: ['images.unsplash.com', "app.circle.so"],
+  },
 };
 
 export default nextConfig;

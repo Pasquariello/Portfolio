@@ -47,7 +47,7 @@ export async function getCirleJWT(email) {
             cookieStore.set('LOGGED_USER_COMMUNITY_MEMBER_ID', community_member_id)
             cookieStore.set('circleToken', access_token)
             cookieStore.set('circleTokenExpiration', access_token_expires_at)
-            // await syncMemberWithDatabase(community_member_id, email);
+            await syncMemberWithDatabase(community_member_id, email);
 
             return data;
         } else {
@@ -67,6 +67,9 @@ export async function getCirleJWT(email) {
 }
 
 async function syncMemberWithDatabase(community_member_id: string, email: string) {
+  console.log('community_member_id ---', community_member_id)
+  console.log('email ---', email)
+
     // First check if user exists in members table
     const existingUser = await sql`
         SELECT * FROM members WHERE community_member_id = ${community_member_id}

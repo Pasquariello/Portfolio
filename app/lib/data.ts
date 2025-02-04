@@ -309,10 +309,7 @@ export async function fetchCourseSections(course_id) {
 } 
 
 
-export async function fetchLessonData () {
-  const course_id = 1766130;
-  const lesson_id = 1735200
-
+export async function fetchLessonData (course_id, lesson_id) {
   try {
 
     const cookieStore = await cookies()
@@ -332,6 +329,39 @@ export async function fetchLessonData () {
     console.error('Error fetching protected data:', error);
   }
 } 
+
+export async function fetchUpdateLessonProgress (data) {
+  const {course_id, lesson_id, progress} = data;
+
+  const body = {
+    status: progress
+  };
+
+  try {
+
+    const cookieStore = await cookies()
+    const token = await cookieStore.get('circleToken')?.value;
+    // /api/headless/v1/courses/{course_id}/lessons/{lesson_id}/progress
+    const response = await fetch(`https://app.circle.so/api/headless/v1/courses/${course_id}/lessons/${lesson_id}/progress`, {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(body),
+    });
+  
+    const result = await response.json();
+    console.log("result=====", result);
+    return result;
+  //   setData(response.data);
+  } catch (error) {
+    console.error('Error fetching protected data:', error);
+  }
+} 
+
+
+
 
 export async function fetchSingleSpace(space_id) {
 
