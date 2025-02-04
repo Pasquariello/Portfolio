@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 
 export default async function ProfilePage() {
   const loggedInUserCommunityMemberId = await getLoggedInUserCommunityMemberId();
+
   const [selectedInterests, allInterests] = await Promise.all([
     fetchMemberInterests(loggedInUserCommunityMemberId?.toString()),
     fetchAllInterests()
