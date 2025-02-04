@@ -4,10 +4,10 @@ import { CourseProgressBar } from "@/app/ui/spaces/progress-bar";
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
 
 export default async function Page({params}: {
-    params: Promise<{ id: number }>
+    params: Promise<{ course_id: number }>
   }) {
 
-    const course_id = (await params).id;
+    const course_id = (await params).course_id;
 
     const course = await fetchSingleSpace(course_id);
 
@@ -31,7 +31,7 @@ console.log(course);
             <div>
                 <h4 className="text-xl md:text-xl mb-4"> Course Content </h4>
 
-                <CourseSections course_sections={course.course_sections} />
+                <CourseSections course_id={course_id} course_sections={course.course_sections} />
                     {/* End Accordian */}
             </div>
         </div>
