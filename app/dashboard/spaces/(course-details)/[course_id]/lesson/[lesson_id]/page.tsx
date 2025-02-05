@@ -18,8 +18,6 @@ export default async function Page({params}: {
         return [...section.lessons]
     }).flat(Infinity);
 
-    console.log('lessons', lessons)
-
     const lessonIndex = lessons.findIndex(lesson => lesson.id === Number(lesson_id));
     const lessonCount = course.total_lesson_count;
     // const foo = course?.course_section.flat(Infinity).lessons.flat(Infinity)
@@ -27,10 +25,7 @@ export default async function Page({params}: {
     const next_id = lessons[lessonIndex + 1]?.id;
     const prev_id = lessons[lessonIndex - 1]?.id;
 
-    console.log('next_id', next_id)
-    console.log('prev_id', prev_id)
-
-
+    const percent_complete = Number((course?.course_percent_completed * 100).toFixed(0));
 
 
     // console.log('COURSE_DETAILS', course);
@@ -48,24 +43,27 @@ export default async function Page({params}: {
     
     return (
         // relative h-screen
+        <>
+        {/* <h3 className="text-3xl md:text-3xl mb-4">{course.name}</h3>
+        <p>{percent_complete}% Complete</p>
+         */}
+              
         <div className="flex flex-col h-screen !mb-[-48px] items-center">
+
             <div className="flex-grow">
-            <p>Lesson {lessonIndex + 1} of {lessonCount} </p>
-            <h2>{lesson.name}</h2>
-            {
-                hasVideo &&  (
-                    <LessonVideo 
-                        thumbnail_url={lesson.featured_media.thumbnail_url} 
-                        type={lesson.featured_media.type} 
-                        provider_url={lesson.featured_media.provider_url} 
-                        url={lesson.featured_media.url}
-                    />
-                )
-            }
-            
-
-
-    </div>
+                <p>Lesson {lessonIndex + 1} of {lessonCount} </p>
+                <h2>{lesson.name}</h2>
+                {
+                    hasVideo &&  (
+                        <LessonVideo 
+                            thumbnail_url={lesson.featured_media.thumbnail_url} 
+                            type={lesson.featured_media.type} 
+                            provider_url={lesson.featured_media.provider_url} 
+                            url={lesson.featured_media.url}
+                        />
+                    )
+                }
+            </div>
              <div className="sticky w-full bottom-[-48px] bg-[#F7F9FA] border-t border-gray-500">
                 <div className="flex justify-center items-center my-6">
                     {
@@ -94,5 +92,6 @@ export default async function Page({params}: {
                 </div>
             </div> 
         </div>
+        </>
     );
 }

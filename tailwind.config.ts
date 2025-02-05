@@ -1,4 +1,6 @@
-import type { Config } from 'tailwindcss';
+
+
+import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
@@ -47,15 +49,23 @@ const config: Config = {
           to: { opacity: "1", transform: "translateX(0)" },
         },
         accordionOpen: {
-          from: { height: "0px" },
-          to: { height: "var(--radix-accordion-content-height)" },
+          '0%': { maxHeight: '0', opacity: '0' },
+          '100%': { maxHeight: '9999px', opacity: '1' },
         },
         accordionClose: {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: { height: "0px" },
+          '0%': { maxHeight: '9999px', opacity: '1' },
+          '100%': { maxHeight: '0', opacity: '0' },
         },
+        // accordionOpen: {
+        //   from: { height: "0px" },
+        //   to: { height: "var(--radix-accordion-content-height)" },
+        // },
+        // accordionClose: {
+        //   from: {
+        //     height: "var(--radix-accordion-content-height)",
+        //   },
+        //   to: { height: "0px" },
+        // },
         dialogOverlayShow: {
           from: { opacity: "0" },
           to: { opacity: "1" },
@@ -84,8 +94,10 @@ const config: Config = {
         slideRightAndFade:
           "slideRightAndFade 150ms cubic-bezier(0.16, 1, 0.3, 1)",
         // Accordion
-        accordionOpen: "accordionOpen 150ms cubic-bezier(0.87, 0, 0.13, 1)",
-        accordionClose: "accordionClose 150ms cubic-bezier(0.87, 0, 0.13, 1)",
+        // accordionOpen: "accordionOpen 1500ms cubic-bezier(0.87, 0, 0.13, 1)",
+        // accordionClose: "accordionClose 1500ms cubic-bezier(0.87, 0, 0.13, 1)",
+        accordionOpen: 'accordionOpen 0.5s ease-in-out',
+        accordionClose: 'accordionClose 0.5s ease-in-out',
         // Dialog
         dialogOverlayShow:
           "dialogOverlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1)",
@@ -98,7 +110,7 @@ const config: Config = {
       },      
     },
   },
-  plugins: [require('@tailwindcss/forms'), require('tailwindcss-animate'), require("@tailwindcss/forms")],
+  plugins: [require('@tailwindcss/forms'), require('tailwindcss-animate') ],
 };
 export default config;
 
