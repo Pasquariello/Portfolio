@@ -4,7 +4,7 @@ import { updateLessonProgress } from "../actions";
 
 export default function CompleteLesson({course_id, lesson_id, current_status}) {
     const COMPLETE = 'completed';
-    const INCOMPLETE = 'incomplete'
+    const INCOMPLETE = 'incomplete';
     
     const buttonProps = {
         [INCOMPLETE]: {
@@ -17,17 +17,19 @@ export default function CompleteLesson({course_id, lesson_id, current_status}) {
             tooltip: 'Mark Lesson as Incomplete',
             value: INCOMPLETE,
         },
-    
     }
+
+    const progress = buttonProps[current_status] || buttonProps[INCOMPLETE];
+
 
     return (
         <Button
-            className="mt-12"
+            className="!bg-[#F7F9FA] !text-blue-500 hover:bg-white hover:underline"
             onClick={() => {
-                updateLessonProgress({course_id, lesson_id, progress: buttonProps[current_status].value})
+                updateLessonProgress({course_id, lesson_id, progress: progress.value})
             }}
         >
-            {buttonProps[current_status].label}
+            {progress.label}
         </Button>
     )
 }
