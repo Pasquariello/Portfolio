@@ -352,7 +352,7 @@ export async function fetchUpdateLessonProgress (data) {
     });
   
     const result = await response.json();
-    console.log("result=====", result);
+    
     return result;
   //   setData(response.data);
   } catch (error) {
