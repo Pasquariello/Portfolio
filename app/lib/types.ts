@@ -72,4 +72,91 @@ export type UserProfile = {
     interests: string[];
     created_at: Date;
 };
+
+export interface Post {
+  post_type: string;
+  space_type: string;
+  status: string;
+  id: number;
+  name: string | null;
+  display_title: string;
+  slug: string;
+  is_comments_closed: boolean;
+  is_comments_enabled: boolean;
+  is_liking_enabled: boolean;
+  comment_count: number;
+  user_likes_count: number;
+  body?: {
+    html: string;
+    attachments: any;
+    attachments_array: any[];
+  };
+  tiptap_body?: {
+    body: {
+      type: string;
+      content: any[];
+    };
+  } | null;
+  body_plain_text: string;
+  created_at: string;
+  updated_at: string;
+  author: PostAuthor;
+  topics: PostTopic[];
+}
+
+export interface PostAuthor {
+  id: number;
+  community_member_id: number;
+  name: string;
+  headline: string;
+  avatar_url: string | null;
+  roles: string[];
+}
+
+export interface PostTopic {
+  id: number;
+  name: string;
+  admin_only: boolean;
+}
+
+export interface PostsResponse {
+  page: number;
+  per_page: number;
+  has_next_page: boolean;
+  count: number;
+  sort: string;
+  records: Post[];
+}
+
+export interface Comment {
+  id: number;
+  post_id: number;
+  body_text: string;
+  created_at: string;
+  author: PostAuthor;
+  replies: Comment[];
+  replies_count: number;
+}
+
+export interface CommentsResponse {
+  page: number;
+  per_page: number;
+  has_next_page: boolean;
+  count: number;
+  records: Comment[];
+}
+
+export interface CreatePostRequest {
+  space_id: number;
+  name?: string;
+  body: string;
+  is_comments_enabled?: boolean;
+  is_liking_enabled?: boolean;
+}
+
+export interface CreateCommentRequest {
+  comment: {
+    body: string;
+  };
+}
   
