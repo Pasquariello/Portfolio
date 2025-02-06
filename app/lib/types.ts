@@ -148,10 +148,20 @@ export interface CommentsResponse {
 
 export interface CreatePostRequest {
   space_id: number;
-  name?: string;
-  body: string;
-  is_comments_enabled?: boolean;
-  is_liking_enabled?: boolean;
+  name: string;  // Title of the post
+  tiptap_body: {
+    body: {
+      type: string;
+      content: Array<{
+        type: string;
+        content?: Array<{
+          type: string;
+          text: string;
+        }>;
+      }>;
+    };
+  };
+  topics?: any[];
 }
 
 export interface CreateCommentRequest {
