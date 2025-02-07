@@ -4,7 +4,7 @@ import { fetchLessonFiles } from "@/app/lib/data";
 export default async function LessonFiles({course_id, lesson_id  }) {
     const files = await fetchLessonFiles(course_id, lesson_id);
 
-    if(!files || !files.length) {
+    if(!files || !files.records.length) {
        return <p> No Files</p>
     }
 
