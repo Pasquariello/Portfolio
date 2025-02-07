@@ -798,32 +798,6 @@ export async function createPost(data: CreatePostRequest): Promise<Post> {
     const cookieStore = await cookies()
     const token = cookieStore.get('circleToken')?.value;
 
-    const postData = {
-      post: {
-        id: null,
-        space_id: data.space_id,
-        name: data.name,
-        tiptap_body: {
-          body: {
-            type: "doc",
-            content: [
-              {
-                type: "paragraph",
-                content: [
-                  {
-                    type: "text",
-                    text: data.tiptap_body.body.content[0].content[0].text
-                  }
-                ]
-              }
-            ]
-          }
-        },
-        sample_user_likes_community_members: [],
-        topics: []
-      }
-    };
-
     const response = await fetch(
       `https://app.circle.so/api/headless/v1/spaces/${data.space_id}/posts`,
       {
@@ -832,11 +806,12 @@ export async function createPost(data: CreatePostRequest): Promise<Post> {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(postData)
+        body: JSON.stringify(data)
       }
     );
 
     if (!response.ok) {
+      console.error('Failed to create post', response);
       throw new Error('Failed to create post');
     }
 
@@ -846,6 +821,32 @@ export async function createPost(data: CreatePostRequest): Promise<Post> {
     throw error;
   }
 }
+
+export async function deletePost(spaceId: number, postId: number): Promise<void> {
+  try {
+    const cookieStore = await cookies()
+    const token = cookieStore.get('circleToken')?.value;
+
+    const response = await fetch(
+      `https://app.circle.so/api/headless/v1/spaces/${spaceId}/posts/${postId}`,
+      {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json"
+        }
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error('Failed to delete post');
+    }
+  } catch (error) {
+    console.error('Error deleting post:', error);
+    throw error;
+  }
+}
+
 
 export async function fetchComments(postId: number): Promise<CommentsResponse> {
   try {
