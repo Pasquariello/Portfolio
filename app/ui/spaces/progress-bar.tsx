@@ -1,17 +1,4 @@
-// buildCourseDetails
-
 import { ProgressBar } from '@/app/components/progressBar';
-import { buildCourseDetails } from '@/app/lib/data';
-import { lusitana } from '@/app/ui/fonts';
-import {
-    BanknotesIcon,
-    ClockIcon,
-    UserGroupIcon,
-    InboxIcon,
-  } from '@heroicons/react/24/outline';
-
-
-  
 
 export async function CourseProgressBar({
     value,

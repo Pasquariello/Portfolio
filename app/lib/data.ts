@@ -330,8 +330,31 @@ export async function fetchLessonData (course_id, lesson_id) {
   }
 } 
 
+export async function fetchLessonFiles (course_id, lesson_id) {
+  try {
+
+    const cookieStore = await cookies()
+    const token = await cookieStore.get('circleToken')?.value;
+
+    const response = await fetch(`https://app.circle.so/api/headless/v1/courses/${course_id}/lessons/${lesson_id}/files
+`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+    });
+  
+    const result = await response.json();
+    return result;
+  //   setData(response.data);
+  } catch (error) {
+    console.error('Error fetching protected data:', error);
+  }
+} 
+
 export async function fetchUpdateLessonProgress (data) {
   const {course_id, lesson_id, progress} = data;
+  console.log('TAYLOR result', data)
 
   const body = {
     status: progress
@@ -352,7 +375,7 @@ export async function fetchUpdateLessonProgress (data) {
     });
   
     const result = await response.json();
-    
+    console.log('TAYLOR result', result)
     return result;
   //   setData(response.data);
   } catch (error) {
