@@ -11,9 +11,10 @@ import {
 } from './definitions';
 import { formatCurrency } from './utils';
 import { cookies } from 'next/headers'
+import { Comment } from './types';
 import { revalidatePath } from 'next/cache';
 import { getCirleJWT } from './actions';
-import { SearchMember, MemberSearchResult, CommunityMemberSearchResult } from './types';
+import { SearchMember, MemberSearchResult, CommunityMemberSearchResult, PostsResponse, CreatePostRequest, Post, CommentsResponse, CreateCommentRequest } from './types';
 
 // import { getSession } from '@auth0/nextjs-auth0';
 
@@ -763,5 +764,140 @@ export async function fetchMemberInterests(communityMemberId: string): Promise<n
   } catch (error) {
     console.error('Database Error:', error);
     throw new Error('Failed to fetch member interests');
+  }
+}
+
+export async function fetchPosts(spaceId: number, page: number = 1): Promise<PostsResponse> {
+  try {
+    const cookieStore = await cookies()
+    const token = cookieStore.get('circleToken')?.value;
+
+    const response = await fetch(
+      `https://app.circle.so/api/headless/v1/spaces/${spaceId}/posts?page=${page}`, 
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json"
+        },
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch posts');
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching posts:', error);
+    throw error;
+  }
+}
+
+export async function createPost(data: CreatePostRequest): Promise<Post> {
+  try {
+    const cookieStore = await cookies()
+    const token = cookieStore.get('circleToken')?.value;
+
+    const response = await fetch(
+      `https://app.circle.so/api/headless/v1/spaces/${data.space_id}/posts`,
+      {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      }
+    );
+
+    if (!response.ok) {
+      console.error('Failed to create post', response);
+      throw new Error('Failed to create post');
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('Error creating post:', error);
+    throw error;
+  }
+}
+
+export async function deletePost(spaceId: number, postId: number): Promise<void> {
+  try {
+    const cookieStore = await cookies()
+    const token = cookieStore.get('circleToken')?.value;
+
+    const response = await fetch(
+      `https://app.circle.so/api/headless/v1/spaces/${spaceId}/posts/${postId}`,
+      {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json"
+        }
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error('Failed to delete post');
+    }
+  } catch (error) {
+    console.error('Error deleting post:', error);
+    throw error;
+  }
+}
+
+
+export async function fetchComments(postId: number): Promise<CommentsResponse> {
+  try {
+    const cookieStore = await cookies()
+    const token = cookieStore.get('circleToken')?.value;
+
+    const response = await fetch(
+      `https://app.circle.so/api/headless/v1/posts/${postId}/comments`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json"
+        },
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch comments');
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching comments:', error);
+    throw error;
+  }
+}
+
+export async function createComment(postId: number, data: CreateCommentRequest): Promise<Comment> {
+  try {
+    const cookieStore = await cookies()
+    const token = cookieStore.get('circleToken')?.value;
+
+    const response = await fetch(
+      `https://app.circle.so/api/headless/v1/posts/${postId}/comments`,
+      {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error('Failed to create comment');
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('Error creating comment:', error);
+    throw error;
   }
 }
