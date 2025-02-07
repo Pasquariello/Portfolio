@@ -43,20 +43,20 @@ export default function Section({section, course_id}) {
                         return (
                             <div
                                 key={lesson.id}
-                                className={'bg-white divider [&:not(:last-child)]:border-b'}
+                                className={'bg-white divider [&:not(:last-child)]:border-b hover:bg-blue-50'}
 
                             >
                             
-                            <Link 
-                                href={`/dashboard/spaces/${course_id}/lesson/${lesson.id}`}
-                                key={lesson.id}
-                            >
-                                    <div className="p-5 flex justify-between">
-                                        <p>{lesson.name}</p>
-                                        {lesson.progress.status === 'completed' && <CheckCircleIcon className='h-5 w-5 text-green-400'/>}
-                                    </div>
+                                <Link 
+                                    href={`/dashboard/spaces/${course_id}/lesson/${lesson.id}`}
+                                    key={lesson.id}
+                                >
+                                        <div className="p-5 flex justify-between">
+                                            <p>{lesson.name}</p>
+                                            {lesson.progress.status === 'completed' && <CheckCircleIcon className='h-5 w-5 text-green-400'/>}
+                                        </div>
                                 </Link>
-                                </div>
+                            </div>
                     )})
                 }
             </div>
