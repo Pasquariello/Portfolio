@@ -1,10 +1,29 @@
+// 'use client'
 import { DocumentIcon } from "@heroicons/react/24/outline"
 import { fetchLessonFiles } from "@/app/lib/data";
+// import { useEffect, useState } from "react";
+// import { getLessonFiles } from "../actions";
 
 export default async function LessonFiles({course_id, lesson_id  }) {
+    // const [files, setFiles] = useState()
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //           const response = await getLessonFiles(course_id, lesson_id)
+    //         //   const jsonData = await response.json();
+    //           console.log('jsonData', response)
+    //           setFiles(response);
+    //         } catch (error) {
+    //           console.error('Error fetching data:', error);
+    //         }
+    //       };
+      
+    //       fetchData();
+    // }, [])
+
     const files = await fetchLessonFiles(course_id, lesson_id);
 
-    if(!files || !files.records.length) {
+    if(!files || !files?.records.length) {
        return <p> No Files</p>
     }
 
