@@ -1,6 +1,6 @@
 'use server'
 
-import { fetchUpdateLessonProgress, joinSpace, leaveSpace } from "@/app/lib/data";
+import { fetchLessonFiles, fetchUpdateLessonProgress, joinSpace, leaveSpace } from "@/app/lib/data";
 
  
 export async function leave(id) {
@@ -14,5 +14,9 @@ export async function join(id) {
 export async function updateLessonProgress(data){
     console.log('PRESSED ME', data)
     await fetchUpdateLessonProgress(data)
-    
+}
+
+export async function getLessonFiles(course_id, lesson_id){
+    const res = await fetchLessonFiles(course_id, lesson_id)
+    return res;
 }

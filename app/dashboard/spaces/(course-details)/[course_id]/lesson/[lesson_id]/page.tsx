@@ -8,12 +8,16 @@ import LessonVideo from "@/app/ui/spaces/lesson/lesson-video";
 
 import { Suspense } from "react";
 
-export default async function Page({params}: {
-    params: Promise<{ lesson_id: number; course_id: number }>
+export default async function Page({params, searchParams}: {
+    params: Promise<{ lesson_id: number; course_id: number }>;
+    searchParams: any
   }) {
 
+    console.log('searchParams', (await searchParams))
     const lesson_id = (await params).lesson_id;
     const course_id = (await params).course_id;
+
+    const sideBarTerm = (await searchParams)?.sideBar;
 
     // const lesson = await fetchLessonData(course_id, lesson_id);
     const course = await fetchSingleSpace(course_id);
@@ -62,8 +66,9 @@ export default async function Page({params}: {
                         />
                   
                         
-                            <LessonSideBar>
-                                <LessonFiles course_id={course_id} lesson_id={lesson_id}/>
+                            <LessonSideBar sideBarTerm={sideBarTerm} course_id={course_id} lesson_id={lesson_id}>
+                                {/* <LessonFiles course_id={course_id} lesson_id={lesson_id}/> */}
+                                {/* <LessonFiles course_id={course_id} lesson_id={lesson_id}/> */}
                             </LessonSideBar>
                         
                     </Suspense>
