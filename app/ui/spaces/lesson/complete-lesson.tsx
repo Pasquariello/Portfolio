@@ -2,6 +2,8 @@
 import { useState } from "react";
 import { Button } from "../../button";
 import { updateLessonProgress } from "../actions";
+import { CheckCircleIcon } from "@heroicons/react/20/solid";
+import { CheckIcon } from "@heroicons/react/24/outline";
 
 export default function CompleteLesson({course_id, lesson_id, current_status}) {
 
@@ -17,7 +19,7 @@ export default function CompleteLesson({course_id, lesson_id, current_status}) {
             value: COMPLETE,
         },
         [COMPLETE]: {
-            label: 'Completed',
+            label: <><CheckCircleIcon className="w-4 h-4 mr-1"/> <p>Completed</p></>,
             tooltip: 'Mark Lesson as Incomplete',
             value: INCOMPLETE,
         },
