@@ -13,7 +13,7 @@ export default async function Page({searchParams}) {
   
   return (
     <div>
-       <h1 className={`mb-4 text-xl md:text-2xl mr-8`}>
+       <h1 className={`mb-4 text-xl md:text-3xl mr-8`}>
         Explore and Connect with Other Members
       </h1>
         <div className="mb-2">

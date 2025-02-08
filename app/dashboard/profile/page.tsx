@@ -17,7 +17,7 @@ export default async function ProfilePage() {
 
   return (
     <main className="flex min-h-screen flex-col">
-      <h1 className={`mb-4 text-xl md:text-2xl mr-8`}>
+      <h1 className={`mb-4 text-xl md:text-3xl mr-8`}>
         Profile
       </h1>
       <div className="flex flex-col gap-4 md:flex-col md:gap-8">

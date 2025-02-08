@@ -103,7 +103,7 @@ export default function EventDetails({eventDetails, selected}) {
 
       <div className="flex text-sm text-gray-500">
         <span className="inline-block text-center rounded-md bg-gray-50 px-2 py-2 mr-2 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">
-          <p className="mb-1 text-2xl">{monthAbbr}</p>
+          <p className="mb-1 text-xl">{monthAbbr}</p>
           <p className="text-lg">{day}</p>
         </span>
         <div>

@@ -27,7 +27,7 @@ export default async function EventList({selectedEvent}) {
     const renderEventList =  () => eventsByMonth && Object.values(eventsByMonth)?.map((month: any) => {
        return (
             <div className="mb-20" key={month.name}>
-                <h3 className="text-3xl md:text-3xl mb-4">{month.name as string}</h3>
+                <h3 className="text-2xl md:text-2xl mb-4">{month.name as string}</h3>
 
                 <div className="flex flex-col divide-y-1 divide-y divide-gray-200 border-2 border-gray-200 rounded-xl px-8 bg-white"> 
                     {
