@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
 import { useDebounce } from 'use-debounce'
 
 const MemberSearch = ({ search }: { search?: string }) => {
@@ -31,7 +31,7 @@ const MemberSearch = ({ search }: { search?: string }) => {
   return (
         <div className="flex w-full">
             <input
-                className=" rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                className="rounded-md border border-gray-200 bg-white py-[9px] pl-10 text-sm placeholder:text-gray-500"
                 id="memberSearch"
                 name="memberSearch"
                 placeholder="Search Member"

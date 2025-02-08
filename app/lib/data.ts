@@ -355,7 +355,6 @@ export async function fetchLessonFiles (course_id, lesson_id) {
 
 export async function fetchUpdateLessonProgress (data) {
   const {course_id, lesson_id, progress} = data;
-  console.log('TAYLOR result', data)
 
   const body = {
     status: progress
@@ -376,7 +375,6 @@ export async function fetchUpdateLessonProgress (data) {
     });
   
     const result = await response.json();
-    console.log('TAYLOR result', result)
     return result;
   //   setData(response.data);
   } catch (error) {

@@ -8,9 +8,6 @@ export default async function Page({searchParams}) {
 
   const params = await searchParams;
   const type = params.type;
-  console.log('search', type)
-  console.log('params', params)
-
 
   return (
     <div>
@@ -19,9 +16,7 @@ export default async function Page({searchParams}) {
           Navigate your Groups
         </h1>
 
-        {/* Start filter */}
         <SearchBar />
-        {/* End Filter */}
 
         <Suspense fallback={<RevenueChartSkeleton />}> 
           <SpaceList type={type} />

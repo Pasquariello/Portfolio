@@ -16,9 +16,11 @@ export default async function ProfilePage() {
   ]);
 
   return (
-    <main className="flex min-h-screen flex-col p-6">
+    <main className="flex min-h-screen flex-col">
+      <h1 className={`mb-4 text-xl md:text-2xl mr-8`}>
+        Profile
+      </h1>
       <div className="flex flex-col gap-4 md:flex-col md:gap-8">
-        <h1 className="text-2xl font-bold">Your Profile</h1>
         <ProfileForm 
           communityMemberId={loggedInUserCommunityMemberId?.toString()} 
           selectedInterests={selectedInterests as number[]}

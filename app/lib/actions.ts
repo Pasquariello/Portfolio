@@ -67,8 +67,6 @@ export async function getCirleJWT(email) {
 }
 
 async function syncMemberWithDatabase(community_member_id: string, email: string) {
-  console.log('community_member_id ---', community_member_id)
-  console.log('email ---', email)
 
     // First check if user exists in members table
     const existingUser = await sql`

@@ -71,7 +71,7 @@ export default function MemberDetails({ memberDetails, loggedInUserCommunityMemb
             </div>
 
             {showModal && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+                <div className="fixed inset-0 bg-black/25 z-50 flex items-center justify-center">
                     <div className="bg-white rounded-2xl p-8 max-w-md w-full mx-4 relative">
                         <button
                             onClick={() => setShowModal(false)}

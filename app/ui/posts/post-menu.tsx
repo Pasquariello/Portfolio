@@ -1,21 +1,14 @@
+'use client'
+
 import { memo, useState } from 'react';
 import { deletePost } from '@/app/lib/data';
+import { deleteCommentAction } from './actions';
 
-const PostMenu = memo(({ spaceId, postId, onDelete }: {
+const PostMenu = memo(({ spaceId, postId }: {
     spaceId: number,
     postId: number,
-    onDelete: () => void
 }) => {
     const [isOpen, setIsOpen] = useState(false);
-
-    const handleDelete = async () => {
-        try {
-            await deletePost(spaceId, postId);
-            onDelete();
-        } catch (error) {
-            console.error('Error deleting post:', error);
-        }
-    };
 
     return (
         <div className="relative">
@@ -32,8 +25,8 @@ const PostMenu = memo(({ spaceId, postId, onDelete }: {
             {isOpen && (
                 <div className="absolute right-0 mt-1 w-48 bg-white rounded-md shadow-lg border border-gray-100 z-10">
                     <button
-                        onClick={() => {
-                            handleDelete();
+                        onClick={async () => {
+                            await deleteCommentAction(spaceId, postId);
                             setIsOpen(false);
                         }}
                         className="w-full px-4 py-2 text-left text-sm text-red-600 hover:bg-red-50 rounded-md transition-colors"

@@ -13,7 +13,10 @@ export default async function Page({searchParams}) {
   
   return (
     <div>
-        <div>
+       <h1 className={`mb-4 text-xl md:text-2xl mr-8`}>
+        Explore and Connect with Other Members
+      </h1>
+        <div className="mb-2">
           <label
             className="mb-3 mt-5 block text-xs font-medium text-gray-900"
             htmlFor="email"
