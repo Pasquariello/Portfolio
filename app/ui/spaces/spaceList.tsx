@@ -1,15 +1,9 @@
-import { fetchSpaces, joinSpace, leaveSpace } from "@/app/lib/data";
-import { Card } from "./card";
-import { lusitana } from '@/app/ui/fonts';
-import { Button } from "../button";
-import { Suspense } from "react";
+import { fetchSpaces } from "@/app/lib/data";
 import SpaceDetails from "./spaceDetails";
 
 
 export default async function SpaceList({type}) {
-    console.log('type === ', type)
     const res = await fetchSpaces();
-    // const spaces = await fetchSpaces();
 
     const spaces = !type || type === 'all' ? res : res?.filter(space => space.space_type === type);
 

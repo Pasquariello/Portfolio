@@ -3,16 +3,17 @@
 import { memo, useState } from 'react';
 import { Button } from '@/app/ui/button';
 import { Post } from '@/app/lib/types';
-import { createPost } from '@/app/lib/data';
+import { createNewPostAction } from './actions';
+// import { createPost } from '@/app/lib/data';
 
-const CreatePostForm = memo(({ onSubmit, spaceId }: { 
-    onSubmit: (post: Post) => void, 
+const CreatePostForm = memo(({ spaceId }: { 
     spaceId: number | null 
 }) => {
     const [postTitle, setPostTitle] = useState('');
     const [postContent, setPostContent] = useState('');
 
     const handleSubmit = async (e: React.FormEvent) => {
+        
         e.preventDefault();
         if (!postContent.trim() || !postTitle.trim() || !spaceId) return;
 
@@ -40,11 +41,12 @@ const CreatePostForm = memo(({ onSubmit, spaceId }: {
                 },
                 topics: []
             };
-
-            const newPost = await createPost(postData);
-            onSubmit(newPost);
-            setPostTitle('');
-            setPostContent('');
+            await createNewPostAction(postData)
+            // const newPost = 
+            // await createPost(postData);
+            // onSubmit(newPost);
+            // setPostTitle('');
+            // setPostContent('');
         } catch (error) {
             console.error('Error creating post:', error);
         }
@@ -75,7 +77,7 @@ const CreatePostForm = memo(({ onSubmit, spaceId }: {
             
             <Button 
                 type="submit" 
-                className="w-full px-6 py-2 bg-blue-600 hover:bg-blue-700 transition-colors"
+                className="px-6 py-2 bg-blue-600 hover:bg-blue-700 transition-colors"
                 disabled={!postTitle.trim() || !postContent.trim()}
             >
                 Create Post

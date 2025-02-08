@@ -7,9 +7,9 @@ import { PencilIcon, PencilSquareIcon } from '@heroicons/react/24/outline';
 
   export default async function CourseWrapper() {
 
-    // refactor to separate calls per card?
+    // TODO refactor to separate calls per card?
     const courses = await fetchCoursesWithDetails();
-    console.log('courses', courses)
+
     if (!courses) {
         return (
             <div>

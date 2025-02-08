@@ -7,8 +7,7 @@ import { useState } from "react";
 export default function Section({section, course_id}) {
  
     const [isOpen, setIsOpen] = useState(true);
-    console.log('isOpen', isOpen)
-    //   [&>:not(:last-child)]:border-b
+
     return (
         <div>
           <h2 id="accordion-collapse-heading-1" className="border-b border-gray-200 bg-gray-200">

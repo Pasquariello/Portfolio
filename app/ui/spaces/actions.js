@@ -12,7 +12,6 @@ export async function join(id) {
 }
 
 export async function updateLessonProgress(data){
-    console.log('PRESSED ME', data)
     await fetchUpdateLessonProgress(data)
 }
 

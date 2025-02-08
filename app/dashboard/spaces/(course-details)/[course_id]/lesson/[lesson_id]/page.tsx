@@ -13,7 +13,6 @@ export default async function Page({params, searchParams}: {
     searchParams: any
   }) {
 
-    console.log('searchParams', (await searchParams))
     const lesson_id = (await params).lesson_id;
     const course_id = (await params).course_id;
 
@@ -21,13 +20,10 @@ export default async function Page({params, searchParams}: {
 
     // const lesson = await fetchLessonData(course_id, lesson_id);
     const course = await fetchSingleSpace(course_id);
-    console.log('course', course)
+
     const lessons = course.course_sections.map(section => {
         return [...section.lessons]
     }).flat(Infinity);
-
-    console.log('lessons', lessons);
-
 
     const lessonIndex = lessons.findIndex(lesson => lesson.id === Number(lesson_id));
     const lessonCount = course.total_lesson_count;
@@ -39,9 +35,8 @@ export default async function Page({params, searchParams}: {
 
     const percent_complete = Number((course?.course_percent_completed * 100).toFixed(0));
     const { name, total_lesson_count, total_lessons_completed } = course;
-    const total_section_count = course.course_sections.length;
+    // const total_section_count = course.course_sections.length;
 
-    // const hasVideo = !!lesson?.featured_media;
     
     return (
         <>
@@ -65,12 +60,8 @@ export default async function Page({params, searchParams}: {
                             lessonCount={lessonCount}
                         />
                   
-                        
-                            <LessonSideBar sideBarTerm={sideBarTerm} course_id={course_id} lesson_id={lesson_id}>
-                                {/* <LessonFiles course_id={course_id} lesson_id={lesson_id}/> */}
-                                {/* <LessonFiles course_id={course_id} lesson_id={lesson_id}/> */}
-                            </LessonSideBar>
-                        
+                        <LessonSideBar sideBarTerm={sideBarTerm} course_id={course_id} lesson_id={lesson_id} />
+                         
                     </Suspense>
                 
                  </div>
