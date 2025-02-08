@@ -12,7 +12,7 @@ export default async function Page({searchParams}) {
   return (
     <div>
         
-        <h1 className={`mb-4 text-xl md:text-2xl`}>
+        <h1 className={`mb-4 text-xl md:text-3xl`}>
           Navigate your Groups
         </h1>
 

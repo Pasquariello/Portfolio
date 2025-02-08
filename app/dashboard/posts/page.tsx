@@ -17,7 +17,7 @@ export default async function Page({searchParams}) {
   return (
     <main className="flex min-h-screen flex-col">
       {/* <div className='flex'>  */}
-      <h1 className={`mb-4 text-xl md:text-2xl mr-8`}>
+      <h1 className={`mb-4 text-xl md:text-3xl mr-8`}>
         Posts
       </h1>
 

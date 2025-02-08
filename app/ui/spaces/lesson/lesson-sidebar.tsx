@@ -28,7 +28,10 @@ export function LessonSideBar({sideBarTerm, course_id, lesson_id}) {
             </div>
                         
                 
-            <div className={`px-6 border-l max-w-[400px] w-[400px] flex-grow h-full`} hidden={!sideBarTerm}>
+            <div 
+            className={`px-6 border-l flex-grow h-full overflow-hidden transition-all duration-500 ease-in-out ${sideBarTerm ? 'max-w-[400px] w-[400px] opacity-100' : 'max-w-0 opacity-0'}`}
+            // className={`px-6 border-l max-w-[400px] w-[400px] flex-grow h-full`} hidden={!sideBarTerm}
+            >
                 <div className="flex justify-between items-center">
                     <h2 className="text-2xl md:text-2xl mb-6">{title}</h2>
                    <CloseSideBarButton />
