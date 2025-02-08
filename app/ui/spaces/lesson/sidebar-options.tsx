@@ -21,8 +21,13 @@ export function SideBarOptions() {
   
     return (
         <div className="flex gap-4">
-            <FolderIcon className="w-6 h-6" onClick={() => handleChange('files')} />
-            <ListBulletIcon className="w-6 h-6" onClick={() => handleChange('lessons')} />
+            <div className="inline-block rounded-full hover:bg-black/25 p-2">
+                <FolderIcon className="w-6 h-6" onClick={() => handleChange('files')} />
+            </div>
+            <div className="inline-block rounded-full hover:bg-black/25 p-2">
+                <ListBulletIcon className="w-6 h-6" onClick={() => handleChange('lessons')} />
+            </div>
+
         </div>
   
     );

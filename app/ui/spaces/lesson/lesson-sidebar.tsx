@@ -1,4 +1,4 @@
-import { SideBarOptions } from "./folder-button";
+import { SideBarOptions } from "./sidebar-options";
 import LessonFiles from "./lesson-files";
 import { CloseSideBarButton } from "./close-sidebar-button";
 import { Suspense } from "react";
@@ -23,12 +23,12 @@ export function LessonSideBar({sideBarTerm, course_id, lesson_id}) {
 
     return (
         <>
-            <div className={`flex py-1 ${sideBarTerm && 'mr-6'}`}>
+            <div className={`py-1 ${sideBarTerm && 'mr-6'}`}>
                 <SideBarOptions />
             </div>
                         
                 
-            <div className={`px-6 border-l max-w-[400px] flex-grow h-full`} hidden={!sideBarTerm}>
+            <div className={`px-6 border-l max-w-[400px] w-[400px] flex-grow h-full`} hidden={!sideBarTerm}>
                 <div className="flex justify-between items-center">
                     <h2 className="text-2xl md:text-2xl mb-6">{title}</h2>
                    <CloseSideBarButton />
