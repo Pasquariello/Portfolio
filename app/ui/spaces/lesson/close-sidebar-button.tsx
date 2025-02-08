@@ -20,6 +20,6 @@ export function CloseSideBarButton() {
       }
 
       return (
-        <XMarkIcon onClick={handleChange} className="w-8 h-8" />
+        <XMarkIcon onClick={handleChange} className="w-8 h-8 rounded-full hover:bg-black/25" />
       )
 }
