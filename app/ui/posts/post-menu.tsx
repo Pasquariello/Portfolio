@@ -1,7 +1,5 @@
 'use client'
-
 import { memo, useState } from 'react';
-import { deletePost } from '@/app/lib/data';
 import { deleteCommentAction } from './actions';
 
 const PostMenu = memo(({ spaceId, postId }: {
