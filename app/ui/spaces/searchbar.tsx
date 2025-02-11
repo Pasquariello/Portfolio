@@ -22,14 +22,30 @@ export function SearchBar() {
       }
   
     return (
+  //     <div className="flex w-full">
+  //     <input
+  //         className="rounded-md border border-gray-200 bg-white py-[9px] pl-10 text-sm placeholder:text-gray-500"
+  //         id="memberSearch"
+  //         name="memberSearch"
+  //         placeholder="Search Member"
+  //         required
+  //         value={memberInput}
+  //         onChange={(e) => setMemberInput(e.target.value)}
+  //     />
+  // </div>
         <div className="w-full max-w-sm min-w-[200px]">      
             <div className="relative">
-                <label className="block mb-2 text-md/4 text-gray-500">Filter Group types:</label>
+                <label 
+                  // className="block mb-2 text-md/4 text-gray-500"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
+                    Filter Group types:</label>
                 <select
                     id="space-type-filter"
                     value={value}
                     onChange={(e) => handleChange(e.target.value)}
-                    className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded pl-3 pr-8 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md appearance-none cursor-pointer"
+                    className=" px-3 py-2 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+
                 >
                     <option value="all">Show All</option>
                     <option value="basic">Basic</option>
