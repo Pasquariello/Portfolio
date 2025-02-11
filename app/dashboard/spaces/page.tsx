@@ -18,9 +18,9 @@ export default async function Page({searchParams}) {
 
         <SearchBar />
 
-        <Suspense fallback={<RevenueChartSkeleton />}> 
+        {/* <Suspense key={type} fallback={<RevenueChartSkeleton />}>  */}
           <SpaceList type={type} />
-        </Suspense>
+        {/* </Suspense> */}
       
   </div>
   );
