@@ -1,55 +1,46 @@
-"use client"
-import { lusitana } from '@/app/ui/fonts';
-import { Button } from "../button";
-import { useState } from "react";
-
-import {leave, join} from './actions';
-
-import { useTransition  } from 'react'
+// import {leave, join} from './actions';
+// import { useTransition  } from 'react'
 import { LoadingSpinner } from '../loadingSpinner';
+import { fetchSpaces } from '@/app/lib/data';
+import SpaceAction from './space-action';
 
 
-export default function SpaceDetails({spaceDetails}) {
-    let [isPending, startTransition] = useTransition();
+export default async function SpaceDetails({type}) {
 
-    const { id, name, is_member } = spaceDetails;
+    const res = await fetchSpaces();
+
+    const spaces = !type || type === 'all' ? res : res?.filter(space => space.space_type === type);
     
-
-    const leaveMe = () => {
-        startTransition(() => {
-            leave(id);
-        });
-
+    if (!spaces || !spaces.length) {
+       return (
+        <tr className="bg-white border-b border-gray-200">
+            <td scope="row" colSpan={4} className="px-6 py-4 font-medium text-gray-900 whitespace-wrap">
+                No Spaces under this type yet..
+            </td>
+        </tr>
+       )
     }
 
-    const joinMe = () => {
-        startTransition(() => {
-            join(id);
-        });
-
+    
+    return spaces?.map(spaceDetails => {
+        return (
+            <tr key={spaceDetails.id} className="bg-white border-b border-gray-200">
+                <td scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-wrap">
+                    {spaceDetails.name} 
+                </td>
+                <td className="px-6 py-4">
+                    {spaceDetails.space_type}
+                </td>
+                <td className="px-6 py-4">
+                    {spaceDetails.is_member ? 'Yes' : 'No'}
+                </td>
+                <td className="px-6 py-4">
+                    <SpaceAction id={spaceDetails.id} is_member={spaceDetails.is_member} />
+                </td>
+            </tr>
+        )  
     }
 
-    return (
-        <div className="m-6 border-solid rounded-xl p-2 shadow-sm flex justify-center bg-white">
-            <div className="p-4 flex flex-col items-center">
-                <h3 className="m-2 text-sm font-medium">{name}</h3>
-                {is_member ?                     
-                        <Button 
-                            onClick={leaveMe}
-                            className="outline outline-2 bg-transparent outline-blue-500 !text-blue-500 hover:!text-white"
-                        >
-                            {isPending ? <LoadingSpinner className="!text-black"/> : 'Leave'}
-                        </Button>
-                        
-                    : <Button 
-                        onClick={joinMe}
-                        className="outline outline-2 hover:bg-transparent outline-blue-500 hover:!text-blue-500 m-0 margin"
-                    >
-                         {isPending ? <LoadingSpinner className="!text-white"/> : 'Join'}
-                    </Button>
-                }
-            </div>
-        </div>
 
     )
 }

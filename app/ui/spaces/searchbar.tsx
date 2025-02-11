@@ -34,6 +34,8 @@ export function SearchBar() {
                     <option value="all">Show All</option>
                     <option value="basic">Basic</option>
                     <option value="course">Course</option>
+                    <option value="event">Event</option>
+                    <option value="members">Members</option>
                 </select>
             </div>
             </div>

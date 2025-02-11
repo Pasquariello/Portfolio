@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import PostsPage from '@/app/ui/posts/posts-page';
 import { getLoggedInUserCommunityMemberId } from '@/app/lib/data';
 import { Suspense } from 'react';
 import SpacesDropdown from '@/app/ui/posts/spaces-dropdown';

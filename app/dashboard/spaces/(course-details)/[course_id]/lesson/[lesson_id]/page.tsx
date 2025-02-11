@@ -59,15 +59,12 @@ export default async function Page({params, searchParams}: {
                             lessonIndex={lessonIndex}
                             lessonCount={lessonCount}
                         />
-                  
-                        <LessonSideBar sideBarTerm={sideBarTerm} course_id={course_id} lesson_id={lesson_id} />
-                         
+                        <LessonSideBar sideBarTerm={sideBarTerm} course_id={course_id} lesson_id={lesson_id} />   
                     </Suspense>
                 
                  </div>
 
                 {/* Start Body  */}
-
 
                 {/* Start  Footer */}
                 <LessonFooter 

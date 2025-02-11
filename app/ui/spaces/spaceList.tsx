@@ -1,69 +1,68 @@
-import { fetchSpaces } from "@/app/lib/data";
+// import { fetchSpaces } from "@/app/lib/data";
 import SpaceDetails from "./spaceDetails";
+// import { Button } from "../button";
+import { Suspense } from "react";
 
 
 export default async function SpaceList({type}) {
-    const res = await fetchSpaces();
+    // const res = await fetchSpaces();
 
-    const spaces = !type || type === 'all' ? res : res?.filter(space => space.space_type === type);
+    // const spaces = !type || type === 'all' ? res : res?.filter(space => space.space_type === type);
 
-    console.log('spaces', spaces)
-
-    if (!spaces.length) {
-        return <p>No Groups</p>
-    }
+    // if (!spaces.length) {
+    //     return <p>No Groups</p>
+    // }
 
     return (
-        <div className="grid grid-cols-4 gap-4">
-            {
-                spaces?.map(spaceDetails => {
-                    const { id, name, is_member } = spaceDetails;
-                    return (
-                        <SpaceDetails key={id} spaceDetails={spaceDetails} />
-                    )
-                }
-            )}
+        <div className="relative overflow-x-auto mt-8">
+            <table className="w-full text-sm text-left rtl:text-right text-gray-500 table-fixed">
+                <thead className="text-xs text-gray-700 uppercase bg-gray-50 w-full">
+                    <tr>
+                        <th scope="col" className="px-6 py-3 lg:w-115">
+                            Space name
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            Type
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            Member
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                <Suspense key={type} fallback={<Skeleton />}>
+                    <SpaceDetails type={type} />
+                </Suspense>
+                </tbody>
+
+            </table>
         </div>
-        
     )
 }
 
 
-// click button
-// set loading 
-// call api route 
-// API route will call join 
-   // <div>{spaceDetails.name}</div>
-//    <div className="m-6 border-solid rounded-xl bg-white p-2 shadow-sm">
-//    <div className="p-4">
-//        <h3 className="m-2 text-sm font-medium">{name}</h3>
-//        {is_member ? 
-//            <form
-//                action={async () => {
-//                "use server";
-//                await leaveSpace(id);
-//            }}>
-             
-//                <Button 
-//                    className="outline outline-2 outline-offset-2 bg-transparent outline-blue-500 !text-blue-500 hover:!text-white"
-//                >
-//                <Suspense fallback="Loading">
+const Skeleton = () => {
 
-//                    Leave
-//                    </Suspense>
-//                </Button>
-             
-//            </form> : 
-//            <Suspense fallback={<div>Loading</div>}>
-
-//            <form
-//                action={async () => {
-//                "use server";
-//                await joinSpace(id);
-//            }}>
-//                <Button >Join</Button>
-//            </form>
-//            </Suspense>
-//        }
-//    </div>
-// </div>
+    return Array.from(Array(10)).map((_, i) => {
+        return (
+            <tr key={i} className="bg-white border-b border-gray-200 animate-pulse">
+                <td scope="row" className="px-6 py-4 font-medium text-gray-900">
+                <div className="h-4 bg-gray-300 rounded w-3/4"></div>
+                </td>
+                <td className="px-6 py-4">
+                <div className="h-4 bg-gray-300 rounded w-1/2"></div>
+                </td>
+                <td className="px-6 py-4">
+                <div className="h-4 bg-gray-300 rounded w-1/4"></div>
+                </td>
+                <td className="px-6 py-4">
+                <div className="h-4 bg-gray-300 rounded w-1/3"></div>
+                </td>
+            </tr>
+        )
+    })
+    
+}
