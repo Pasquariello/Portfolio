@@ -6,12 +6,7 @@ import { useContext } from "react";
 import { SidebarContext, SidebarDispatchContext } from "../sidebar-context";
 
 export function SideBarOptions() {
-
-    const searchParams = useSearchParams();
-    const pathname = usePathname();
-    const { replace } = useRouter();
     const dispatch = useContext(SidebarDispatchContext);
-    const { updateParams } = useContext(SidebarContext);
 
 
 
@@ -31,7 +26,6 @@ export function SideBarOptions() {
                 <FolderIcon 
                   className="w-6 h-6" 
                   onClick={() => {
-                    updateParams('files')
                     dispatch({
                       type: 'open',
                       text: 'files',
@@ -44,8 +38,6 @@ export function SideBarOptions() {
                 <ListBulletIcon 
                   className="w-6 h-6" 
                   onClick={() => {
-                    updateParams('lessons')
-
                     dispatch({
                       type: 'open',
                       text: 'lessons',

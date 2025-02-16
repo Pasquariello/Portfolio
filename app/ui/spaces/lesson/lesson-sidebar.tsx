@@ -6,9 +6,24 @@ import { Suspense, useContext } from "react";
 import { SidebarContext } from "../sidebar-context";
 
 
-export function LessonSideBar({title, children}) {
-    const { sideBarSettings } = useContext(SidebarContext);
+export function LessonSideBar({course_id, lesson_id}) {
+    const sideBarSettings = useContext(SidebarContext);
     
+    const displayOptions = {
+        files: {
+            title: 'Files',
+            body: <LessonFiles course_id={course_id} lesson_id={lesson_id}/>,
+        },
+        lessons: {
+            title: 'Lessons',
+            body: <div>List of Lessons here</div>,
+        },
+    }
+    
+    const title = displayOptions[sideBarSettings.text]?.title || '';
+    // TODO - figure out <></>
+    const  body = displayOptions[sideBarSettings.text]?.body || <></>;
+
     return (
         <>
             <div className={`py-1 ${sideBarSettings.isOpen && 'mr-6'}`}>
@@ -24,15 +39,13 @@ export function LessonSideBar({title, children}) {
                     <h2 className="text-2xl md:text-2xl">{title}</h2>
                    <CloseSideBarButton />
                 </div>
+                {body}
                 {/* TODO - add loading fallbacks */}
-                <Suspense 
+                {/* <Suspense 
                     // key={sideBarTerm}
                     fallback={<div>Loading...</div>}
-                >
-                    {/* { body } */}
-                    {children}
-                    {/* <LessonFiles course_id={course_id} lesson_id={lesson_id}/> */}
-                </Suspense>
+                > */}
+                {/* </Suspense> */}
 
             </div>
         </>

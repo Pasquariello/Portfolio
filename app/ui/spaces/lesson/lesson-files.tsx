@@ -1,36 +1,36 @@
-// 'use client'
+'use client'
 import { DocumentIcon } from "@heroicons/react/24/outline"
-import { fetchLessonFiles } from "@/app/lib/data";
-// import { useEffect, useState } from "react";
+// import { fetchLessonFiles } from "@/app/lib/data";
+import { useEffect, useState } from "react";
 
 
-export default async function LessonFiles({course_id, lesson_id  }) {
+export default function LessonFiles({course_id, lesson_id  }) {
  
-    const files = await fetchLessonFiles(course_id, lesson_id);
-    // const [files, setFiles] = useState([]);
+    // const files = await fetchLessonFiles(course_id, lesson_id);
+    const [files, setFiles] = useState<any>();
     
 
-    // const getFiles = async () => {
-    //     const res = await fetch(`/api/notifications/count`, {
-    //       method: 'GET',
-    //       headers: {
-    //         'Content-Type': 'application/json'
-    //       }
+    const getFiles = async () => {
+        // /Users/taylorpasquariello/Cascadian/Circle/nextjs-dashboard/app/api/spaces/[id]/lessons/[lesson_id]/files/routes.js
+        const res = await fetch(`/api/spaces/${course_id}/lessons/${lesson_id}/files`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
       
-    //     });
-    //     // const data = await getUnreadCount()
-    //     const data = await res.json();
-    //     // if (data?.new_notifications_count) {
-    //         setNotificationCount(data?.new_notifications_count)
-    //     // }
-    //     console.log('data', data)
-    //   } 
+        });
+        const data = await res.json();
+        console.log('DATA 111', data)
+        setFiles(data);
+      
+        console.log('data', data)
+      } 
     
-    // useEffect(() => {
+    useEffect(() => {
+        getFiles();
+    }, [])
 
-    // }, [])
-
-    if(!files || !files?.records.length) {
+    if(!files || !files?.records?.length) {
        return <p> No Files</p>
     }
 

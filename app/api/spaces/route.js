@@ -11,6 +11,7 @@ export async function GET() {
 
 export async function POST(request) {
     const { id } = request.query; // Access query parameters
+    
   // Handle POST request
   const events = await leaveSpace(id);
   return NextResponse.json(events);

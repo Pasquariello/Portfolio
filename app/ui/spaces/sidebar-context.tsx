@@ -13,20 +13,20 @@ export function SidebarProvider({ children }) {
     initialSidebar
   );
 
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
-  const { replace } = useRouter()
+//   const searchParams = useSearchParams();
+//   const pathname = usePathname();
+//   const { replace } = useRouter()
 
-  const updateParams = (newParams) => {
-      const params = new URLSearchParams(searchParams);
-      params.set('sideBar', newParams);
-      replace(`${pathname}?${params?.toString()}`);
-  };
+//   const updateParams = (newParams) => {
+//       const params = new URLSearchParams(searchParams);
+//       params.set('sideBar', newParams);
+//       replace(`${pathname}?${params?.toString()}`);
+//   };
 
 
 
   return (
-    <SidebarContext.Provider value={{sideBarSettings, updateParams}}>
+    <SidebarContext.Provider value={sideBarSettings}>
       <SidebarDispatchContext.Provider value={dispatch}>
         {children}
       </SidebarDispatchContext.Provider>

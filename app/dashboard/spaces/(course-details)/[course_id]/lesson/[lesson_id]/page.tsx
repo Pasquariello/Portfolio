@@ -4,7 +4,6 @@ import LessonFiles from "@/app/ui/spaces/lesson/lesson-files";
 import LessonFooter from "@/app/ui/spaces/lesson/lesson-footer";
 import LessonHeader from "@/app/ui/spaces/lesson/lesson-header";
 import { LessonSideBar } from "@/app/ui/spaces/lesson/lesson-sidebar";
-import LessonVideo from "@/app/ui/spaces/lesson/lesson-video";
 import { SidebarProvider } from "@/app/ui/spaces/sidebar-context";
 
 import { Suspense } from "react";
@@ -16,8 +15,6 @@ export default async function Page({params, searchParams}: {
 
     const lesson_id = (await params).lesson_id;
     const course_id = (await params).course_id;
-
-    const sideBarTerm = (await searchParams)?.sideBar;
 
     // const lesson = await fetchLessonData(course_id, lesson_id);
     const course = await fetchSingleSpace(course_id);
@@ -72,10 +69,9 @@ export default async function Page({params, searchParams}: {
                                 lessonCount={lessonCount}
                             />
                             <LessonSideBar 
-                                title={leftSideBarData[sideBarTerm].title}
-                            >  
-                                {leftSideBarData[sideBarTerm].body}
-                            </LessonSideBar>   
+                                course_id={course_id} 
+                                lesson_id={lesson_id} 
+                            />   
                         </SidebarProvider>
                     </Suspense>
                 
