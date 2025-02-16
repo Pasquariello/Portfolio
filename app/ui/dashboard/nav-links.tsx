@@ -6,7 +6,8 @@ import {
     DocumentDuplicateIcon,
     WrenchScrewdriverIcon,
     UserCircleIcon,
-    BellIcon
+    BellIcon,
+    CalendarIcon
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -22,7 +23,7 @@ const links = [
     {
         name: 'Events',
         href: '/dashboard/events',
-        icon: DocumentDuplicateIcon,
+        icon: CalendarIcon,
     },
     { name: 'Members', href: '/dashboard/members', icon: UserGroupIcon },
     { name: 'Groups', href: '/dashboard/spaces ', icon: WrenchScrewdriverIcon },
