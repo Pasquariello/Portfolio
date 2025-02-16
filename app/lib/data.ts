@@ -210,8 +210,6 @@ export async function leaveSpace(id) {
   
 
     const result = await response.json();
-    // revalidatePath('http://localhost:3000/dashboard/spaces');
-    // revalidatePath('/api/spaces/[id]/leave');
 
     return result;
   } catch (error) {
@@ -408,6 +406,100 @@ export async function fetchSingleSpace(space_id) {
     console.error('Error fetching protected data:', error);
   }
 } 
+
+
+
+// notifications
+export async function fetchNewNotificationsCount() {
+  try {
+
+    const cookieStore = await cookies()
+    const token = await cookieStore.get('circleToken')?.value;
+
+    const response = await fetch(`https://app.circle.so/api/headless/v1/notifications/new_notifications_count`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+    });
+    
+  
+    const notification_count = await response.json();
+    
+    return notification_count;
+  } catch (error) {
+    console.error('Error fetching protected data:', error);
+  }
+}
+
+export async function  fetchNotifications() {
+  try {
+
+    const cookieStore = await cookies()
+    const token = await cookieStore.get('circleToken')?.value;
+
+    const response = await fetch(`https://app.circle.so/api/headless/v1/notifications?per_page=60`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+    });
+    
+  
+    const notifications = await response.json();
+    // revalidatePath('/dashboard/notifications');
+    return notifications;
+  } catch (error) {
+    console.error('Error fetching protected data:', error);
+  }
+}
+
+export async function  fetchMarkNotificationsAsRead(id) {
+  try {
+
+    const cookieStore = await cookies()
+    const token = await cookieStore.get('circleToken')?.value;
+
+    const response = await fetch(`https://app.circle.so/api/headless/v1/notifications/${id}/mark_as_read`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+    });
+    
+  
+    const notifications = await response.json();
+    // revalidatePath('/dashboard/notifications')
+    return notifications;
+  } catch (error) {
+    console.error('Error fetching protected data:', error);
+  }
+}
+
+
+export async function  fetchHomePagePosts() {
+  try {
+
+    const cookieStore = await cookies()
+    const token = await cookieStore.get('circleToken')?.value;
+
+    const response = await fetch(`https://app.circle.so/api/headless/v1/home`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+    });
+    
+  
+    const posts = await response.json();
+    return posts;
+  } catch (error) {
+    console.error('Error fetching protected data:', error);
+  }
+}
+
+
 
 
 

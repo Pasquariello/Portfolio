@@ -13,13 +13,17 @@ export default function SpacesSelect({spaces}) {
 
     useEffect(() => {
             const params = new URLSearchParams(searchParams);
-       
-            params.set('selectedSpace', spaces[0].id);
+
+            if (!selectedSpaceId) {
+                console.log("HERE ")
+                params.set('selectedSpace', spaces[0].id);
+                replace(`${pathname}?${params?.toString()}`);
+            }
+            console.log("HOOORAY")
     
-            replace(`${pathname}?${params?.toString()}`);
     
       
-    }, []);
+    }, [selectedSpaceId]);
 
 
     function handleChange(term: string) {

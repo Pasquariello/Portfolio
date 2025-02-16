@@ -36,7 +36,7 @@ export default async function Page({searchParams}) {
 
 
       <Suspense 
-        key={selectedSpaceId}
+        // key={selectedSpaceId}
         fallback={<div className='w-full h-[300px] flex-grow bg-blue-50'>Loading...</div>}
       >
         {

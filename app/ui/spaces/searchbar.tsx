@@ -22,17 +22,6 @@ export function SearchBar() {
       }
   
     return (
-  //     <div className="flex w-full">
-  //     <input
-  //         className="rounded-md border border-gray-200 bg-white py-[9px] pl-10 text-sm placeholder:text-gray-500"
-  //         id="memberSearch"
-  //         name="memberSearch"
-  //         placeholder="Search Member"
-  //         required
-  //         value={memberInput}
-  //         onChange={(e) => setMemberInput(e.target.value)}
-  //     />
-  // </div>
         <div className="w-full max-w-sm min-w-[200px]">      
             <div className="relative">
                 <label 

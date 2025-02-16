@@ -29,6 +29,7 @@ export default async function EventList({selectedEvent}) {
             <div className="mb-20" key={month.name}>
                 <h3 className="text-2xl md:text-2xl mb-4">{month.name as string}</h3>
 
+
                 <div className="flex flex-col divide-y-1 divide-y divide-gray-200 border-2 border-gray-200 rounded-xl px-8 bg-white"> 
                     {
                         month?.records?.map(eventDetails => {
@@ -42,8 +43,7 @@ export default async function EventList({selectedEvent}) {
 
     return (
         <div className="flex justify-center">
-            <div className="w-4/5">
-            
+            <div className="w-4/5">      
                     {
                     events ? renderEventList() 
                     : <div>Loading</div> // to do: set up skeleton loading here
