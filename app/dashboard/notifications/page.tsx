@@ -11,9 +11,6 @@ export default async function Page({searchParams}) {
   
   const notifications = await fetchNotifications();
 
-
-  // const selectedSpaceId = (await searchParams)?.selectedSpace
-
   return (
     <main className="">
       <h1 className={`mb-4 text-xl md:text-3xl mr-8 mb-20`}>

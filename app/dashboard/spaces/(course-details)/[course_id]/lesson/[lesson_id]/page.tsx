@@ -5,6 +5,7 @@ import LessonFooter from "@/app/ui/spaces/lesson/lesson-footer";
 import LessonHeader from "@/app/ui/spaces/lesson/lesson-header";
 import { LessonSideBar } from "@/app/ui/spaces/lesson/lesson-sidebar";
 import LessonVideo from "@/app/ui/spaces/lesson/lesson-video";
+import { SidebarProvider } from "@/app/ui/spaces/sidebar-context";
 
 import { Suspense } from "react";
 
@@ -37,6 +38,16 @@ export default async function Page({params, searchParams}: {
     const { name, total_lesson_count, total_lessons_completed } = course;
     // const total_section_count = course.course_sections.length;
 
+    const leftSideBarData = {
+        files: {
+            title: 'Files',
+            body: <LessonFiles course_id={course_id} lesson_id={lesson_id} />
+        },
+        lessons: {
+            title: 'Lesson',
+            body: <div>Hello Lessons</div>
+        },
+    }
     
     return (
         <>
@@ -53,13 +64,19 @@ export default async function Page({params, searchParams}: {
                  {/* Start Body  */}
                  <div className="flex flex-grow justify-center">
                     <Suspense fallback={<div>Loading...</div>}>
-                        <LessonBody 
-                            course_id={course_id}
-                            lesson_id={lesson_id}
-                            lessonIndex={lessonIndex}
-                            lessonCount={lessonCount}
-                        />
-                        <LessonSideBar sideBarTerm={sideBarTerm} course_id={course_id} lesson_id={lesson_id} />   
+                        <SidebarProvider>
+                            <LessonBody 
+                                course_id={course_id}
+                                lesson_id={lesson_id}
+                                lessonIndex={lessonIndex}
+                                lessonCount={lessonCount}
+                            />
+                            <LessonSideBar 
+                                title={leftSideBarData[sideBarTerm].title}
+                            >  
+                                {leftSideBarData[sideBarTerm].body}
+                            </LessonSideBar>   
+                        </SidebarProvider>
                     </Suspense>
                 
                  </div>
