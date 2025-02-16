@@ -27,13 +27,20 @@ export default function MemberDetails({ memberDetails, loggedInUserCommunityMemb
         const initials = memberDetails.name.split(' ').map(word => word[0]).join('');
 
         return memberDetails.avatar_url ? (
+            <div
+                className="relative rounded-t-xl w-[256px] h-[256px]"
+            >
             <Image
                 src={memberDetails.avatar_url}
-                width={256}
-                height={256}
-                className="rounded-t-xl"
+                layout="fill"
+                 objectFit="cover"
+                 className="relative rounded-t-xl"
+                // width={256}
+                // height={256}
+                // className="rounded-t-xl max-h-[256px]"
                 alt="Screenshots of the dashboard project showing desktop version"
             />
+            </div>
         ) : (
             <div className={`${rand} size-[256px] rounded-t-xl flex justify-center items-center`}>
                 <h2 className="text-white">{initials}</h2>
