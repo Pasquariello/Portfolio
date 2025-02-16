@@ -19,7 +19,7 @@ export default async function Page({searchParams}) {
 
 
       <div className="flex justify-center">
-        <div className="w-4/5 border-2 border-gray-200 rounded-xl 'bg-white'">
+        <div className="w-4/5 border-2 border-gray-200 rounded-xl bg-white">
           {
                 notifications?.records?.map((eventDetails, i) => {
 
