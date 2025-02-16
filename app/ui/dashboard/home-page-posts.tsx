@@ -25,7 +25,7 @@ export default async function HomePagePosts() {
           {posts?.records?.map(post => (
             <a 
               key={post.id} 
-              href={`/dashboard/posts?selectedSpace=${post.space.id}/#${post.id}`}
+              href={`/dashboard/posts?selectedSpace=${post.space.id}#${post.id}`}
             >
               <div
                 className="bg-white hover:bg-blue-50 p-6 rounded-xl shadow-sm border border-gray-100 transition-all hover:shadow-md"

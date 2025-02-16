@@ -43,7 +43,7 @@ export default function SpacesSelect({spaces}) {
                 return (
                     <div 
                         key={space.id} 
-                        className={`border-2 border-blue-500 py-2 px-4 rounded-full inline-block hover:bg-blue-50 hover:cursor-pointer active:bg-blue-100 ${selectedSpaceId === String(space.id) ? 'bg-blue-500 text-white hover:text-black' : 'bg-white'}`}
+                        className={`border-2 border-blue-500 py-2 px-4 rounded-full inline-block hover:bg-blue-50 hover:cursor-pointer active:bg-blue-100 ${String(selectedSpaceId) === String(space.id) ? 'bg-blue-500 text-white hover:text-black' : 'bg-white'}`}
                         onClick={() => handleChange(space.id)}
                     >
                         {space.name}
