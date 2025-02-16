@@ -7,11 +7,12 @@ import LatestEvents from '@/app/ui/dashboard/latest-events';
 import CourseWrapper from '@/app/ui/dashboard/courses';
 import Link from 'next/link';
 import { PencilSquareIcon } from '@heroicons/react/24/outline';
+import HomePagePosts from '@/app/ui/dashboard/home-page-posts';
 
 export default async function Page() {
    
   return (
-    <main>
+    <main className=''>
       {/* Start */}
             <div className="flex items-baseline">
                 <h2 className={`mb-4 mr-6 text-xl md:text-2xl`}>
@@ -41,9 +42,9 @@ export default async function Page() {
           <CardWrapper />
         </Suspense>
       </div> */}
-      <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-4 lg:grid-cols-8">
+      <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-4 lg:grid-cols-8 h-full">
         <Suspense fallback={<RevenueChartSkeleton />}>
-          <RevenueChart />
+          <HomePagePosts />
         </Suspense>
         <Suspense fallback={<LatestEventsSkeleton />}>
           <LatestEvents />

@@ -15,7 +15,7 @@ export default function RootLayout({
       <html lang="en">
             <UserProvider>
 
-        <body className={`${inter.className} antialiased`}>
+          <body className={`${inter.className} antialiased`}>
               {children}
 
           </body>

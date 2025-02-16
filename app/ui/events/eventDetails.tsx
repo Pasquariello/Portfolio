@@ -181,7 +181,7 @@ export default function EventDetails({eventDetails, selected}) {
 ) : null }
 
     <div
-      className="py-8"
+      className="py-8 border-b last:border-b-0"
     >
       <div className='flex justify-between items-center'>
         <p className="text-md/6 font-semibold text-gray-900 mr-4">{eventDetails?.name}</p>
