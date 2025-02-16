@@ -438,7 +438,7 @@ export async function  fetchNotifications() {
     const cookieStore = await cookies()
     const token = await cookieStore.get('circleToken')?.value;
 
-    const response = await fetch(`https://app.circle.so/api/headless/v1/notifications?per_page=60`, {
+    const response = await fetch(`https://app.circle.so/api/headless/v1/notifications`, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json"

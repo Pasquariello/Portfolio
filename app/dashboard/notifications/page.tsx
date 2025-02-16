@@ -16,7 +16,7 @@ export default async function Page({searchParams}) {
 
   return (
     <main className="">
-      <h1 className={`mb-4 text-xl md:text-3xl mr-8`}>
+      <h1 className={`mb-4 text-xl md:text-3xl mr-8 mb-20`}>
         Notifications
       </h1>
 
