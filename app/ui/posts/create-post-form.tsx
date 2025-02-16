@@ -67,7 +67,7 @@ const CreatePostForm = memo(({ spaceId }: {
             <PlusCircleIcon className='w-8 h-8 text-gray-500'></PlusCircleIcon>
         </div>
 
-<InfoModal isOpen={modalOpen} onClose={() => setModalOpen(false)} title={'hello'}>
+<InfoModal isOpen={modalOpen} onClose={() => setModalOpen(false)} title={'Create A New Post'}>
  <form onSubmit={handleSubmit} className="">
              {/* <h2 className="text-lg font-semibold text-gray-900 mb-4">Create a New Post</h2> */}
             
