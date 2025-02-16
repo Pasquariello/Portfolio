@@ -3,6 +3,8 @@
 import { LoadingSpinner } from '../loadingSpinner';
 import { fetchSpaces } from '@/app/lib/data';
 import SpaceAction from './space-action';
+import Link from 'next/link';
+import PressableRow from './pressable-row';
 
 
 export default async function SpaceDetails({type}) {
@@ -24,7 +26,11 @@ export default async function SpaceDetails({type}) {
     
     return spaces?.map(spaceDetails => {
         return (
-            <tr key={spaceDetails.id} className="bg-white border-b border-gray-200">
+            <PressableRow 
+                key={spaceDetails.id}  
+                url={`/dashboard/posts?selectedSpace=${spaceDetails.id}`}
+            >
+                
                 <td scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-wrap">
                     {spaceDetails.name} 
                 </td>
@@ -37,7 +43,7 @@ export default async function SpaceDetails({type}) {
                 <td className="px-6 py-4">
                     <SpaceAction id={spaceDetails.id} is_member={spaceDetails.is_member} />
                 </td>
-            </tr>
+            </PressableRow>
         )  
     }
 

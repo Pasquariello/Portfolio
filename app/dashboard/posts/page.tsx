@@ -4,6 +4,7 @@ import { Suspense } from 'react';
 import SpacesDropdown from '@/app/ui/posts/spaces-dropdown';
 import CreatePostForm from '@/app/ui/posts/create-post-form';
 import PostsList from '@/app/ui/posts/post-list';
+import { InfoModal } from '@/app/ui/modals';
 export const metadata: Metadata = {
   title: 'Posts',
 };
@@ -28,7 +29,7 @@ export default async function Page({searchParams}) {
 
       <div className="flex flex-col gap-4 md:flex-col md:gap-8">
 
-      <div className="lg:col-span-2">
+      <div className="lg:col-span-2 mt-6">
           <CreatePostForm
             spaceId={selectedSpaceId} 
           />

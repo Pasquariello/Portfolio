@@ -4,6 +4,8 @@ import SpacesSelect from "./spaces-select";
 export default async function SpacesDropdown() {
 
     const spaces = await fetchSpaces();
+    
+    console.log(spaces)
     return (
         <div className="my-2">
             <label htmlFor="space-select" className="block text-sm font-medium text-gray-700 mb-2">

@@ -19,7 +19,7 @@ export default async function HomePagePosts() {
           Recent Posts
         </h2>
 
-        <div className="rounded-xl p-4 h-100 overflow-y-auto">
+        <div className="rounded-xl pt-4 h-100 overflow-y-auto">
 
           <div className="flex flex-col gap-4">
           {posts?.records?.map(post => (

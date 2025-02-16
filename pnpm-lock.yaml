@@ -103,6 +103,9 @@ importers:
       install:
         specifier: ^0.13.0
         version: 0.13.0
+      postcss:
+        specifier: 8.5.1
+        version: 8.5.1
       prettier:
         specifier: ^3.4.2
         version: 3.4.2

@@ -26,7 +26,7 @@ export function InfoModal({title, onClose, children, isOpen}) {
       onClick={onClose} // Close the modal when clicking outside of it
     >
       <div
-        className={`bg-white rounded-lg shadow-lg max-w-lg w-full p-6 transition-transform duration-300 ease-in-out ${
+        className={`bg-white rounded-lg shadow-lg max-w-3xl w-full p-6 transition-transform duration-300 ease-in-out ${
           isOpen ? 'scale-100' : 'scale-95'
         }`}
         onClick={(e) => e.stopPropagation()} // Prevent modal from closing when clicking inside
@@ -58,14 +58,14 @@ export function InfoModal({title, onClose, children, isOpen}) {
         <div className="mt-2">
           {children}
         </div>
-        <div className="flex justify-end">
+        {/* <div className="flex justify-end">
           <button
             className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
             onClick={onClose}
           >
             Close
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

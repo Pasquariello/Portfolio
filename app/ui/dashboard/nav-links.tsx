@@ -37,17 +37,15 @@ export default function NavLinks() {
     const [notificationCount, setNotificationCount] = useState(0);
 
     const getCount = async () => {
-        console.log('IN GET COUNT')
-        // const res = await fetch(`/api/notifications/count`, {
-        //   method: 'GET',
-        //   headers: {
-        //     'Content-Type': 'application/json'
-        //   }
+        const res = await fetch(`/api/notifications/count`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
       
-        // });
-        const data = await getUnreadCount()
-        console.log('data -0-0-0-', data)
-        // const data = await res.json();
+        });
+        // const data = await getUnreadCount()
+        const data = await res.json();
         // if (data?.new_notifications_count) {
             setNotificationCount(data?.new_notifications_count)
         // }
