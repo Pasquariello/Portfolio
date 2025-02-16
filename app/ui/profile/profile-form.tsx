@@ -46,7 +46,7 @@ export default function ProfileForm({ communityMemberId, selectedInterests, allI
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="rounded-lg bg-gray-50 p-4 md:p-6">
         {/* Profile Info */}
-        <div className="mb-8">
+        {/* <div className="mb-8">
           <h2 className="text-xl font-semibold mb-4">Profile Information</h2>
           <div className="grid grid-cols-1 gap-4">
             <div>
@@ -56,7 +56,7 @@ export default function ProfileForm({ communityMemberId, selectedInterests, allI
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Interests Section */}
         <div>
@@ -89,13 +89,12 @@ export default function ProfileForm({ communityMemberId, selectedInterests, allI
             ))}
           </div>
         </div>
-      </div>
 
-      <button
+        <button
         type="submit"
         disabled={isSaved}
         className={clsx(
-          "rounded-lg px-6 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500",
+          "rounded-lg px-6 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 mt-8",
           {
             "bg-blue-500 hover:bg-blue-600": !isSaved,
             "bg-gray-400": isSaved
@@ -104,6 +103,9 @@ export default function ProfileForm({ communityMemberId, selectedInterests, allI
       >
         {isSaved ? 'Saved' : 'Save Changes'}
       </button>
+      </div>
+
+     
     </form>
   );
 }
