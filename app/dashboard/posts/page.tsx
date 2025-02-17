@@ -48,7 +48,6 @@ export default async function Page({searchParams}) {
       </Suspense>
 
         
-        {/* <PostsPage loggedInUserCommunityMemberId={loggedInUserCommunityMemberId} selectedSpaceId={selectedSpaceId}/> */}
       </div>
     </main>
   );

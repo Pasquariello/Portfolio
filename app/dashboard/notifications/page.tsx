@@ -1,37 +1,23 @@
-import { fetchNotifications } from '@/app/lib/data';
-import { formattedDateString } from '@/app/lib/utils';
-import NotificationDetails from '@/app/ui/notifications/notification_details';
-import { CalendarIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
+import NotificationsList from '@/app/ui/notifications/notifications_list';
 import { Metadata } from 'next';
+import { Suspense } from 'react';
 export const metadata: Metadata = {
-  title: 'Posts',
+  title: 'Notifications',
 };
 
-export default async function Page({searchParams}) {
+export default async function Page() {
   
-  const notifications = await fetchNotifications();
-
   return (
     <main className="">
       <h1 className={`mb-4 text-xl md:text-3xl mr-8 mb-20`}>
         Notifications
       </h1>
 
-
       <div className="flex justify-center">
-        <div className="w-4/5 border-2 border-gray-200 rounded-xl bg-white">
-          {
-                notifications?.records?.map((eventDetails, i) => {
-
-
-                  return <NotificationDetails key={eventDetails.id} eventDetails={eventDetails} />
-                })
-            
-            }
-          </div>
-        </div>
-      
-
+        <Suspense fallback={<div>Loading...</div>}>
+          <NotificationsList />
+        </Suspense>
+      </div>
     </main>
   );
 }

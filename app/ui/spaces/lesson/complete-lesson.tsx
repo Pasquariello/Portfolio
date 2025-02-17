@@ -42,7 +42,9 @@ export default function CompleteLesson({course_id, lesson_id, current_status}) {
             {/* Button */}
             <Button
                 className="!bg-[#F7F9FA] !text-blue-500 hover:bg-white hover:underline"
-                onClick={() => {
+                onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
                     updateLessonProgress({course_id, lesson_id, progress: progress.value})
                 }}
                 onMouseEnter={() => setIsHovered(true)}

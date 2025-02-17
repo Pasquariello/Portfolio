@@ -46,11 +46,6 @@ const CreatePostForm = memo(({ spaceId }: {
                 topics: []
             };
             await createNewPostAction(postData)
-            // const newPost = 
-            // await createPost(postData);
-            // onSubmit(newPost);
-            // setPostTitle('');
-            // setPostContent('');
         } catch (error) {
             console.error('Error creating post:', error);
         }
@@ -58,78 +53,47 @@ const CreatePostForm = memo(({ spaceId }: {
 
     return (
         <>
-        <div className="bg-white p-4 rounded-4xl shadow-sm border border-gray-100 flex justify-between hover:bg-blue-50"
-            onClick={() => {
-                setModalOpen(true)
-            }}
-        >
-            <h2 className="text-lg font-semibold text-gray-500">Create a New Post</h2>
-            <PlusCircleIcon className='w-8 h-8 text-gray-500'></PlusCircleIcon>
-        </div>
-
-<InfoModal isOpen={modalOpen} onClose={() => setModalOpen(false)} title={'Create A New Post'}>
- <form onSubmit={handleSubmit} className="">
-             {/* <h2 className="text-lg font-semibold text-gray-900 mb-4">Create a New Post</h2> */}
-            
-             {/* Post Title Input */}
-             <input
-                type="text"
-                value={postTitle}
-                onChange={(e) => setPostTitle(e.target.value)}
-                placeholder="Post Title"
-                className="w-full p-3 border border-gray-200 rounded-lg mb-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-                aria-label="Post title"
-            />
-
-            {/* Post Content Textarea */}
-            <textarea
-                value={postContent}
-                onChange={(e) => setPostContent(e.target.value)}
-                placeholder="What's on your mind?"
-                className="w-full p-3 border border-gray-200 rounded-lg mb-3 min-h-[120px] focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-                aria-label="Post content"
-            />
-            
-            <Button 
-                type="submit" 
-                className="px-6 py-2 bg-blue-600 hover:bg-blue-700 transition-colors"
-                disabled={!postTitle.trim() || !postContent.trim()}
+            <div className="bg-white p-4 rounded-4xl shadow-sm border border-gray-100 flex justify-between align-center hover:bg-blue-50"
+                onClick={() => {
+                    setModalOpen(true)
+                }}
             >
-                Create Post
-            </Button>
-        </form>
-</InfoModal> 
-        </>
-        // <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-        //     <h2 className="text-lg font-semibold text-gray-900 mb-4">Create a New Post</h2>
-            
-        //     {/* Post Title Input */}
-        //     <input
-        //         type="text"
-        //         value={postTitle}
-        //         onChange={(e) => setPostTitle(e.target.value)}
-        //         placeholder="Post Title"
-        //         className="w-full p-3 border border-gray-200 rounded-lg mb-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-        //         aria-label="Post title"
-        //     />
+                <h2 className="text-lg font-semibold text-gray-500">Create a New Post</h2>
+                <PlusCircleIcon className='w-8 h-8 text-gray-500'></PlusCircleIcon>
+            </div>
 
-        //     {/* Post Content Textarea */}
-        //     <textarea
-        //         value={postContent}
-        //         onChange={(e) => setPostContent(e.target.value)}
-        //         placeholder="What's on your mind?"
-        //         className="w-full p-3 border border-gray-200 rounded-lg mb-3 min-h-[120px] focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-        //         aria-label="Post content"
-        //     />
-            
-        //     <Button 
-        //         type="submit" 
-        //         className="px-6 py-2 bg-blue-600 hover:bg-blue-700 transition-colors"
-        //         disabled={!postTitle.trim() || !postContent.trim()}
-        //     >
-        //         Create Post
-        //     </Button>
-        // </form>
+            <InfoModal isOpen={modalOpen} onClose={() => setModalOpen(false)} title={'Create A New Post'}>
+            <form onSubmit={handleSubmit} className="">
+                
+                {/* Post Title Input */}
+                <input
+                    type="text"
+                    value={postTitle}
+                    onChange={(e) => setPostTitle(e.target.value)}
+                    placeholder="Post Title"
+                    className="w-full p-3 border border-gray-200 rounded-lg mb-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                    aria-label="Post title"
+                />
+
+                {/* Post Content Textarea */}
+                <textarea
+                    value={postContent}
+                    onChange={(e) => setPostContent(e.target.value)}
+                    placeholder="What's on your mind?"
+                    className="w-full p-3 border border-gray-200 rounded-lg mb-3 min-h-[120px] focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                    aria-label="Post content"
+                />
+                
+                <Button 
+                    type="submit" 
+                    className="px-6 py-2 bg-blue-600 hover:bg-blue-700 transition-colors"
+                    disabled={!postTitle.trim() || !postContent.trim()}
+                >
+                    Create Post
+                </Button>
+            </form>
+            </InfoModal> 
+        </>
     );
 });
 

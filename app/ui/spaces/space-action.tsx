@@ -8,7 +8,9 @@ import { LoadingSpinner } from '../loadingSpinner';
 export default function SpaceAction({id, is_member}) {
     let [isPending, startTransition] = useTransition();
 
-    const action = () => startTransition(() => {
+    const action = (e) => startTransition(() => {
+        e.stopPropagation();
+        e.preventDefault();
         is_member ? leave(id) : join(id)
     })
 
