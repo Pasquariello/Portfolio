@@ -34,17 +34,6 @@ export default async function Page({params, searchParams}: {
     const percent_complete = Number((course?.course_percent_completed * 100).toFixed(0));
     const { name, total_lesson_count, total_lessons_completed } = course;
     // const total_section_count = course.course_sections.length;
-
-    const leftSideBarData = {
-        files: {
-            title: 'Files',
-            body: <LessonFiles course_id={course_id} lesson_id={lesson_id} />
-        },
-        lessons: {
-            title: 'Lesson',
-            body: <div>Hello Lessons</div>
-        },
-    }
     
     return (
         <>
