@@ -50,7 +50,6 @@ export default function NavLinks() {
         // if (data?.new_notifications_count) {
             setNotificationCount(data?.new_notifications_count)
         // }
-        console.log('data', data)
       } 
     
       useEffect(() => {

@@ -5,8 +5,6 @@ import PostsDetails from '../posts/post-details';
 
 export default async function HomePagePosts() {
   const posts = await fetchHomePagePosts(); // Fetch data inside the component
-  console.log('posts ====', posts)
-  const chartHeight = 350;
 
   if (!posts || posts.length === 0) {
     return <p className="mt-4 text-gray-400">No data available.</p>;

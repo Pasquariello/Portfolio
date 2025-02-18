@@ -6,9 +6,6 @@ export default async function LessonBody({course_id, lesson_id, lessonIndex, les
     const hasVideo = !!lesson?.featured_media;
     const hasRichText = !!lesson?.rich_text_body;
  
-
-    console.log('lesson', lesson)
-
     return (
         <>
             <div className="flex-grow">

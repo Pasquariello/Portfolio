@@ -20,11 +20,8 @@ export default function LessonFiles({course_id, lesson_id  }) {
       
         });
         const data = await res.json();
-        console.log('DATA 111', data)
         setFiles(data);
-      
-        console.log('data', data)
-      } 
+            } 
     
     useEffect(() => {
         getFiles();

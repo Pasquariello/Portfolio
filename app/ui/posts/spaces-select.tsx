@@ -15,7 +15,6 @@ export default function SpacesSelect({spaces}) {
             const params = new URLSearchParams(searchParams);
 
             if (!selectedSpaceId) {
-                console.log("HERE ")
                 params.set('selectedSpace', spaces[0].id);
                 replace(`${pathname}?${params?.toString()}`);
             }
@@ -23,8 +22,6 @@ export default function SpacesSelect({spaces}) {
     
       
     }, [selectedSpaceId]);
-
-    console.log('spaces', spaces)
 
     function handleChange(term: string) {
         const params = new URLSearchParams(searchParams);
