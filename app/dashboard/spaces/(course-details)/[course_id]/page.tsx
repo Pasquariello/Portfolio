@@ -10,7 +10,6 @@ export default async function Page({params}: {
     const course_id = (await params).course_id;
 
     const course = await fetchSingleSpace(course_id);
-    console.log('course', course);
 
     if (!course) {
         return (

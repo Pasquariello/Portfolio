@@ -9,14 +9,17 @@ export default async function LessonBody({course_id, lesson_id, lessonIndex, les
     return (
         <>
             <div className="flex-grow">
-                <div className="flexborder mb-4">
+                <div className="flex mb-12">
                     <div>
                         <p className="text-sm md:text-sm text-gray-500">Lesson {lessonIndex + 1} of {lessonCount} </p>
                         <h2 className="text-2xl md:text-2xl">{lesson.name}</h2>
                     </div>
                 </div>
-                <div className="flex h-full justify-center">
-                    <div>
+                <div 
+                    // className="flex flex-col h-full justify-center"
+                    className="flex flex-col flex-wrap items-center"
+
+                >
                     {
                         hasVideo &&  (
                             <LessonVideo 
@@ -28,26 +31,30 @@ export default async function LessonBody({course_id, lesson_id, lessonIndex, les
                         )
                     }
 
-
+                    <div>
                     
                     {
                         hasRichText && (
-                            <div className="mt-8">
-                           { lesson?.rich_text_body?.body?.content?.map( content => {
-                                if (content?.type === 'heading') {
-                                    return content?.content.map(value => <h3 className="text-3xl md:text-3xl mb-4">{value?.text}</h3>)
-                                } 
-                                if (content?.type === 'paragraph') {
-                                    return content?.content.map(value => <p className="text-sm/6 text-gray-900">{value?.text}</p>)
-                                }  
+                            <div className="mt-12 mb-12 w-full md:w-200">
+                            { 
+                                lesson?.rich_text_body?.body?.content?.map( (content, i )=> {
+                                    return (
+                                        <div
+                                            key={i}
+                                        >
+                                            {content?.type === 'heading' && content?.content.map((value, i) => <h3 key={i} className="text-3xl md:text-3xl mb-4">{value?.text}</h3>)}
+                                            {content?.type === 'paragraph' && content?.content.map((value, i) => <p key={i} className="text-sm/6 text-gray-900 my-2">{value?.text}</p>)}
+                                        </div>
+                                    )
 
-                            })}
-                        </div>
+                                })
+                            }
+                            </div>
                         )
 
                     }
-                    
                     </div>
+                    
                 </div>
 
                

@@ -16,7 +16,7 @@ export default function SpaceAction({id, is_member, type}) {
     })
 
     const text = is_member ? 'Leave' : 'join';
-    console.log('type', type)
+    
     return (
         isPending ? 
             <LoadingSpinner className="!text-blue-500"/> 

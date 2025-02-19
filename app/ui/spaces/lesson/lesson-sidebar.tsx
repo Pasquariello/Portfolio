@@ -15,6 +15,7 @@ const LessonList = ({lessons, course_id}) => {
                 lessons.map(lesson => {
                     return (
                         <div
+                            key={lesson.id}
                             onClick={() => router.push(`/dashboard/spaces/${course_id}/lesson/${lesson.id}`)}
                             className='flex justify-between items-center p-6 hover:bg-blue-50 hover:cursor-pointer'
                         >
@@ -57,7 +58,6 @@ export function LessonSideBar({course_id, lesson_id, lessons}) {
                 
             <div 
             className={`px-6 flex-grow h-full transition-all duration-500 ease-in-out ${sideBarSettings.isOpen ? 'max-w-[400px] w-[400px] opacity-100 border-l' : 'max-w-0 w-0 opacity-0 border-l/0'}`}
-            // className={`px-6 border-l max-w-[400px] w-[400px] flex-grow h-full`} hidden={!sideBarTerm}
             >
                 <div className="flex justify-between items-center mb-6">
                     <h2 className="text-2xl md:text-2xl">{title}</h2>

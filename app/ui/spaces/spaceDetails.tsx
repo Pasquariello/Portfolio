@@ -25,7 +25,6 @@ export default async function SpaceDetails({type}) {
 
     
     return spaces?.map(spaceDetails => {
-        console.log('spaceDetails', spaceDetails)
         return (
             <PressableRow 
                 key={spaceDetails.id}  
