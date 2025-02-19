@@ -25,6 +25,7 @@ export default async function SpaceDetails({type}) {
 
     
     return spaces?.map(spaceDetails => {
+        console.log('spaceDetails', spaceDetails)
         return (
             <PressableRow 
                 key={spaceDetails.id}  
@@ -41,7 +42,7 @@ export default async function SpaceDetails({type}) {
                     {spaceDetails.is_member ? 'Yes' : 'No'}
                 </td>
                 <td className="px-6 py-4">
-                    <SpaceAction id={spaceDetails.id} is_member={spaceDetails.is_member} />
+                    <SpaceAction id={spaceDetails.id} is_member={spaceDetails.is_member} type={spaceDetails.post_type} />
                 </td>
             </PressableRow>
         )  

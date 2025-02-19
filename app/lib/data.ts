@@ -904,7 +904,8 @@ export async function createPost(data: CreatePostRequest): Promise<Post> {
       console.error('Failed to create post', response);
       throw new Error('Failed to create post');
     }
-
+    const foo = response.json();
+    console.log('foo', foo)
     return await response.json();
   } catch (error) {
     console.error('Error creating post:', error);
