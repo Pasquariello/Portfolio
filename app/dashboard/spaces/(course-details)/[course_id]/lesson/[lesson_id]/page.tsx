@@ -51,13 +51,14 @@ export default async function Page({params, searchParams}: {
                  <div className="flex flex-grow justify-center">
                     <Suspense fallback={<div>Loading...</div>}>
                         <SidebarProvider>
-                            <LessonBody 
+                            <LessonBody
                                 course_id={course_id}
                                 lesson_id={lesson_id}
                                 lessonIndex={lessonIndex}
                                 lessonCount={lessonCount}
                             />
                             <LessonSideBar 
+                                lessons={lessons}
                                 course_id={course_id} 
                                 lesson_id={lesson_id} 
                             />   

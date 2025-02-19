@@ -4,9 +4,33 @@ import LessonFiles from "./lesson-files";
 import { CloseSideBarButton } from "./close-sidebar-button";
 import { Suspense, useContext } from "react";
 import { SidebarContext } from "../sidebar-context";
+import { CheckCircleIcon } from "@heroicons/react/24/outline";
+import { useRouter } from "next/navigation";
+
+const LessonList = ({lessons, course_id}) => {
+    const router = useRouter();
+    return (
+        <div className='!divide-y'>
+            {
+                lessons.map(lesson => {
+                    return (
+                        <div
+                            onClick={() => router.push(`/dashboard/spaces/${course_id}/lesson/${lesson.id}`)}
+                            className='flex justify-between items-center p-6 hover:bg-blue-50 hover:cursor-pointer'
+                        >
+                            <p className="">{lesson.name}</p>
+                            {lesson?.progress?.status === 'completed' &&  <CheckCircleIcon className='h-5 w-5 text-green-400'/>}
+                        </div>
+                    )
+                })
+            }
+        </div>
+
+    )
+}
 
 
-export function LessonSideBar({course_id, lesson_id}) {
+export function LessonSideBar({course_id, lesson_id, lessons}) {
     const sideBarSettings = useContext(SidebarContext);
     
     const displayOptions = {
@@ -16,7 +40,7 @@ export function LessonSideBar({course_id, lesson_id}) {
         },
         lessons: {
             title: 'Lessons',
-            body: <div>List of Lessons here</div>,
+            body: <LessonList lessons={lessons} course_id={course_id}/>,
         },
     }
     
