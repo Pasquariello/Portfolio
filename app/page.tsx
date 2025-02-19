@@ -37,8 +37,9 @@ export default async function Page() {
         </div>
         <div className="flex items-center justify-center p-6 md:w-3/5 md:px-28 md:py-12">
           {/* Add Hero Images Here */}
-          <Image
+          {/* <Image
             src="/hero-desktop.png"
+            // src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=3544&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             width={1000}
             height={760}
             className="hidden md:block"
@@ -47,11 +48,12 @@ export default async function Page() {
 
           <Image
             src="/hero-mobile.png"
+            // src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=3544&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             width={560}
             height={620}
             className="block md:hidden"
             alt="Screenshots of the dashboard project showing desktop version"
-          />
+          /> */}
         </div>
       </div>
     </main>
