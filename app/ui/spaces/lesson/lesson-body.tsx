@@ -42,7 +42,7 @@ export default async function LessonBody({course_id, lesson_id, lessonIndex, les
                                         <div
                                             key={i}
                                         >
-                                            {content?.type === 'heading' && content?.content.map((value, i) => <h3 key={i} className="text-3xl md:text-3xl mb-4">{value?.text}</h3>)}
+                                            {content?.type === 'heading' && content?.content.map((value, i) => <h3 key={i} className="text-xl md:text-xl mb-2 mt-8">{value?.text}</h3>)}
                                             {content?.type === 'paragraph' && content?.content.map((value, i) => <p key={i} className="text-sm/6 text-gray-900 my-2">{value?.text}</p>)}
                                         </div>
                                     )
