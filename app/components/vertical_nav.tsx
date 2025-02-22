@@ -21,14 +21,14 @@ export default function VerticalNav() {
                         <Link
                             key={link.name}
                             href={link.href}
-                            className="flex ms-6 h-30 last:h-0"
+                            className="flex ms-6 h-30 last:h-0 hover:underline text-white"
                             scroll
                         >
                         <li 
                            
                             className="flex"
                         >
-                            <h2 className="ml-2 text-white">{link.name}</h2>
+                            <h2 className="ml-2 text-white ">{link.name}</h2>
                     
                             <span className="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-fuchsia-900/35 bg-fuchsia-500 hover:cursor-pointer hover:animate-pulse">
                                 {/* <svg className="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">

@@ -38,12 +38,12 @@ export default async function Page() {
       </div>
 
 
-      <div className="h-screen bg-black" id="about">
+      <div className="h-screen bg-black px-4" id="about">
         <div className='flex h-full items-center'>
-        <div className='lg:pl-24 w-full'>
-          <div className='lg:inline-block text-center lg:text-right max-w-3/4' >
+        <div className='lg:pl-24 w-full flex flex-col items-center lg:inline-block'>
+          <div className='text-center lg:text-right max-w-3/4' >
             <h1 className={`${titillium.className} text-white text-6xl sm:text-8xl mt-4 mb-8`}>Hello!</h1>
-            <p className={`${roboto.className} text-center lg:text-left text-white text-3xl sm:text-4xl font-light mt-4`}>
+            <p className={`${roboto.className} text-center lg:text-left text-white text-lg sm:text-4xl font-light mt-4`}>
               I've been a developer since 2015, with a passion for solving problems 
               and getting creative. Before jumping into the tech world, I earned a business degree from the 
               University of Colorado at Denver. I’m a full-stack developer, but I’m especially drawn to Frontend 
