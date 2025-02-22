@@ -8,14 +8,14 @@ export default function VerticalNav() {
     const links = [
         { name: 'About', href: '#about', icon: HomeIcon },
         { name: 'Resume', href: '#resume', icon: UserGroupIcon },
-        { name: 'Tech', href: '/dashboard/spaces ', icon: WrenchScrewdriverIcon },
-        { name: 'Blog', href: '/dashboard/profile', icon: UserCircleIcon },
+        { name: 'Tech', href: '#tech', icon: WrenchScrewdriverIcon },
+        { name: 'Blog', href: '#blog', icon: UserCircleIcon },
         { name: 'For Fun', href: '/dashboard/posts', icon: DocumentDuplicateIcon }
     
     ];
 
     return (
-        <ol className="hidden xl:block fixed right-40 border-s border-gray-700"> 
+        <ol className="hidden xl:block fixed right-40 border-s border-gray-700 z-50"> 
             {
                 links.map(link => {
                     return (
