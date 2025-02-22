@@ -5,8 +5,8 @@ import VerticalNav from './components/vertical_nav';
 export default async function Page() {
 
   return (
-    <main className="flex min-h-screen flex-col">
-      <div className='flex h-screen items-center'>
+    <main className="flex min-h-screen h-screen flex-col">
+      <div className='flex h-full items-center'>
         <div className='lg:pl-24 w-full'>
             <div className='lg:inline-block text-center' >
               <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl font-light text-center lg:text-left`}>Welcome to my profile!</h2>
@@ -35,7 +35,7 @@ export default async function Page() {
       </video>
 
     {/* <div className="h-400"></div> */}
- 
+       {/* <p className='text-black'> hello</p> */}
  
     </main>
   );
