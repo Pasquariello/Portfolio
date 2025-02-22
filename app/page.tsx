@@ -24,6 +24,7 @@ export default async function Page() {
         style={{
           objectFit: 'cover',
           display: 'block',
+          background: 'black',
           // width: '100%',
           // height: '100%',
           position: 'absolute',
