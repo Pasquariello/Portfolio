@@ -42,7 +42,7 @@ export default async function Page() {
         <source src="./jellies.mp4" type="video/mp4"/>       
       </video>
 
-    <div className="h-400"></div>
+    {/* <div className="h-400"></div> */}
  
  
     </main>
