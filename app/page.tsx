@@ -14,7 +14,7 @@ export default async function Page() {
   
 
 
-      <div className='flex min-h-dvh h-dvh items-center border-2 border-amber-500'>
+      <div className='flex min-h-dvh h-dvh items-center'>
 
       <video 
         autoPlay 
