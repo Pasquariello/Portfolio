@@ -15,10 +15,11 @@ export default async function Page() {
         autoPlay 
         muted 
         loop
+        className='h-full w-full'
         style={{
           objectFit: 'cover', 
-          width: '100%',
-          height: '100%',
+          // width: '100%',
+          // height: '100%',
           position: 'absolute',
           zIndex: -1,
         }}
