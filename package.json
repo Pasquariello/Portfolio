@@ -6,7 +6,6 @@
     "start": "next start"
   },
   "dependencies": {
-    "@auth0/nextjs-auth0": "^3.5.0",
     "@circleco/headless-ui-kit": "^0.0.5",
     "@heroicons/react": "^2.1.4",
     "@remixicon/react": "^4.6.0",
@@ -16,20 +15,17 @@
     "axios": "^1.7.7",
     "bcrypt": "^5.1.1",
     "clsx": "^2.1.1",
-    "iron-session": "^8.0.4",
     "jose": "^5.9.6",
+    "motion": "^12.4.7",
     "next": "^15.0.0",
-    "next-auth": "5.0.0-beta.25",
     "react": "19.0.0-rc-cd22717c-20241013",
     "react-dom": "19.0.0-rc-cd22717c-20241013",
-    "react-hot-toast": "^2.5.1",
     "swr": "^2.2.5",
     "tailwind-merge": "^3.0.1",
     "tailwind-variants": "^0.3.1",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "5.5.2",
-    "use-debounce": "^10.0.4",
-    "zod": "^3.23.8"
+    "use-debounce": "^10.0.4"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.3",
