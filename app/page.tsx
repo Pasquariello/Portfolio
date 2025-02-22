@@ -2,18 +2,38 @@ import {  titillium, roboto} from '@/app/ui/fonts';
 import { TextLoop } from './components/text-loop';
 import VerticalNav from './components/vertical_nav';
 import '@/app/ui/global.css';
+import TechBox from './components/tech-box';
 
 
-export default async function Page() {
+export default async function Page({params}) {
+
+  const techList = [
+    {
+      title: 'React',
+      initColor: '#ffc107'
+    },
+    {
+      title: 'NodeJS',
+      initColor: '#009688'
+
+    },
+    {
+      title: 'Python',
+      initColor: '#9c27b0'
+
+    },
+    {
+      title: 'React Native',
+      initColor: '#4caf50'
+
+    },
+
+  ]
 
   return (
     <main 
-    className="flex min-h-screen flex-col overflow-hidden"
+      className="flex min-h-screen flex-col overflow-hidden"
     >
-
-  
-
-
       <div className='flex min-h-dvh h-dvh items-center'>
 
       <video 
@@ -104,7 +124,7 @@ export default async function Page() {
 
 
       {/* Tech */}
-      <div className={`min-h-screen h-screen relative px-4 py-12 `} id="tech">
+      <div className={`min-h-screen relative px-4 py-12 `} id="tech">
 
 
         <div className='flex h-full items-center justify-center xl:justify-start lg:pl-12 w-full '>
@@ -112,16 +132,18 @@ export default async function Page() {
               <h1 className={`${titillium.className} text-5xl md:text-8xl mt-4 mb-4 text-[#f139bb] font-extrabold lg:tracking-[50]`}>
                 TECHNOLOGY
               </h1>
-              <div className='h-[1px] w-full bg-white'></div>
-            <p className={`${titillium.className} lg:text-left text-white text-lg sm:text-xl font-normal mt-4 tracking-wider leading-8`}>
-              I've been a developer since 2015, with a passion for solving problems 
-              and getting creative. Before jumping into the tech world, I earned a business degree from the 
-              University of Colorado at Denver. I’m a full-stack developer, but I’m especially drawn to Frontend 
-              development, I’m proficient in React, React Native, NextJS, Node, Python, SQL, and MongoDB. 
-              Outside of coding, you’ll usually find me on my bike. I'm an avid cyclist with a love for road cycling, 
-              gravel, and cyclocross—my absolute favorite discipline, especially with the fantastic cycling 
-              community here in the PNW.
-            </p>
+              <div className='h-[1px] w-full bg-white mb-4'></div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4"> 
+              {
+                  techList.map(item => {
+                    return <TechBox key={item.title} title={item.title} initColor={item.initColor} />
+                  })
+                }
+              
+                 
+
+              </div>
+             
           </div>
         </div>
       </div>

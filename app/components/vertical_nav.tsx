@@ -10,7 +10,7 @@ export default function VerticalNav() {
         { name: 'Resume', href: '#resume', icon: UserGroupIcon },
         { name: 'Tech', href: '#tech', icon: WrenchScrewdriverIcon },
         { name: 'Blog', href: '#blog', icon: UserCircleIcon },
-        { name: 'For Fun', href: '/dashboard/posts', icon: DocumentDuplicateIcon }
+        { name: 'For Fun', href: '#fun', icon: DocumentDuplicateIcon }
     
     ];
 
