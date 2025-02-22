@@ -39,16 +39,16 @@ export default async function Page() {
       </div>
 
 
-      <div className="min-h-screen h-screen bg-black relative px-4 py-12 relavtive -z-20" id="about">
+      <div className="min-h-screen h-screen bg-slate-900 relative px-4 py-12 relavtive -z-20" id="about">
   
-          <svg className="absolute max-h-screen h-125 -z-10 top-[25%] bottom-0 left-12" id="sw-js-blob-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" version="1.1">
+          <svg className="absolute max-h-screen h-150 -z-10 top-[20%] bottom-0 left-12" id="sw-js-blob-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" version="1.1">
               <defs> 
                   <linearGradient id="sw-gradient" x1="0" x2="1" y1="1" y2="0">
-                      <stop id="stop1" stop-color="rgba(127.544, 15.709, 251.775, 1)" offset="0%"/>
-                      <stop id="stop2" stop-color="rgba(250.446, 2.952, 255, 0.83)" offset="100%"/>
+                      <stop id="stop1" stopColor="rgba(127.544, 15.709, 251.775, 1)" offset="0%"/>
+                      <stop id="stop2" stopColor="rgba(250.446, 2.952, 255, 0.83)" offset="100%"/>
                   </linearGradient>
               </defs>
-          <path fill="url(#sw-gradient)" d="M18,-32.3C21.6,-25.7,21.7,-17.8,24.7,-11.2C27.8,-4.7,33.9,0.5,35,6.3C36.2,12.1,32.4,18.4,26.8,21.3C21.3,24.2,14,23.6,7.1,26.9C0.1,30.2,-6.5,37.4,-13.5,38.7C-20.6,40,-28,35.4,-31.5,28.7C-34.9,22.1,-34.4,13.5,-36,5C-37.5,-3.6,-41.2,-12,-38.4,-17.2C-35.5,-22.4,-26.2,-24.3,-18.7,-29.2C-11.2,-34.1,-5.6,-41.9,0.8,-43.1C7.2,-44.3,14.4,-38.9,18,-32.3Z" width="100%" height="100%" transform="translate(50 50)" style={{transition: '0.3s'}} stroke-width="0"/>
+          <path fill="url(#sw-gradient)" d="M18,-32.3C21.6,-25.7,21.7,-17.8,24.7,-11.2C27.8,-4.7,33.9,0.5,35,6.3C36.2,12.1,32.4,18.4,26.8,21.3C21.3,24.2,14,23.6,7.1,26.9C0.1,30.2,-6.5,37.4,-13.5,38.7C-20.6,40,-28,35.4,-31.5,28.7C-34.9,22.1,-34.4,13.5,-36,5C-37.5,-3.6,-41.2,-12,-38.4,-17.2C-35.5,-22.4,-26.2,-24.3,-18.7,-29.2C-11.2,-34.1,-5.6,-41.9,0.8,-43.1C7.2,-44.3,14.4,-38.9,18,-32.3Z" width="100%" height="100%" transform="translate(50 50)" style={{transition: '0.3s'}} strokeWidth="0"/>
           </svg>
 
         <div className='flex h-full items-center justify-center xl:justify-start z-10 lg:pl-12 w-full '>
