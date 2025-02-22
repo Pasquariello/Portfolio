@@ -3,6 +3,10 @@
 @tailwind utilities;
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
 input[type='number'] {
   -moz-appearance: textfield;
   appearance: textfield;
@@ -60,13 +64,14 @@ input[type='number']::-webkit-outer-spin-button {
 
 :root {
   --black: #000000; /* Define black color if not already set */
-  --accent-transparent: rgba(255, 255, 255, 0.5); /* Example for accent color with transparency */
-  --dot-size: .5px; /* Size of the dots in the radial gradient */
-  --offset: 5px; /* Offset for background positioning */
-  --gap-size: 10px; /* Gap between the repeating patterns */
+  --accent-transparent:  rgba(255, 255, 255, 0.3); /* Example for accent color with transparency */
+  --dot-size: 1px; /* Size of the dots in the radial gradient */
+  --offset: 15px; /* Offset for background positioning */
+  --gap-size: 30px; /* Gap between the repeating patterns */
 }
 
 .image-test {
+
   background-image: 
     linear-gradient(var(--black) 0%, transparent 100%), 
     radial-gradient(var(--accent-transparent) var(--dot-size), transparent var(--dot-size)), 
@@ -82,7 +87,6 @@ input[type='number']::-webkit-outer-spin-button {
     var(--gap-size) var(--gap-size), 
     var(--gap-size) var(--gap-size);
   
-  /* background-color: var(--black);  */
+  background-color: var(--black); 
   /* Fallback background color */
 }
-

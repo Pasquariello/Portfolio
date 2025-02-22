@@ -1,11 +1,13 @@
+'use client'
 import { HomeIcon, UserGroupIcon, WrenchScrewdriverIcon, UserCircleIcon, DocumentDuplicateIcon} from "@heroicons/react/24/outline";
 import Link from "next/link";
+import { useRef } from "react";
 
 export default function VerticalNav() {
 
     const links = [
         { name: 'About', href: '#about', icon: HomeIcon },
-        { name: 'Resume', href: '/dashboard/members', icon: UserGroupIcon },
+        { name: 'Resume', href: '#resume', icon: UserGroupIcon },
         { name: 'Tech', href: '/dashboard/spaces ', icon: WrenchScrewdriverIcon },
         { name: 'Blog', href: '/dashboard/profile', icon: UserCircleIcon },
         { name: 'For Fun', href: '/dashboard/posts', icon: DocumentDuplicateIcon }
@@ -22,7 +24,8 @@ export default function VerticalNav() {
                             key={link.name}
                             href={link.href}
                             className="flex ms-6 h-30 last:h-0 hover:underline text-white"
-                            scroll
+                            // scroll={false}
+                            // onClick={() => scrollToSection1(link.href)}
                         >
                         <li 
                            
