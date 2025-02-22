@@ -13,7 +13,7 @@ export default async function Page() {
 
   return (
     <main className="flex min-h-screen flex-col ">
-      <div className='flex align-center h-screen items-center'>
+      <div className='flex align-center h-screen items-center -2'>
       <div className='pl-24'>
           <div className='inline-block relative' >
             <h2 className={`${roboto.className} text-white text-4xl font-light relative`}>Welcome to my profile!</h2>
