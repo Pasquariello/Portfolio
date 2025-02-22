@@ -25,11 +25,6 @@ const variants = {
   }
 };
 
-// const LoopWrap = styled.div`
-//   position: absolute;
-//   width: 100%;
-// `;
-
 export const TextLoop = () => {
   const [index, setIndex] = useState(0);
 
@@ -47,7 +42,7 @@ export const TextLoop = () => {
     <>
       <AnimatePresence>
         <motion.span
-          className="absolute top-0 right-0"
+          className="absolute left-0 right-0 lg:text-end"
           variants={variants}
           key={index}
           initial="enter"

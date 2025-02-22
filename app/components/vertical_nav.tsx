@@ -12,7 +12,7 @@ export default function VerticalNav() {
     ];
 
     return (
-        <ol className="fixed right-40 border-s border-gray-700"> 
+        <ol className="hidden xl:block fixed right-40 border-s border-gray-700"> 
             {
                 links.map(link => {
                     return (
