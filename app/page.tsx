@@ -22,7 +22,8 @@ export default async function Page() {
         loop
         className='h-full w-full'
         style={{
-          objectFit: 'cover', 
+          objectFit: 'cover',
+          display: 'block',
           // width: '100%',
           // height: '100%',
           position: 'absolute',
@@ -34,8 +35,8 @@ export default async function Page() {
 
         <div className='lg:pl-24 w-full'>
             <div className='lg:inline-block text-center' >
-              <h2 className={`${roboto.className} text-white text-2xl sm:text-4xl font-light text-center lg:text-left`}>Welcome to my portfolio</h2>
-              <h1 className={`${titillium.className} text-white text-6xl sm:text-8xl mt-4 mb-8 tracking-widest`}>TAYLOR PASQUARIELLO</h1>
+              <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl font-light text-center lg:text-left`}>Welcome to my portfolio</h2>
+              <h1 className={`${titillium.className} text-white text-5xl sm:text-8xl mt-4 mb-8 tracking-widest`}>TAYLOR PASQUARIELLO</h1>
               <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl font-light relative`}><TextLoop/></h2>
             </div>
         </div>
@@ -58,7 +59,7 @@ export default async function Page() {
 
         <div className='flex h-full items-center justify-center xl:justify-start lg:pl-12 w-full '>
           <div className='inline-block w-4/5 lg:3/5 xl:w-2/5'>
-              <h1 className={`${titillium.className} text-8xl mt-4 mb-4 text-[#f139bb] font-extrabold lg:tracking-[50]`}>
+              <h1 className={`${titillium.className} text-5xl md:text-8xl mt-4 mb-4 text-[#f139bb] font-extrabold lg:tracking-[50]`}>
                 ABOUT
               </h1>
               <div className='h-[1px] w-full bg-white'></div>
@@ -83,7 +84,7 @@ export default async function Page() {
 
         <div className='flex h-full items-center justify-center xl:justify-start lg:pl-12 w-full '>
           <div className='inline-block w-4/5 lg:3/5 xl:w-2/5'>
-              <h1 className={`${titillium.className} text-8xl mt-4 mb-4 text-[#f139bb] font-extrabold lg:tracking-[50]`}>
+              <h1 className={`${titillium.className} text-5xl md:text-8xl mt-4 mb-4 text-[#f139bb] font-extrabold lg:tracking-[50]`}>
                 RESUME
               </h1>
               <div className='h-[1px] w-full bg-white'></div>
@@ -107,7 +108,7 @@ export default async function Page() {
 
         <div className='flex h-full items-center justify-center xl:justify-start lg:pl-12 w-full '>
           <div className='inline-block w-4/5 lg:3/5 xl:w-2/5'>
-              <h1 className={`${titillium.className} text-8xl mt-4 mb-4 text-[#f139bb] font-extrabold lg:tracking-[50]`}>
+              <h1 className={`${titillium.className} text-5xl md:text-8xl mt-4 mb-4 text-[#f139bb] font-extrabold lg:tracking-[50]`}>
                 TECHNOLOGY
               </h1>
               <div className='h-[1px] w-full bg-white'></div>
@@ -131,7 +132,7 @@ export default async function Page() {
 
             <div className='flex h-full items-center justify-center xl:justify-start lg:pl-12 w-full '>
               <div className='inline-block w-4/5 lg:3/5 xl:w-2/5'>
-                  <h1 className={`${titillium.className} text-8xl mt-4 mb-4 text-[#f139bb] font-extrabold lg:tracking-[50]`}>
+                  <h1 className={`${titillium.className} text-5xl md:text-8xl mt-4 mb-4 text-[#f139bb] font-extrabold lg:tracking-[50]`}>
                     BLOG
                   </h1>
                   <div className='h-[1px] w-full bg-white'></div>
