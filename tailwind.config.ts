@@ -22,6 +22,16 @@ const config: Config = {
         },
       },
       keyframes: {
+
+        pulse: {
+          // '0%', 
+          '100%': {
+            opacity: 1
+          },
+          '50%': {
+            opacity: .5
+          }
+        },
         shimmer: {
           '100%': {
             transform: 'translateX(100%)',
@@ -86,7 +96,11 @@ const config: Config = {
           to: { opacity: "0", transform: "translateX(100%)" },
         },
       },
+
+      // animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
       animation: {
+        pulse: "2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         hide: "hide 150ms cubic-bezier(0.16, 1, 0.3, 1)",
         slideDownAndFade: "slideDownAndFade 150ms cubic-bezier(0.16, 1, 0.3, 1)",
         slideLeftAndFade: "slideLeftAndFade 150ms cubic-bezier(0.16, 1, 0.3, 1)",
