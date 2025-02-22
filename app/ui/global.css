@@ -35,3 +35,54 @@ input[type='number']::-webkit-outer-spin-button {
   height: 50%; /* Adjust the height to control the gradient area */
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
 }
+
+.image-testd {
+  background-image: radial-gradient(cyan 0.5px, transparent 0px);
+  /* background-repeat: repeat;  or omit this declaration */
+  background-size: 30px 30px;
+  background-position: center;
+  
+}
+
+.image-testdd{
+  background-image: radial-gradient(circle closest-side, cyan 0.5px, transparent 0px);
+  background-size: 30px 30px; /* Set the size of each dot */
+  background-repeat: repeat; /* Repeat the pattern to fill the space */
+}
+
+.image-testo {
+  background-image: radial-gradient(#fafafa .5px, transparent .5px),
+      radial-gradient(#fafafa .5px, transparent .5px);
+  background-position: 0 0, 15px 15px;
+  background-size: 30px 30px;
+}
+
+
+:root {
+  --black: #000000; /* Define black color if not already set */
+  --accent-transparent: rgba(255, 255, 255, 0.5); /* Example for accent color with transparency */
+  --dot-size: .5px; /* Size of the dots in the radial gradient */
+  --offset: 5px; /* Offset for background positioning */
+  --gap-size: 10px; /* Gap between the repeating patterns */
+}
+
+.image-test {
+  background-image: 
+    linear-gradient(var(--black) 0%, transparent 100%), 
+    radial-gradient(var(--accent-transparent) var(--dot-size), transparent var(--dot-size)), 
+    radial-gradient(var(--accent-transparent) var(--dot-size), transparent var(--dot-size));
+  
+  background-position: 
+    0 0, 
+    0 0, 
+    var(--offset) var(--offset);
+  
+  background-size: 
+    100% 100%, 
+    var(--gap-size) var(--gap-size), 
+    var(--gap-size) var(--gap-size);
+  
+  /* background-color: var(--black);  */
+  /* Fallback background color */
+}
+
