@@ -11,6 +11,11 @@ export default async function Page() {
     className="flex min-h-screen flex-col overflow-hidden"
     >
 
+  
+
+
+      <div className='flex min-h-screen py-12 items-center'>
+
       <video 
         autoPlay 
         muted 
@@ -26,9 +31,6 @@ export default async function Page() {
       >         
         <source src="./jellies.mp4" type="video/mp4"/>       
       </video>
-
-
-      <div className='flex min-h-screen py-12 items-center'>
 
         <div className='lg:pl-24 w-full'>
             <div className='lg:inline-block text-center' >

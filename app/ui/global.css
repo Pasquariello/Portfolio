@@ -65,7 +65,7 @@ input[type='number']::-webkit-outer-spin-button {
 :root {
   --black: #000000; /* Define black color if not already set */
   --accent-transparent:  rgba(255, 255, 255, 0.3); /* Example for accent color with transparency */
-  --dot-size: 1px; /* Size of the dots in the radial gradient */
+  --dot-size: 2px; /* Size of the dots in the radial gradient */
   --offset: 15px; /* Offset for background positioning */
   --gap-size: 30px; /* Gap between the repeating patterns */
 }
