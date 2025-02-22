@@ -39,7 +39,7 @@ export default async function Page() {
       </div>
 
 
-      <div className="min-h-screen h-screen bg-slate-900 relative px-4 py-12 relavtive -z-20" id="about">
+      <div className="min-h-screen h-screen bg-black relative px-4 py-12 relavtive -z-20" id="about">
   
           <svg className="absolute max-h-screen h-150 -z-10 top-[20%] bottom-0 left-12" id="sw-js-blob-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" version="1.1">
               <defs> 
