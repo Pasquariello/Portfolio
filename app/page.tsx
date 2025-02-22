@@ -14,7 +14,7 @@ export default async function Page() {
   
 
 
-      <div className='flex min-h-screen py-12 items-center'>
+      <div className='flex min-h-screen py-12 items-center border-2 border-blue-500'>
 
       <video 
         autoPlay 
