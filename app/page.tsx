@@ -9,7 +9,7 @@ export default async function Page() {
       <div className='flex h-screen items-center'>
         <div className='lg:pl-24 w-full'>
             <div className='lg:inline-block text-center' >
-              <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl font-light border text-center lg:text-left`}>Welcome to my profile!</h2>
+              <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl font-light text-center lg:text-left`}>Welcome to my profile!</h2>
               <h1 className={`${titillium.className} text-white text-6xl sm:text-8xl mt-4 mb-8`}>Taylor Pasquariello</h1>
               <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl font-light relative`}><TextLoop/></h2>
             </div>
