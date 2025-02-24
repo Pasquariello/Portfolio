@@ -41,18 +41,17 @@ function TechBox({title, initColor, icon}) {
     <div
       onMouseEnter={()=>{setMouseInDiv(true)}}
       onMouseLeave={()=>{setMouseInDiv(false)}}
-      className='py-4 flex justify-center hover:cursor-pointer'
+      className='p-4 flex justify-center hover:cursor-pointer w-full'
       style={{
         backgroundColor: bgColor,
         transition: 'background-color 0.3s ease', // Add transition for smooth effect
       }}
     >
-      
-      <p className={`${titillium.className} lg:text-left text-white text-lg sm:text-xl font-normal tracking-wider leading-8`}>
-        {title}
         {icon}
-      </p>
-      {/* Content */}
+      {/* <p className={`${titillium.className} lg:text-left text-white text-lg sm:text-xl font-normal tracking-wider leading-8`}>
+        {title}
+      
+      </p> */}
     </div>
   );
 }
