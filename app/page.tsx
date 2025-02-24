@@ -3,6 +3,7 @@ import { TextLoop } from './components/text-loop';
 import VerticalNav from './components/vertical_nav';
 import '@/app/ui/global.css';
 import TechBox from './components/tech-box';
+import ContactForm from './components/contact-form';
 
 
 export default async function Page({params}) {
@@ -173,7 +174,7 @@ export default async function Page({params}) {
             
             <p className={`${titillium.className} lg:text-left text-white text-lg sm:text-xl font-normal mt-4 tracking-wider leading-8`}>Kin + Carta Notabe Projects</p>
             <div className=''>
-              <div className='w-full py-8 lg:w-2/4'>
+              <div className='w-full py-12 lg:w-2/4 mb-12'>
                 <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl font-light lg:text-left`}>Discover Financial Common Component library</h2>
 
                 <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
@@ -188,7 +189,7 @@ export default async function Page({params}) {
 
                 </p>
               </div>
-              <div className='w-full py-4 lg:w-2/4 lg:ml-auto'>
+              <div className='w-full py-12 lg:w-2/4 lg:ml-auto'>
                 <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl font-light lg:text-left`}>Redesign Health</h2>
                 <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
                   I led two development teams of eight members, collaborating with stakeholders to define project timelines and deliverables. 
@@ -199,11 +200,24 @@ export default async function Page({params}) {
                   architecture and Cognito authentication for secure and scalable services.
                 </p>
               </div>
-              <div className='h-20 w-full py-4 lg:w-2/4'>
+              <div className='w-full py-12 lg:w-2/4'>
                 <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl font-light lg:text-left`}>Raven Health</h2>
+                <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
+                  Raven Health was a React Native app designed to help primary care physicians create customized health plans, track patient 
+                  sessions, and build patient profiles. As the frontend lead developer, I managed a team of two, set up the frontend architecture,
+                  and wrote performant code while developing a comprehensive testing plan. After delivering the MVP, Raven Health secured 
+                  financial investors for its launch. One of my favorite features I built was a custom drag-and-drop form builder, which enabled 
+                  physicians to easily create personalized health plans for their patients.
+                </p>
               </div>
-              <div className='h-20 w-full py-4 lg:w-2/4 lg:ml-auto'>
+              <div className='w-full py-12 lg:w-2/4 lg:ml-auto'>
                 <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl font-light lg:text-left`}>Blue Origin</h2>
+                <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
+                  As a React developer, I improved application performance by cleaning up state management and developing a frontend architectural
+                  plan with detailed documentation for future developers. I worked with GraphQL to optimize data fetching, transcribed Figma designs 
+                  into functional components, and contributed to an automated data reporting system using Terraform and Datadog, enhancing our 
+                  ability to track server errors and application issues.
+                </p>
               </div>
             </div>
 
@@ -220,7 +234,7 @@ export default async function Page({params}) {
                   <div className='flex flex-col h-[1px] w-full bg-white my-4'/>
                 </h1>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4"> 
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4"> 
                 {
                     techList.map(item => {
                       return <TechBox key={item.title} title={item.title} initColor={item.initColor} icon={item.icon}/>
@@ -236,7 +250,7 @@ export default async function Page({params}) {
 
 
           {/* BLOG */}
-          <div className={`min-h-screen relative px-4 py-12 `} id="blog">
+          {/* <div className={`min-h-screen relative px-4 py-12 `} id="blog">
 
 
             <div className='h-full items-center justify-center xl:justify-start lg:pl-12 w-full md:w-4/5 lg:w-3/5 xl:w-2/5'>
@@ -258,7 +272,25 @@ export default async function Page({params}) {
                 </div>
               </div>
        
+          </div> */}
+
+
+
+          <div className={`min-h-screen relative px-4 py-12 `} id="contact">
+
+            {/* Contact */}
+            <div className='h-full items-center justify-center xl:justify-start lg:pl-12 w-full md:w-4/5'> 
+                <h1 className={`${titillium.className} text-5xl md:text-8xl mt-4 mb-4 text-[#f139bb] font-extrabold lg:tracking-[50]`}>
+                  CONNECT
+                  <div className='flex flex-col h-[1px] w-full bg-white my-4'/>
+                </h1>
+              <div className="flex flex-col w-full items-center mt-12">
+                  <ContactForm />
+              </div>
             </div>
+
+          </div>
+      
       
       </div>
 

@@ -9,8 +9,10 @@ export default function VerticalNav() {
         { name: 'About', href: '#about', icon: HomeIcon },
         { name: 'Resume', href: '#resume', icon: UserGroupIcon },
         { name: 'Tech', href: '#tech', icon: WrenchScrewdriverIcon },
-        { name: 'Blog', href: '#blog', icon: UserCircleIcon },
-        { name: 'For Fun', href: '#fun', icon: DocumentDuplicateIcon }
+        // { name: 'Blog', href: '#blog', icon: UserCircleIcon },
+        // { name: 'For Fun', href: '#fun', icon: DocumentDuplicateIcon },
+        { name: 'Let\'s Connect', href: '#contact', icon: DocumentDuplicateIcon }
+
     
     ];
 
