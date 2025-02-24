@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { titillium } from '../ui/fonts';
 
-function TechBox({title, initColor}) {
+function TechBox({title, initColor, icon}) {
   const [mouseInDiv, setMouseInDiv] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
@@ -50,6 +50,7 @@ function TechBox({title, initColor}) {
       
       <p className={`${titillium.className} lg:text-left text-white text-lg sm:text-xl font-normal tracking-wider leading-8`}>
         {title}
+        {icon}
       </p>
       {/* Content */}
     </div>
