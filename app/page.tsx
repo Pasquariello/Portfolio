@@ -199,7 +199,7 @@ export default async function Page({params}) {
                 </p> */}
                 <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
                 Led the development of a custom component library tailored to our needs, aimed at improving development efficiency and 
-                design consistency across the mobile engineering department.
+                design consistency across the mobile engineering department. Developed to be used across the entire mobile platform and across disiplines.
                 </p>
 
                 <div className='lg:pl-6'>
@@ -225,33 +225,114 @@ export default async function Page({params}) {
               </div>
               <div className='w-full py-12 lg:w-2/4 lg:ml-auto'>
                 <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl lg:text-left`}>Redesign Health</h2>
-                <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
+                {/* <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
                   I led two development teams of eight members, collaborating with stakeholders to define project timelines and deliverables. 
                   I structured the CI/CD pipeline and Git flow to improve team efficiency, led feature release planning, and mentored 
                   developers in best practices and agile methods. As a frontend developer, I worked with React, React Native, Tailwind, and 
                   React Native Paper to build user interfaces. I also transcribed Figma designs into components and served as the lead developer 
                   for a Node.js Restful API, Postgres database, and Twilio integration for in-app chat and SMS. Additionally, I integrated AWS 
                   architecture and Cognito authentication for secure and scalable services.
+                </p> */}
+                <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
+                Managed and mentored two development teams of eight members, working closely with stakeholders to define timelines and deliverables. I also 
+                played a key role in optimizing team efficiency through CI/CD pipeline structuring and Git flow improvements.
                 </p>
+
+                <div className='lg:pl-6'>
+                  <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}><b>Key Achievements:</b></p>
+                  <ul className={`${titillium.className} list-disc lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
+                    <li>
+                    Led feature release planning and mentored developers in best practices and agile methods.
+                    </li>
+                    <li>
+                    Developed user interfaces using React, React Native, Tailwind, and React Native Paper.                 
+                    </li>
+                    <li>
+                    Transcribed Figma designs into reusable components.              
+                    </li>
+                    <li>
+                    Served as lead developer for a Node.js RESTful API, Postgres database, and Twilio integration for in-app chat and SMS.                
+                    </li>
+                    <li>
+                    Integrated AWS architecture and Cognito authentication for secure, scalable services.
+                    </li>
+                  </ul>
+                </div>
               </div>
               <div className='w-full py-12 lg:w-2/4'>
                 <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl lg:text-left`}>Raven Health</h2>
-                <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
+                {/* <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
                   Raven Health was a React Native app designed to help primary care physicians create customized health plans, track patient 
                   sessions, and build patient profiles. As the frontend lead developer, I managed a team of two, set up the frontend architecture,
                   and wrote performant code while developing a comprehensive testing plan. After delivering the MVP, Raven Health secured 
                   financial investors for its launch. One of my favorite features I built was a custom drag-and-drop form builder, which enabled 
                   physicians to easily create personalized health plans for their patients.
+                </p> */}
+                <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
+                As the frontend lead developer for Raven Health, a React Native app designed to help primary care physicians create and track patient 
+                health plans, I managed a team of two and led the development of the app's frontend architecture.
                 </p>
+
+                <div className='lg:pl-6'>
+                  <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}><b>Key Achievements:</b></p>
+                  <ul className={`${titillium.className} list-disc lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
+                    <li>
+                    Managed frontend development and set up the architecture for the app.
+                    </li>
+                    <li>
+                    Developed a comprehensive testing plan.                 
+                    </li>
+                    <li>
+                    Built a custom drag-and-drop form builder for personalized health plans.         
+                    </li>
+                    <li>
+                    Delivered the MVP, contributing to Raven Health securing financial investors for its launch.               
+                    </li>
+                    <li>
+                    Collaborated closely with product managers and designers to ensure seamless user experience.
+                    </li>
+                    <li>
+                    Optimized app performance and responsiveness for both iOS and Android platforms.
+                    </li>
+                  </ul>
+                </div>
               </div>
               <div className='w-full py-12 lg:w-2/4 lg:ml-auto'>
                 <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl lg:text-left`}>Blue Origin</h2>
-                <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
+                {/* <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
                   As a React developer, I improved application performance by cleaning up state management and developing a frontend architectural
                   plan with detailed documentation for future developers. I worked with GraphQL to optimize data fetching, transcribed Figma designs 
                   into functional components, and contributed to an automated data reporting system using Terraform and Datadog, enhancing our 
                   ability to track server errors and application issues.
+                </p> */}
+                 <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
+                 As a React developer, I focused on improving application performance, optimizing data fetching, and ensuring a solid foundation for 
+                 future development with detailed architecture and documentation.
                 </p>
+
+                <div className='lg:pl-6'>
+                  <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}><b>Key Achievements:</b></p>
+                  <ul className={`${titillium.className} list-disc lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
+                    <li>
+                    Implemented automated data reporting system using Terraform and Datadog, enhancing error tracking.
+                    </li>
+                    <li>
+                    Worked with GraphQL to optimize data fetching.               
+                    </li>
+                    <li>
+                    Reduced loading times by implementing more efficient data handling and caching strategies.        
+                    </li>
+                    <li>
+                    Enhanced application scalability by implementing modular code architecture which was not originally present           
+                    </li>
+                    <li>
+                    Collaborated closely with product managers and designers to ensure seamless user experience.
+                    </li>
+                    <li>
+                    Proactively identified and resolved potential performance bottlenecks before they affected production.
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
 
