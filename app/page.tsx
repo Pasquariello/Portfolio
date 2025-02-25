@@ -260,7 +260,7 @@ export default async function Page({params}) {
               
 
               {/* Start Discover section */}
-              <div className='w-full py-12 grid gird-cols xl:grid-cols-2 mb-12 gap-16'>
+              <div className='w-full py-12 grid gird-cols xl:grid-cols-2 mb-12 gap-16 mb-40'>
                 {/* TODO - work on this layout */}
                 <div className="w-full order-1"> 
                   <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl lg:text-left`}>Discover Financial</h2>
@@ -319,7 +319,7 @@ export default async function Page({params}) {
               {/* End Discover section */}
 
                   {/* Start Redesign 2 section */}
-                  <div className='w-full py-12 grid gird-cols xl:grid-cols-2 mb-12 gap-16'>
+                  <div className='w-full py-12 grid gird-cols xl:grid-cols-2 mb-12 gap-16 mb-40'>
                 {/* TODO - work on this layout */}
                 <div className="w-full order-2 "> 
                 <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl lg:text-left`}>Redesign Health</h2>
@@ -379,7 +379,7 @@ export default async function Page({params}) {
               {/* End Discover section */}
 
                   {/* Start RH2 section */}
-                  <div className='w-full py-12 grid gird-cols xl:grid-cols-2 mb-12 gap-16'>
+                  <div className='w-full py-12 grid gird-cols xl:grid-cols-2 mb-12 gap-16 mb-40'>
                 {/* TODO - work on this layout */}
                 <div className="w-full order-1"> 
                 <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl lg:text-left`}>Raven Health</h2>
@@ -444,7 +444,7 @@ export default async function Page({params}) {
               {/* End Discover section */}
 
                   {/* Start blue 2 section */}
-                  <div className='w-full py-12 grid gird-cols xl:grid-cols-2 mb-12 gap-16'>
+                  <div className='w-full py-12 grid gird-cols xl:grid-cols-2 mb-12 gap-16 mb-40'>
                 {/* TODO - work on this layout */}
                 <div className="w-full order-2"> 
                 <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl lg:text-left`}>Blue Origin</h2>
