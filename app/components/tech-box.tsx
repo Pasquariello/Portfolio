@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { titillium } from '../ui/fonts';
 
-function TechBox({title, initColor, icon}) {
+function TechBox({title, initColor, icon, hoverEffect = false}) {
   const [mouseInDiv, setMouseInDiv] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
@@ -43,7 +43,7 @@ function TechBox({title, initColor, icon}) {
       onMouseLeave={()=>{setMouseInDiv(false)}}
       className='p-4 flex justify-center hover:cursor-pointer w-full shrink-0'
       style={{
-        backgroundColor: bgColor,
+        backgroundColor: hoverEffect ? bgColor : initColor,
         transition: 'background-color 0.3s ease', // Add transition for smooth effect
       }}
     >
