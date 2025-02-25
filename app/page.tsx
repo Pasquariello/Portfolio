@@ -177,7 +177,7 @@ export default async function Page({params}) {
               <div className='w-full py-12 lg:w-2/4 mb-12'>
                 <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl font-light lg:text-left`}>Discover Financial Common Component library</h2>
 
-                <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
+                {/* <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
 
                 In my role, I led the implementation of a proof of concept for a custom component library, similar to frameworks 
                 like MUI or Tailwind, but tailored to our needs. The goal was to reduce development time, improve design fidelity, 
@@ -187,7 +187,30 @@ export default async function Page({params}) {
                 and development, of which I maintained my position as a lead developer helping mentor new team members, and colloaborating with 
                 directors, managers, product owners, and design leads
 
+                </p> */}
+                <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
+                Led the development of a custom component library tailored to our needs, aimed at improving development efficiency and 
+                design consistency across the mobile engineering department.
                 </p>
+
+                <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}><b>Key Achievements:</b></p>
+                <ul className={`${titillium.className} list-disc lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
+                  <li>
+                    Created 20 reusable components, including buttons, modals, alerts, bottom sheets, and text components and more.
+                  </li>
+                  <li>
+                    Deployed the library as a private NPM package for easy integration.                 
+                  </li>
+                  <li>
+                    Provided comprehensive documentation and a live Storybook sandbox for developers.                  
+                  </li>
+                  <li>
+                    Ensured a consistent look and feel across the team, reducing development time.                  
+                  </li>
+                  <li>
+                    After Proof of concept was approved, continued as lead developer, mentoring new team members and collaborating with key stakeholders.
+                  </li>
+                </ul>
               </div>
               <div className='w-full py-12 lg:w-2/4 lg:ml-auto'>
                 <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl font-light lg:text-left`}>Redesign Health</h2>
