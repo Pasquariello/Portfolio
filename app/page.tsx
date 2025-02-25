@@ -280,7 +280,7 @@ export default async function Page({params}) {
 
             {/* Contact */}
             <div className='h-full items-center justify-center xl:justify-start lg:pl-12 w-full md:w-4/5'> 
-                <h1 className={`${titillium.className} text-5xl md:text-8xl mt-4 mb-4 text-[#f139bb] font-extrabold lg:tracking-[50]`}>
+                <h1 className={`${titillium.className} inline-block text-5xl md:text-8xl mt-4 mb-4 text-[#f139bb] font-extrabold lg:tracking-[50]`}>
                   CONNECT
                   <div className='flex flex-col h-[1px] w-full bg-white my-4'/>
                 </h1>
