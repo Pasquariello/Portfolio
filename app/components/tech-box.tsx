@@ -41,7 +41,7 @@ function TechBox({title, initColor, icon}) {
     <div
       onMouseEnter={()=>{setMouseInDiv(true)}}
       onMouseLeave={()=>{setMouseInDiv(false)}}
-      className='p-4 flex justify-center hover:cursor-pointer w-full'
+      className='p-4 flex justify-center hover:cursor-pointer w-full shrink-0'
       style={{
         backgroundColor: bgColor,
         transition: 'background-color 0.3s ease', // Add transition for smooth effect
