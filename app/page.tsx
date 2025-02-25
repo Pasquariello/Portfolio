@@ -5,6 +5,9 @@ import '@/app/ui/global.css';
 import TechBox from './components/tech-box';
 import ContactForm from './components/contact-form';
 
+import { ReactComponent as MySVG } from '/public/undraw_mobile-application_lhsq.svg';
+import Image from 'next/image';
+
 
 export default async function Page({params}) {
 
@@ -258,7 +261,7 @@ export default async function Page({params}) {
 
         {/* <div className='flex h-full items-center justify-center xl:justify-start lg:pl-12 w-full '> */}
           {/* TODO - Update this div wrapper - its not necessary  */}
-          <div className=' lg:pl-12 w-full md:w-4/5 lg:3/5 xl:w-4/5'>
+          <div className=' lg:pl-12 w-full md:w-4/5 lg:3/5 xl:w-8/9'>
             <h1 className={`${titillium.className} inline-block text-5xl md:text-8xl mt-4 mb-4 text-[#f139bb] font-extrabold lg:tracking-[50]`}>
                 RESUME
                 <div className='flex flex-col h-[1px] w-full bg-white my-4'/>
@@ -270,7 +273,7 @@ export default async function Page({params}) {
               
 
               {/* Start Discover section */}
-              <div className='w-full py-12 grid gird-cols xl:grid-cols-2 mb-12'>
+              <div className='w-full py-12 grid gird-cols xl:grid-cols-2 mb-12 gap-16'>
                 {/* TODO - work on this layout */}
                 <div className="w-full"> 
                   <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl lg:text-left`}>Discover Financial</h2>
@@ -302,9 +305,18 @@ export default async function Page({params}) {
                 </div>
 
                 {/* Start tech section */}
-                <div className=" mt-4 items-start px-12"> 
-                  <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}><b>Tech Stack</b></p>
-                  <div className='grid grid-cols-2 md:grid-cols-4 gap-4 shrink-0'>
+                <div className=" mt-4 items-start px-12 'w-full h-full relative flex items-end"> 
+                  {/* <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}><b>Tech Stack</b></p> */}
+                 
+                  <Image
+                    priority
+                    // width={100}
+                    // height={100}
+                    fill
+                    src='/undraw_mobile-development_tjxm.svg'
+                    alt="Follow us on Twitter"
+                  />
+                  {/* <div className='grid grid-cols-2 md:grid-cols-4 gap-4 shrink-0'>
 
                     <TechBox title={'title'} initColor={"#37474f"} icon={reactIcon()}/>
                     <TechBox title={'title'} initColor={"#37474f"} icon={storyBookIcon()}/>
@@ -312,7 +324,7 @@ export default async function Page({params}) {
                 
                     <TechBox title={'title'} initColor={"#37474f"} icon={figmaIcon()}/>
                     <TechBox title={'title'} initColor={"#37474f"} icon={githubActionsIcon()}/>
-                  </div> 
+                  </div>  */}
                 </div>
                 {/* End tech section */}
 
@@ -320,7 +332,7 @@ export default async function Page({params}) {
               {/* End Discover section */}
 
                   {/* Start Redesign 2 section */}
-                  <div className='w-full py-12 grid gird-cols xl:grid-cols-2 mb-12'>
+                  <div className='w-full py-12 grid gird-cols xl:grid-cols-2 mb-12 gap-16'>
                 {/* TODO - work on this layout */}
                 <div className="w-full"> 
                 <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl lg:text-left`}>Redesign Health</h2>
@@ -353,8 +365,9 @@ export default async function Page({params}) {
                 </div>
 
                 {/* Start tech section */}
-                <div className=" mt-4 items-start px-12"> 
-                  <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}><b>Tech Stack</b></p>
+                {/* <div className=" mt-4 items-start px-12">  */}
+                <div className=" mt-4 items-start px-12 'w-full h-full relative flex items-end">
+                  {/* <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}><b>Tech Stack</b></p>
                   <div className='grid grid-cols-2 md:grid-cols-4 gap-4 shrink-0'>
 
                     <TechBox title={'title'} initColor={"#37474f"} icon={reactIcon()}/>
@@ -363,7 +376,15 @@ export default async function Page({params}) {
                 
                     <TechBox title={'title'} initColor={"#37474f"} icon={figmaIcon()}/>
                     <TechBox title={'title'} initColor={"#37474f"} icon={githubActionsIcon()}/>
-                  </div> 
+                  </div>  */}
+                   <Image
+                    priority
+                    // width={100}
+                    // height={100}
+                    fill
+                    src='/undraw_product-iteration_r2wg.svg'
+                    alt="Follow us on Twitter"
+                  />
                 </div>
                 {/* End tech section */}
 
@@ -371,7 +392,7 @@ export default async function Page({params}) {
               {/* End Discover section */}
 
                   {/* Start RH2 section */}
-                  <div className='w-full py-12 grid gird-cols xl:grid-cols-2 mb-12'>
+                  <div className='w-full py-12 grid gird-cols xl:grid-cols-2 mb-12 gap-16'>
                 {/* TODO - work on this layout */}
                 <div className="w-full"> 
                 <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl lg:text-left`}>Raven Health</h2>
@@ -407,8 +428,11 @@ export default async function Page({params}) {
                 </div>
 
                 {/* Start tech section */}
-                <div className=" mt-4 items-start px-12"> 
-                  <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}><b>Tech Stack</b></p>
+                {/* <div className=" mt-4 items-start px-12">  */}
+                <div className=" mt-4 items-start px-12 'w-full h-full relative flex items-end">
+
+
+                  {/* <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}><b>Tech Stack</b></p>
                   <div className='grid grid-cols-2 md:grid-cols-4 gap-4 shrink-0'>
 
                     <TechBox title={'title'} initColor={"#37474f"} icon={reactIcon()}/>
@@ -417,7 +441,15 @@ export default async function Page({params}) {
                 
                     <TechBox title={'title'} initColor={"#37474f"} icon={figmaIcon()}/>
                     <TechBox title={'title'} initColor={"#37474f"} icon={githubActionsIcon()}/>
-                  </div> 
+                  </div>  */}
+                <Image
+                    priority
+                    // width={100}
+                    // height={100}
+                    fill
+                    src='/undraw_devices_odm4.svg'
+                    alt="Follow us on Twitter"
+                  />
                 </div>
                 {/* End tech section */}
 
@@ -425,7 +457,7 @@ export default async function Page({params}) {
               {/* End Discover section */}
 
                   {/* Start blue 2 section */}
-                  <div className='w-full py-12 grid gird-cols xl:grid-cols-2 mb-12'>
+                  <div className='w-full py-12 grid gird-cols xl:grid-cols-2 mb-12 gap-16'>
                 {/* TODO - work on this layout */}
                 <div className="w-full"> 
                 <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl lg:text-left`}>Blue Origin</h2>
@@ -461,8 +493,10 @@ export default async function Page({params}) {
                 </div>
 
                 {/* Start tech section */}
-                <div className=" mt-4 items-start px-12"> 
-                  <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}><b>Tech Stack</b></p>
+                {/* <div className=" mt-4 items-start px-12">  */}
+                <div className=" mt-4 items-start px-12 'w-full h-full relative flex items-end">
+
+                  {/* <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}><b>Tech Stack</b></p>
                   <div className='grid grid-cols-2 md:grid-cols-4 gap-4 shrink-0'>
 
                     <TechBox title={'title'} initColor={"#37474f"} icon={reactIcon()}/>
@@ -471,7 +505,15 @@ export default async function Page({params}) {
                 
                     <TechBox title={'title'} initColor={"#37474f"} icon={figmaIcon()}/>
                     <TechBox title={'title'} initColor={"#37474f"} icon={githubActionsIcon()}/>
-                  </div> 
+                  </div>  */}
+                  <Image
+                    priority
+                    // width={100}
+                    // height={100}
+                    fill
+                    src='/undraw_ship-it_vn4g.svg'
+                    alt="Follow us on Twitter"
+                  />
                 </div>
                 {/* End tech section */}
 
