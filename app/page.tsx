@@ -184,7 +184,7 @@ export default async function Page({params}) {
             <p className={`${titillium.className} lg:text-left text-white text-lg sm:text-xl font-normal mt-4 tracking-wider leading-8`}>Kin + Carta Notable Projects</p>
             <div className='lg:pl-8'>
               <div className='w-full py-12 lg:w-2/4 mb-12'>
-                <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl lg:text-left`}>Discover Financial Common Component library</h2>
+                <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl lg:text-left`}>Discover Financial</h2>
 
                 {/* <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
 
