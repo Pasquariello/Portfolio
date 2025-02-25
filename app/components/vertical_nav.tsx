@@ -11,13 +11,13 @@ export default function VerticalNav() {
         { name: 'Tech', href: '#tech', icon: WrenchScrewdriverIcon },
         // { name: 'Blog', href: '#blog', icon: UserCircleIcon },
         // { name: 'For Fun', href: '#fun', icon: DocumentDuplicateIcon },
-        { name: 'Let\'s Connect', href: '#contact', icon: DocumentDuplicateIcon }
+        { name: 'Connect', href: '#contact', icon: DocumentDuplicateIcon }
 
     
     ];
 
     return (
-        <ol className="hidden xl:block fixed right-40 border-s border-gray-700 z-50"> 
+        <ol className="hidden xl:block fixed right-12 border-s border-gray-700 z-50"> 
             {
                 links.map(link => {
                     return (
