@@ -5,8 +5,9 @@ import '@/app/ui/global.css';
 import TechBox from './components/tech-box';
 import ContactForm from './components/contact-form';
 
-import { ReactComponent as MySVG } from '/public/undraw_mobile-application_lhsq.svg';
 import Image from 'next/image';
+import SectionTitle from './components/section-title';
+import SectionWrapper from './components/section-wrapper';
 
 
 export default async function Page({params}) {
@@ -215,9 +216,9 @@ export default async function Page({params}) {
         <VerticalNav/>
       </div>
 
-      <div className='image-test pl-6'>
+      <div className='image-test px-6 lg:pr-0'>
       
-      <div className={`min-h-screen h-screen relative px-4 py-12`} id="about">
+      <SectionWrapper id="about">
   
           {/* <svg className="absolute max-h-screen h-150 -z-10 top-[20%] bottom-0 left-12" id="sw-js-blob-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" version="1.1">
               <defs> 
@@ -230,17 +231,11 @@ export default async function Page({params}) {
           </svg> */}
 
         {/* <div className='flex h-full items-center justify-center xl:justify-start lg:pl-12 w-full '> */}
-          <div className=' lg:pl-12 w-full md:w-4/5 lg:3/5 xl:w-2/5'>
-              <h1 className={`${titillium.className} inline-block text-5xl md:text-8xl mt-4 mb-4 text-[#f139bb] font-extrabold lg:tracking-[50]`}>
-                ABOUT
-                <div className='flex flex-col h-[1px] w-full bg-white my-4'/>
-              </h1>
-              {/* <h1 className={`${titillium.className} inline-block text-5xl md:text-8xl mt-4 mb-4 text-[#f139bb] font-extrabold lg:tracking-[50]`}>
-                RESUME
-
-                <div className='flex flex-col h-[1px] w-full bg-white my-4'/>
-            </h1> */}
-            <p className={`${titillium.className} lg:text-left text-white text-lg sm:text-xl font-normal mt-4 tracking-wider leading-8`}>
+            <SectionTitle value="About"/>
+         
+            <div className='w-full align-middle  md:w-4/5 lg:3/5 xl:w-2/3 flex lg:flex-grow-1 lg:items-center' >
+        
+            <p className={`${titillium.className} align-middle lg:text-left text-white text-lg sm:text-xl mt-4 lg:mt-0 font-normal tracking-wider leading-8`}>
               I've been a developer since 2015, with a passion for solving problems 
               and getting creative. Before jumping into the tech world, I earned a business degree from the 
               University of Colorado at Denver. I’m a full-stack developer, but I’m especially drawn to Frontend 
@@ -249,23 +244,15 @@ export default async function Page({params}) {
               gravel, and cyclocross—my absolute favorite discipline, especially with the fantastic cycling 
               community here in the PNW.
             </p>
+           
           </div>
-        {/* </div> */}
 
-      </div>
+        </SectionWrapper>
 
 
       {/* Resume */}
-      <div className={`min-h-screen relative px-4 py-12 `} id="resume">
-
-
-        {/* <div className='flex h-full items-center justify-center xl:justify-start lg:pl-12 w-full '> */}
-          {/* TODO - Update this div wrapper - its not necessary  */}
-          <div className=' lg:pl-12 w-full md:w-4/5 lg:3/5 xl:w-8/9'>
-            <h1 className={`${titillium.className} inline-block text-5xl md:text-8xl mt-4 mb-4 text-[#f139bb] font-extrabold lg:tracking-[50]`}>
-                RESUME
-                <div className='flex flex-col h-[1px] w-full bg-white my-4'/>
-            </h1>
+      <SectionWrapper id="resume">
+            <SectionTitle value="resume"/>
            
             
             <p className={`${titillium.className} lg:text-left text-white text-lg sm:text-xl font-normal mt-4 tracking-wider leading-8`}>Kin + Carta Notable Projects</p>
@@ -640,32 +627,28 @@ export default async function Page({params}) {
               </div> */}
             </div>
 
-          </div>
-        {/* </div> */}
-      </div>
+       </SectionWrapper>
 
 
         {/* Tech */}
-        <div className={`min-h-screen relative px-4 py-12 `} id="tech">
-          <div className='h-full items-center justify-center xl:justify-start lg:pl-12 w-full md:w-4/5 lg:w-3/5 xl:w-2/5'>
-                <h1 className={`${titillium.className} inline-block text-5xl md:text-8xl mt-4 mb-4 text-[#f139bb] font-extrabold lg:tracking-[50]`}>
-                  TECHNOLOGY
-                  <div className='flex flex-col h-[1px] w-full bg-white my-4'/>
-                </h1>
+        {/* <div className={`min-h-screen relative px-4 py-12 `} id="tech">
+          <div className='h-full items-center justify-center xl:justify-start lg:pl-12 w-full md:w-4/5 lg:w-3/5 xl:w-2/5'> */}
+          <SectionWrapper id="technology">
+            <SectionTitle value="technology"/>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4"> 
-                {
-                    techList.map(item => {
-                      return <TechBox key={item.title} title={item.title} initColor={item.initColor} icon={item.icon} hoverEffect/>
-                    })
-                  }
-                
-                  
-
-                </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4"> 
+              {
+                techList.map(item => {
+                  return <TechBox key={item.title} title={item.title} initColor={item.initColor} icon={item.icon} hoverEffect/>
+                })
+              }
+            
               
-          </div>
-        </div>
+
+            </div>
+          </SectionWrapper>
+          {/* </div>
+        </div> */}
 
 
           {/* BLOG */}
@@ -695,20 +678,12 @@ export default async function Page({params}) {
 
 
 
-          <div className={`min-h-screen relative px-4 py-12 `} id="contact">
-
-            {/* Contact */}
-            <div className='h-full items-center justify-center xl:justify-start lg:pl-12 w-full md:w-4/5'> 
-                <h1 className={`${titillium.className} inline-block text-5xl md:text-8xl mt-4 mb-4 text-[#f139bb] font-extrabold lg:tracking-[50]`}>
-                  CONNECT
-                  <div className='flex flex-col h-[1px] w-full bg-white my-4'/>
-                </h1>
+            <SectionWrapper id="connect">
+              <SectionTitle value="connect"/>
               <div className="flex flex-col w-full items-center mt-12">
                   <ContactForm />
               </div>
-            </div>
-
-          </div>
+            </SectionWrapper>
       
       
       </div>
