@@ -292,7 +292,7 @@ export default async function Page({params}) {
                 </div>
 
                 {/* Start tech section */}
-                <div className=" mt-4 items-start px-12 'w-full h-full relative flex items-end order-2"> 
+                <div className="mt-4 items-start px-12 'w-full min-h-80 h-full relative flex items-end order-2"> 
                   {/* <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}><b>Tech Stack</b></p> */}
                  
                   <Image
@@ -321,7 +321,7 @@ export default async function Page({params}) {
                   {/* Start Redesign 2 section */}
                   <div className='w-full py-12 grid gird-cols xl:grid-cols-2 mb-12 gap-16 mb-40'>
                 {/* TODO - work on this layout */}
-                <div className="w-full order-2 "> 
+                <div className="w-full order-1 lg:order-2 "> 
                 <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl lg:text-left`}>Redesign Health</h2>
                  
                  <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
@@ -353,7 +353,7 @@ export default async function Page({params}) {
 
                 {/* Start tech section */}
                 {/* <div className=" mt-4 items-start px-12">  */}
-                <div className=" mt-4 items-start px-12 'w-full h-full relative flex items-end order-1">
+                <div className="mt-4 items-start px-12 'w-full h-full min-h-80 relative flex items-end order-2 lg:order-1">
                   {/* <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}><b>Tech Stack</b></p>
                   <div className='grid grid-cols-2 md:grid-cols-4 gap-4 shrink-0'>
 
@@ -416,7 +416,7 @@ export default async function Page({params}) {
 
                 {/* Start tech section */}
                 {/* <div className=" mt-4 items-start px-12">  */}
-                <div className=" mt-4 items-start px-12 'w-full h-full relative flex items-end order-2">
+                <div className="mt-4 items-start px-12 'w-full h-full min-h-80 relative flex items-end order-2">
 
 
                   {/* <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}><b>Tech Stack</b></p>
@@ -446,7 +446,7 @@ export default async function Page({params}) {
                   {/* Start blue 2 section */}
                   <div className='w-full py-12 grid gird-cols xl:grid-cols-2 mb-12 gap-16 mb-40'>
                 {/* TODO - work on this layout */}
-                <div className="w-full order-2"> 
+                <div className="w-full order-1 lg:order-2"> 
                 <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl lg:text-left`}>Blue Origin</h2>
               
               <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
@@ -481,7 +481,7 @@ export default async function Page({params}) {
 
                 {/* Start tech section */}
                 {/* <div className=" mt-4 items-start px-12">  */}
-                <div className=" mt-4 items-start px-12 'w-full h-full relative flex items-end order-1">
+                <div className="mt-4 items-start px-12 'w-full h-full min-h-80 relative flex items-end order-2 lg:order-1">
 
                   {/* <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}><b>Tech Stack</b></p>
                   <div className='grid grid-cols-2 md:grid-cols-4 gap-4 shrink-0'>
