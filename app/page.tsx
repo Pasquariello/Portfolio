@@ -184,7 +184,7 @@ export default async function Page({params}) {
             <p className={`${titillium.className} lg:text-left text-white text-lg sm:text-xl font-normal mt-4 tracking-wider leading-8`}>Kin + Carta Notable Projects</p>
             <div className='lg:pl-8'>
               <div className='w-full py-12 lg:w-2/4 mb-12'>
-                <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl font-light lg:text-left`}>Discover Financial Common Component library</h2>
+                <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl lg:text-left`}>Discover Financial Common Component library</h2>
 
                 {/* <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
 
@@ -202,27 +202,29 @@ export default async function Page({params}) {
                 design consistency across the mobile engineering department.
                 </p>
 
-                <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}><b>Key Achievements:</b></p>
-                <ul className={`${titillium.className} list-disc lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
-                  <li>
-                    Created 20 reusable components, including buttons, modals, alerts, bottom sheets, and text components and more.
-                  </li>
-                  <li>
-                    Deployed the library as a private NPM package for easy integration.                 
-                  </li>
-                  <li>
-                    Provided comprehensive documentation and a live Storybook sandbox for developers.                  
-                  </li>
-                  <li>
-                    Ensured a consistent look and feel across the team, reducing development time.                  
-                  </li>
-                  <li>
-                    After Proof of concept was approved, continued as lead developer, mentoring new team members and collaborating with key stakeholders.
-                  </li>
-                </ul>
+                <div className='lg:pl-6'>
+                  <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}><b>Key Achievements:</b></p>
+                  <ul className={`${titillium.className} list-disc lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
+                    <li>
+                      Created 20 reusable components, including buttons, modals, alerts, bottom sheets, and text components and more.
+                    </li>
+                    <li>
+                      Deployed the library as a private NPM package for easy integration.                 
+                    </li>
+                    <li>
+                      Provided comprehensive documentation and a live Storybook sandbox for developers.                  
+                    </li>
+                    <li>
+                      Ensured a consistent look and feel across the team, reducing development time.                  
+                    </li>
+                    <li>
+                      After Proof of concept was approved, continued as lead developer, mentoring new team members and collaborating with key stakeholders.
+                    </li>
+                  </ul>
+                </div>
               </div>
               <div className='w-full py-12 lg:w-2/4 lg:ml-auto'>
-                <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl font-light lg:text-left`}>Redesign Health</h2>
+                <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl lg:text-left`}>Redesign Health</h2>
                 <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
                   I led two development teams of eight members, collaborating with stakeholders to define project timelines and deliverables. 
                   I structured the CI/CD pipeline and Git flow to improve team efficiency, led feature release planning, and mentored 
@@ -233,7 +235,7 @@ export default async function Page({params}) {
                 </p>
               </div>
               <div className='w-full py-12 lg:w-2/4'>
-                <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl font-light lg:text-left`}>Raven Health</h2>
+                <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl lg:text-left`}>Raven Health</h2>
                 <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
                   Raven Health was a React Native app designed to help primary care physicians create customized health plans, track patient 
                   sessions, and build patient profiles. As the frontend lead developer, I managed a team of two, set up the frontend architecture,
@@ -243,7 +245,7 @@ export default async function Page({params}) {
                 </p>
               </div>
               <div className='w-full py-12 lg:w-2/4 lg:ml-auto'>
-                <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl font-light lg:text-left`}>Blue Origin</h2>
+                <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl lg:text-left`}>Blue Origin</h2>
                 <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
                   As a React developer, I improved application performance by cleaning up state management and developing a frontend architectural
                   plan with detailed documentation for future developers. I worked with GraphQL to optimize data fetching, transcribed Figma designs 
