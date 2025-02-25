@@ -87,6 +87,12 @@ export default async function Page({params}) {
     </svg> 
   )
 
+  const muiIcon = () => (
+    <svg viewBox="0 0 128 128">
+      <path fill="#1FA6CA" d="M.2 68.6V13.4L48 41v18.4L16.1 41v36.8L.2 68.6z"></path><path fill="#1C7FB6" d="M48 41l47.9-27.6v55.3L64 87l-16-9.2 32-18.4V41L48 59.4V41z"></path><path fill="#1FA6CA" d="M48 77.8v18.4l32 18.4V96.2L48 77.8z"></path><path fill="#1C7FB6" d="M80 114.6L127.8 87V50.2l-16 9.2v18.4L80 96.2v18.4zM111.9 41V22.6l16-9.2v18.4l-16 9.2z"></path>
+    </svg> 
+  )
+
   const techList = [
     {
       title: 'React',
@@ -206,7 +212,7 @@ export default async function Page({params}) {
         <VerticalNav/>
       </div>
 
-      <div className='image-test'>
+      <div className='image-test pl-6'>
       
       <div className={`min-h-screen h-screen relative px-4 py-12`} id="about">
   
@@ -255,7 +261,6 @@ export default async function Page({params}) {
           <div className=' lg:pl-12 w-full md:w-4/5 lg:3/5 xl:w-4/5'>
             <h1 className={`${titillium.className} inline-block text-5xl md:text-8xl mt-4 mb-4 text-[#f139bb] font-extrabold lg:tracking-[50]`}>
                 RESUME
-
                 <div className='flex flex-col h-[1px] w-full bg-white my-4'/>
             </h1>
            
@@ -263,107 +268,116 @@ export default async function Page({params}) {
             <p className={`${titillium.className} lg:text-left text-white text-lg sm:text-xl font-normal mt-4 tracking-wider leading-8`}>Kin + Carta Notable Projects</p>
             <div className='lg:pl-8'>
               
-              <div 
-                className='w-full py-12 grid gird-cols xl:grid-cols-2 mb-12'
 
-              >
+              {/* Start Discover section */}
+              <div className='w-full py-12 grid gird-cols xl:grid-cols-2 mb-12'>
                 {/* TODO - work on this layout */}
-              <div className="w-full"> 
-                <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl lg:text-left`}>Discover Financial</h2>
+                <div className="w-full"> 
+                  <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl lg:text-left`}>Discover Financial</h2>
+                  <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
+                  Led the development of a custom component library tailored to our needs, aimed at improving development efficiency and 
+                  design consistency across the mobile engineering department. Developed to be used across the entire mobile platform and across disiplines.
+                  </p>
 
-                {/* <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
-
-                In my role, I led the implementation of a proof of concept for a custom component library, similar to frameworks 
-                like MUI or Tailwind, but tailored to our needs. The goal was to reduce development time, improve design fidelity, 
-                and ensure a consistent look, feel, and development experience across the mobile engineering department. The proof 
-                of concept included documentation and a live Storybook sandbox for developers to explore the components. This 
-                effort led to the successful launch of a full-featured library, supported by a dedicated team for ongoing maintenance 
-                and development, of which I maintained my position as a lead developer helping mentor new team members, and colloaborating with 
-                directors, managers, product owners, and design leads
-
-                </p> */}
-                <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
-                Led the development of a custom component library tailored to our needs, aimed at improving development efficiency and 
-                design consistency across the mobile engineering department. Developed to be used across the entire mobile platform and across disiplines.
-                </p>
-
-                <div className='lg:pl-6'>
-                  <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}><b>Key Achievements:</b></p>
-                  <ul className={`${titillium.className} list-disc lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
-                    <li>
-                      Created 20 reusable components, including buttons, modals, alerts, bottom sheets, and text components and more.
-                    </li>
-                    <li>
-                      Deployed the library as a private NPM package for easy integration.                 
-                    </li>
-                    <li>
-                      Provided comprehensive documentation and a live Storybook sandbox for developers.                  
-                    </li>
-                    <li>
-                      Ensured a consistent look and feel across the team, reducing development time.                  
-                    </li>
-                    <li>
-                      After Proof of concept was approved, continued as lead developer, mentoring new team members and collaborating with key stakeholders.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className=" mt-4 items-start px-12"> 
-              <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}><b>Tech Stack</b></p>
-
-                <div className='grid grid-cols-2 md:grid-cols-4 gap-4 shrink-0'>
-
-                  <TechBox title={'title'} initColor={"#37474f"} icon={reactIcon()}/>
-                  <TechBox title={'title'} initColor={"#37474f"} icon={storyBookIcon()}/>
-                  <TechBox title={'title'} initColor={"#37474f"} icon={npmIcon()}/>
-              
-                  <TechBox title={'title'} initColor={"#37474f"} icon={figmaIcon()}/>
-                  <TechBox title={'title'} initColor={"#37474f"} icon={githubActionsIcon()}/>
+                  <div className='lg:pl-6'>
+                    <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}><b>Key Achievements:</b></p>
+                    <ul className={`${titillium.className} list-disc lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
+                      <li>
+                        Created 20 reusable components, including buttons, modals, alerts, bottom sheets, and text components and more.
+                      </li>
+                      <li>
+                        Deployed the library as a private NPM package for easy integration.                 
+                      </li>
+                      <li>
+                        Provided comprehensive documentation and a live Storybook sandbox for developers.                  
+                      </li>
+                      <li>
+                        Ensured a consistent look and feel across the team, reducing development time.                  
+                      </li>
+                      <li>
+                        After Proof of concept was approved, continued as lead developer, mentoring new team members and collaborating with key stakeholders.
+                      </li>
+                    </ul>
+                  </div>
                 </div>
 
-                   
-                  
+                {/* Start tech section */}
+                <div className=" mt-4 items-start px-12"> 
+                  <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}><b>Tech Stack</b></p>
+                  <div className='grid grid-cols-2 md:grid-cols-4 gap-4 shrink-0'>
+
+                    <TechBox title={'title'} initColor={"#37474f"} icon={reactIcon()}/>
+                    <TechBox title={'title'} initColor={"#37474f"} icon={storyBookIcon()}/>
+                    <TechBox title={'title'} initColor={"#37474f"} icon={npmIcon()}/>
+                
+                    <TechBox title={'title'} initColor={"#37474f"} icon={figmaIcon()}/>
+                    <TechBox title={'title'} initColor={"#37474f"} icon={githubActionsIcon()}/>
+                  </div> 
+                </div>
+                {/* End tech section */}
 
               </div>
+              {/* End Discover section */}
 
-              </div>
-              <div className='w-full py-12 lg:w-2/4 lg:ml-auto'>
-                <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl lg:text-left`}>Redesign Health</h2>
-                {/* <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
-                  I led two development teams of eight members, collaborating with stakeholders to define project timelines and deliverables. 
-                  I structured the CI/CD pipeline and Git flow to improve team efficiency, led feature release planning, and mentored 
-                  developers in best practices and agile methods. As a frontend developer, I worked with React, React Native, Tailwind, and 
-                  React Native Paper to build user interfaces. I also transcribed Figma designs into components and served as the lead developer 
-                  for a Node.js Restful API, Postgres database, and Twilio integration for in-app chat and SMS. Additionally, I integrated AWS 
-                  architecture and Cognito authentication for secure and scalable services.
-                </p> */}
-                <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
-                Managed and mentored two development teams of eight members, working closely with stakeholders to define timelines and deliverables. I also 
-                played a key role in optimizing team efficiency through CI/CD pipeline structuring and Git flow improvements.
-                </p>
 
-                <div className='lg:pl-6'>
-                  <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}><b>Key Achievements:</b></p>
-                  <ul className={`${titillium.className} list-disc lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
-                    <li>
-                    Led feature release planning and mentored developers in best practices and agile methods.
-                    </li>
-                    <li>
-                    Developed user interfaces using React, React Native, Tailwind, and React Native Paper.                 
-                    </li>
-                    <li>
-                    Transcribed Figma designs into reusable components.              
-                    </li>
-                    <li>
-                    Served as lead developer for a Node.js RESTful API, Postgres database, and Twilio integration for in-app chat and SMS.                
-                    </li>
-                    <li>
-                    Integrated AWS architecture and Cognito authentication for secure, scalable services.
-                    </li>
-                  </ul>
+
+
+
+
+              {/* Start Redesign section */}
+              {/* <div className='w-full py-12 lg:w-2/4 lg:ml-auto'> */}
+              <div className='w-full py-12 grid xl:grid-cols-2 mb-12'>
+
+                {/* Start tech section */}
+                <div className=" mt-4 items-start px-12 order-2 xl:order-1"> 
+                  <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}><b>Tech Stack</b></p>
+                  <div className='grid grid-cols-2 md:grid-cols-4 gap-4 shrink-0'>
+
+                    <TechBox title={'title'} initColor={"#37474f"} icon={reactIcon()}/>
+                    <TechBox title={'title'} initColor={"#37474f"} icon={reduxIcon()}/>
+                    <TechBox title={'title'} initColor={"#37474f"} icon={postgresIcon()}/>
+                
+                    {/* <TechBox title={'title'} initColor={"#37474f"} icon={muiIcon()}/> */}
+                    {/* <TechBox title={'title'} initColor={"#37474f"} icon={githubActionsIcon()}/> */}
+                  </div> 
+                </div>
+                {/* End tech section */}
+
+                <div className="w-full order-1 xl:order-2"> 
+                  <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl lg:text-left`}>Redesign Health</h2>
+                 
+                  <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
+                  Managed and mentored two development teams of eight members, working closely with stakeholders to define timelines and deliverables. I also 
+                  played a key role in optimizing team efficiency through CI/CD pipeline structuring and Git flow improvements.
+                  </p>
+
+                  <div className='lg:pl-6'>
+                    <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}><b>Key Achievements:</b></p>
+                    <ul className={`${titillium.className} list-disc lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
+                      <li>
+                      Led feature release planning and mentored developers in best practices and agile methods.
+                      </li>
+                      <li>
+                      Developed user interfaces using React, React Native, Tailwind, and React Native Paper.                 
+                      </li>
+                      <li>
+                      Transcribed Figma designs into reusable components.              
+                      </li>
+                      <li>
+                      Served as lead developer for a Node.js RESTful API, Postgres database, and Twilio integration for in-app chat and SMS.                
+                      </li>
+                      <li>
+                      Integrated AWS architecture and Cognito authentication for secure, scalable services.
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
+              {/* End Redesign section */}
+
+
+
+
               <div className='w-full py-12 lg:w-2/4'>
                 <h2 className={`${roboto.className} text-white text-3xl sm:text-4xl lg:text-left`}>Raven Health</h2>
                 {/* <p className={`${titillium.className} lg:text-left text-white text-md sm:text-lg font-normal mt-4 tracking-wider leading-8`}>
